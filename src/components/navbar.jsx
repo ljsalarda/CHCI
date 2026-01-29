@@ -1,5 +1,4 @@
 import React from "react";
-
 export function StickyNavbar() {
   const [openNav, setOpenNav] = React.useState(false);
 
@@ -14,10 +13,22 @@ export function StickyNavbar() {
     <nav className="sticky top-0 z-10 w-full bg-white shadow-md">
       <div className="max-w-7xl mx-auto px-4 py-4 lg:px-8 lg:py-4">
         <div className="flex items-center justify-between">
-          <a href="#" className="text-xl font-semibold text-gray-800">
-            CHCI
-          </a>
-
+          <div className="flex items-center gap-4">
+            <a href="#">
+              <img
+                src="/CCIS-LOGO.png"
+                alt="CCIS Logo"
+                className="h-15"
+              />
+            </a>
+            <a href="#">
+              <img
+                src="/CHCI-LOGO.png"
+                alt="CHCI Logo"
+                className="h-15"
+              />
+            </a>
+          </div>
           {/* Desktop Menu */}
           <ul className="hidden lg:flex gap-8 items-center">
             <li>
