@@ -1,138 +1,72 @@
-import React from "react";
-export function StickyNavbar() {
-  const [openNav, setOpenNav] = React.useState(false);
+"use client";
 
-  React.useEffect(() => {
-    window.addEventListener(
-      "resize",
-      () => window.innerWidth >= 1024 && setOpenNav(false),
-    );
-  }, []);
+import React, { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Menu, X } from "lucide-react";
+
+const navItems = [
+  { name: "Home", href: "#home" },
+  { name: "About Us", href: "#about" },
+  { name: "Events", href: "#events" },
+  { name: "Projects", href: "#projects" },
+  { name: "Publications", href: "#publications" },
+  { name: "Contact Us", href: "#contact" },
+];
+
+export function StickyNavbar() {
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="sticky top-0 z-10 w-full bg-white shadow-md">
-      <div className="max-w-7xl mx-auto px-4 py-4 lg:px-8 lg:py-4">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-4">
-            <a href="#">
-              <img
-                src="/CCIS-LOGO.png"
-                alt="CCIS Logo"
-                className="h-15"
-              />
-            </a>
-            <a href="#">
-              <img
-                src="/CHCI-LOGO.png"
-                alt="CHCI Logo"
-                className="h-15"
-              />
-            </a>
-          </div>
-          {/* Desktop Menu */}
-          <ul className="hidden lg:flex gap-8 items-center">
-            <li>
-              <a href="#" className="text-gray-700 hover:text-blue-600">
-                Home
-              </a>
-            </li>
-            <li>
-              <a href="#" className="text-gray-700 hover:text-blue-600">
-                About Us
-              </a>
-            </li>
-            <li>
-              <a href="#" className="text-gray-700 hover:text-blue-600">
-                Events
-              </a>
-            </li>
-            <li>
-              <a href="#" className="text-gray-700 hover:text-blue-600">
-                Projects
-              </a>
-            </li>
-            <li>
-              <a href="#" className="text-gray-700 hover:text-blue-600">
-                Publications
-              </a>
-            </li>
-            <li>
-              <a href="#" className="text-gray-700 hover:text-blue-600">
-                Contact Us
-              </a>
-            </li>
-          </ul>
-
-          {/* Desktop Buttons */}
-          
-
-          {/* Mobile Menu Button */}
-          <button
-            className="lg:hidden p-2"
-            onClick={() => setOpenNav(!openNav)}
-            aria-label="Toggle navigation"
-          >
-            {openNav ? (
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                className="h-6 w-6"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth={2}
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              </svg>
-            ) : (
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth={2}
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              </svg>
-            )}
-          </button>
+    <header className="sticky border-b border-gray-300 bg-white/95 backdrop-blur">
+      <div className="flex items-center justify-between">
+        {/* Logos */}
+        <div className="flex items-center gap-4 mb-2">
+          <a href="#">
+            <img src="/CCIS-LOGO.png" alt="CCIS Logo" className="h-15" />
+          </a>
+          <a href="#">
+            <img src="/CHCI-LOGO.png" alt="CHCI Logo" className="h-15" />
+          </a>
         </div>
 
+        {/* Desktop Menu */}
+        <nav className="hidden lg:flex items-center gap-6">
+          {navItems.map((item) => (
+            <Button
+              key={item.name}
+              variant="ghost"
+              asChild
+              className="text-gray-700 hover:text-black"
+            >
+              <a href={item.href}>{item.name}</a>
+            </Button>
+          ))}
+        </nav>
+
         {/* Mobile Menu */}
-        {openNav && (
-          <div className="lg:hidden mt-4 pb-4 border-t pt-4">
-            <ul className="flex flex-col gap-4">
-              <li>
-                <a href="#" className="text-gray-700 hover:text-blue-600">
-                  Pages
+        <Sheet open={isOpen} onOpenChange={setIsOpen}>
+          <SheetTrigger asChild className="lg:hidden">
+            <Button variant="ghost" size="icon" aria-label="Toggle menu">
+              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            </Button>
+          </SheetTrigger>
+          <SheetContent side="right" className="w-70 bg-white p-6">
+            <div className="flex flex-col gap-4">
+              {navItems.map((item) => (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  onClick={() => setIsOpen(false)}
+                  className="text-lg font-medium text-gray-700 hover:text-blue-600"
+                >
+                  {item.name}
                 </a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-700 hover:text-blue-600">
-                  Account
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-700 hover:text-blue-600">
-                  Blocks
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-700 hover:text-blue-600">
-                  Docs
-                </a>
-              </li>
-            </ul>
-          </div>
-        )}
+              ))}
+            </div>
+          </SheetContent>
+        </Sheet>
       </div>
-    </nav>
+    </header>
   );
 }
