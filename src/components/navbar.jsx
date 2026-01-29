@@ -18,26 +18,26 @@ export function StickyNavbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="sticky border-b top-0 z-50 w-full border-border/40 bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60">
-      <div className="flex items-center justify-between">
+    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60">
+      <div className="container mx-auto flex h-16 items-center justify-between px-4">
         {/* Logos */}
-        <div className="flex items-center mb-2">
+        <div className="flex items-center mb-2 ml-16">
           <a href="#">
-            <img src="/CCIS-LOGO.png" alt="CCIS Logo" className="h-15" />
+            <img src="/CCIS-LOGO.png" alt="CCIS Logo" className="h-10" />
           </a>
           <a href="#">
-            <img src="/CHCI-LOGO.png" alt="CHCI Logo" className="h-15" />
+            <img src="/CHCI-LOGO.png" alt="CHCI Logo" className="h-10" />
           </a>
         </div>
 
         {/* Desktop Menu */}
-        <nav className="hidden lg:flex items-center gap-6">
+        <nav className="hidden items-center gap-1 md:flex lg:gap-4 mr-16">
           {navItems.map((item) => (
             <Button
               key={item.name}
               variant="ghost"
               asChild
-              className="text-gray-700 hover:text-black "
+              className="text-muted-foreground hover:text-foreground"
             >
               <a href={item.href}>{item.name}</a>
             </Button>
