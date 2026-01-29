@@ -18,10 +18,10 @@ export function StickyNavbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="sticky border-b border-gray-300 bg-white/95 backdrop-blur">
+    <header className="sticky border-b  border-gray-300 bg-white/95 backdrop-blur ">
       <div className="flex items-center justify-between">
         {/* Logos */}
-        <div className="flex items-center gap-4 mb-2">
+        <div className="flex items-center mb-2">
           <a href="#">
             <img src="/CCIS-LOGO.png" alt="CCIS Logo" className="h-15" />
           </a>
