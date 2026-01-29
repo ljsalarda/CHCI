@@ -18,7 +18,7 @@ export function StickyNavbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="sticky border-b  border-gray-300 bg-white/95 backdrop-blur ">
+    <header className="sticky border-b top-0 z-50 w-full border-border/40 bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60">
       <div className="flex items-center justify-between">
         {/* Logos */}
         <div className="flex items-center mb-2">
@@ -37,7 +37,7 @@ export function StickyNavbar() {
               key={item.name}
               variant="ghost"
               asChild
-              className="text-gray-700 hover:text-black"
+              className="text-gray-700 hover:text-black "
             >
               <a href={item.href}>{item.name}</a>
             </Button>
