@@ -37,7 +37,7 @@ export function StickyNavbar() {
               key={item.name}
               variant="ghost"
               asChild
-              className=" text-muted-foreground hover:text-foreground"
+              className="text-muted-foreground hover:text-foreground"
             >
               <a href={item.href}>{item.name}</a>
             </Button>
