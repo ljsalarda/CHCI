@@ -54,7 +54,7 @@ export function ProjectsSection() {
         <p className="mx-auto mb-12 max-w-2xl text-center text-lg text-muted-foreground">
           Collaborating with leading institutions to drive innovation and impact.
         </p>
-        <div className="mx-auto max-w-6xl">
+        <div className="mx-auto max-w-7xl">
           <Carousel
             opts={{
               align: "start",
