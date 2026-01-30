@@ -4,7 +4,7 @@ import { Eye, Target } from "lucide-react"
 export function VisionMissionSection() {
   return (
     <section className="py-24 bg-card/50">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-25">
         <h2 className="mb-12 text-center text-3xl font-bold text-foreground md:text-4xl">
           Our <span className="text-primary">Vision & Mission</span>
         </h2>
