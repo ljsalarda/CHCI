@@ -5,6 +5,7 @@ import { AboutSection } from "./pages/about";
 import { VisionMissionSection } from "./pages/missionandvision";
 import { ResearchAreasSection } from "./pages/research-areas";
 import { ProjectsSection } from "./pages/project-and-partners";
+import { InfoSection } from "./pages/info-section";
 
 
 export default function App() {
