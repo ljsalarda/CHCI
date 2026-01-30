@@ -1,11 +1,14 @@
 
 import { StickyNavbar } from "./components/navbar";
+import { HeroSection } from "./pages/home";
 
 export default function App() {
   return (
     <div>
       <StickyNavbar />
-      <main></main>
+      <main>
+        <HeroSection />  
+      </main>
     </div>
   );
 }
