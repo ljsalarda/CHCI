@@ -4,7 +4,7 @@ import { HeroSection } from "./pages/home";
 import { AboutSection } from "./pages/about";
 import { VisionMissionSection } from "./pages/missionandvision";
 import { ResearchAreasSection } from "./pages/research-areas";
-
+import { ProjectsSection } from "./pages/project-and-partners";
 
 
 export default function App() {
@@ -16,6 +16,7 @@ export default function App() {
         <AboutSection />
         <VisionMissionSection />
         <ResearchAreasSection />
+        <ProjectsSection />
       </main>
     </div>
   );
