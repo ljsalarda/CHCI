@@ -3,17 +3,42 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/components/ui/accordion"
-import { Badge } from "@/components/ui/badge"
-import { MapPin, GraduationCap, ClipboardList, Heart, Building2, Users, Award, Shield, FileText } from "lucide-react"
+} from "@/components/ui/accordion";
+import { Badge } from "@/components/ui/badge";
+import {
+  MapPin,
+  GraduationCap,
+  ClipboardList,
+  Heart,
+  Building2,
+  Users,
+  Award,
+  Shield,
+  FileText,
+} from "lucide-react";
 
 const infoItems = [
   {
     id: "location",
     icon: MapPin,
     title: "Location",
-    content:
-      "Caraga State University, Ampayon, Butuan City, Agusan del Norte, Philippines 8600",
+    content: (
+      <div className="flex flex-col items-center justify-center mt-4 gap-4">
+        <h3 className="text-center text-m text-foreground max-w-2xl">
+          2nd Flr. Mechatronics Building, Caraga State University, Ampayon,
+          Butuan City, Philippines, 8600
+        </h3>
+        <div className="rounded-xl overflow-hidden border border-border w-full max-w-xl h-64">
+          <iframe
+            title="CHCI location map"
+            className="w-full h-full"
+            loading="lazy"
+            src="https://www.google.com/maps?q=Caraga%20State%20University%2C%20Ampayon%2C%20Butuan%20City%2C%20Philippines&z=15&output=embed"
+            referrerPolicy="no-referrer-when-downgrade"
+          />
+        </div>
+      </div>
+    ),
   },
   {
     id: "admission",
@@ -71,7 +96,7 @@ const infoItems = [
     content:
       "In compliance with the Freedom of Information (FOI) program, CSU maintains transparency in its operations. Access public documents through our FOI portal.",
   },
-]
+];
 
 export function InfoSection() {
   return (
@@ -86,7 +111,11 @@ export function InfoSection() {
         <div className="mx-auto max-w-3xl">
           <Accordion type="single" collapsible className="w-full">
             {infoItems.map((item) => (
-              <AccordionItem key={item.id} value={item.id} className="border-border">
+              <AccordionItem
+                key={item.id}
+                value={item.id}
+                className="border-border"
+              >
                 <AccordionTrigger className="hover:text-primary hover:no-underline">
                   <div className="flex items-center gap-3">
                     <div className="flex h-8 w-8 items-center justify-center rounded-md bg-primary/10">
@@ -115,5 +144,5 @@ export function InfoSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }
