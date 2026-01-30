@@ -4,7 +4,8 @@ import { HeroSection } from "./pages/home";
 import { AboutSection } from "./pages/about";
 import { VisionMissionSection } from "./pages/missionandvision";
 import { ResearchAreasSection } from "./pages/research-areas";
-import { ProjectsSection } from "./pages/project-and-partners";
+import { PartnersSection } from "./pages/partners";
+import { ProjectsSection } from "./pages/projects";
 import { InfoSection } from "./pages/info-section";
 import { Footer } from "./components/footer";
 
@@ -17,6 +18,7 @@ export default function App() {
         <AboutSection />
         <VisionMissionSection />
         <ResearchAreasSection />
+        <PartnersSection />
         <ProjectsSection />
         <InfoSection />
         <Footer />

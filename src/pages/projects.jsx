@@ -49,7 +49,7 @@ export function ProjectsSection() {
     <section id="projects" className="py-24 bg-card/50">
       <div className="container mx-auto px-4">
         <h2 className="mb-4 text-center text-3xl font-bold text-foreground md:text-4xl">
-          Our <span className="text-primary">Partners & Projects</span>
+          Our <span className="text-primary">Projects </span>
         </h2>
         <p className="mx-auto mb-12 max-w-2xl text-center text-lg text-muted-foreground">
           Collaborating with leading institutions to drive innovation and impact.
