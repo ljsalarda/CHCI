@@ -17,6 +17,7 @@ export default function App() {
         <VisionMissionSection />
         <ResearchAreasSection />
         <ProjectsSection />
+        <InfoSection />
       </main>
     </div>
   );
