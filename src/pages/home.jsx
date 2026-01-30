@@ -12,7 +12,7 @@ export function HeroSection() {
             <span className="text-primary">Human-Computer Interaction</span>
           </h1>
           <p className="mb-8 text-xl text-muted-foreground md:text-2xl">
-            &ldquo;Humanizing Technology.&rdquo;
+            &ldquo;Driving Innovation, Transforming Communities&rdquo;
           </p>
           <Button size="lg" className="gap-2 text-lg">
             Explore CHCI
