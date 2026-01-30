@@ -1,4 +1,12 @@
-import { Facebook, Twitter, Linkedin, Youtube, Mail, Phone, MapPin } from "lucide-react"
+import {
+  Facebook,
+  Twitter,
+  Linkedin,
+  Youtube,
+  Mail,
+  Phone,
+  MapPin,
+} from "lucide-react";
 
 const quickLinks = [
   { name: "Home", href: "#home" },
@@ -7,30 +15,50 @@ const quickLinks = [
   { name: "Projects", href: "#projects" },
   { name: "Publications", href: "#publications" },
   { name: "Contact Us", href: "#contact" },
-]
+];
 
 const socialLinks = [
-  { name: "Facebook", icon: Facebook, href: "#" },
+  {
+    name: "Facebook",
+    icon: Facebook,
+    href: "https://www.facebook.com/csuchci",
+  },
   { name: "Twitter", icon: Twitter, href: "#" },
   { name: "LinkedIn", icon: Linkedin, href: "#" },
   { name: "YouTube", icon: Youtube, href: "#" },
-]
+];
 
 export function Footer() {
   return (
-    <footer id="contact" className="border-t border-border bg-primary text-primary-foreground">
+    <footer
+      id="contact"
+      className="border-t border-border bg-primary text-primary-foreground"
+    >
       <div className="container mx-auto px-25 py-12">
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
           <div>
             <div className="mb-4 flex items-center gap-2">
               <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary">
-                <span className="text-lg font-bold text-primary-foreground">C</span>
+                <img
+                  src="/CCIS-LOGO.png"
+                  alt="CCIS logo"
+                  className="h-32 w-32 object-contain"
+                />
               </div>
-              <span className="text-xl font-bold text-primary-foreground">CHCI</span>
+              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary">
+                <img
+                  src="/CSU-LOGO.png"
+                  alt="CSU logo"
+                  className="h-14 w-14 object-contain"
+                />
+              </div>
+              <span className="text-xl font-bold text-primary-foreground">
+                CHCI
+              </span>
             </div>
             <p className="text-sm text-primary-foreground/80">
-              FIRST – Center for Human-Computer Interaction at Caraga State University. 
-              Humanizing Technology.
+              CSU – Center for Human-Computer Interaction at Caraga State
+              University. Humanizing Technology.
             </p>
           </div>
 
@@ -59,7 +87,10 @@ export function Footer() {
             <ul className="space-y-3">
               <li className="flex items-start gap-2 text-sm text-primary-foreground/80">
                 <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-secondary" />
-                <span>Caraga State University, Ampayon, Butuan City, Philippines 8600</span>
+                <span>
+                  2nd Flr. Mechatronics Building, Caraga State University,
+                  Ampayon, Butuan City, Philippines, 8600
+                </span>
               </li>
               <li className="flex items-center gap-2 text-sm text-primary-foreground/80">
                 <Mail className="h-4 w-4 text-secondary" />
@@ -67,7 +98,7 @@ export function Footer() {
               </li>
               <li className="flex items-center gap-2 text-sm text-primary-foreground/80">
                 <Phone className="h-4 w-4 text-secondary" />
-                <span>+63 85 225 0000</span>
+                <span>+63 981 518 9143</span>
               </li>
             </ul>
           </div>
@@ -81,7 +112,9 @@ export function Footer() {
                 <a
                   key={social.name}
                   href={social.href}
-                  className="flex h-10 w-10 items-center justify-center rounded-lg bg-secondary text-primary-foreground transition-colors hover:bg-primary-foreground hover:text-primary"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-muted text-primary hover:bg-primary hover:text-white"
                   aria-label={social.name}
                 >
                   <social.icon className="h-5 w-5" />
@@ -94,13 +127,20 @@ export function Footer() {
         <div className="mt-12 border-t border-primary-foreground/20 pt-8">
           <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
             <p className="text-sm text-primary-foreground/80">
-              © {new Date().getFullYear()} CHCI – Caraga State University. All rights reserved.
+              © {new Date().getFullYear()} CHCI – Caraga State University. All
+              rights reserved.
             </p>
             <div className="flex gap-4">
-              <a href="#" className="text-sm text-primary-foreground/80 hover:text-primary-foreground">
+              <a
+                href="#"
+                className="text-sm text-primary-foreground/80 hover:text-primary-foreground"
+              >
                 Privacy Policy
               </a>
-              <a href="#" className="text-sm text-primary-foreground/80 hover:text-primary-foreground">
+              <a
+                href="#"
+                className="text-sm text-primary-foreground/80 hover:text-primary-foreground"
+              >
                 Terms of Service
               </a>
             </div>
@@ -108,5 +148,5 @@ export function Footer() {
         </div>
       </div>
     </footer>
-  )
+  );
 }
