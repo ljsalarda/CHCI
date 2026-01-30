@@ -68,7 +68,7 @@ const researchAreas = [
 export function ResearchAreasSection() {
   return (
     <section id="publications" className="py-24">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-25">
         <h2 className="mb-4 text-center text-3xl font-bold text-foreground md:text-4xl">
           Research <span className="text-primary">Areas</span>
         </h2>
