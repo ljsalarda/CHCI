@@ -22,7 +22,7 @@ export function AboutSection() {
           <div className="relative aspect-video overflow-hidden rounded-xl border border-border bg-card">
             <iframe
               className="absolute inset-0 h-full w-full"
-              src="https://youtu.be/OlJuSZeyug8?si=a7M2f-bjGgUp8J_o"
+              src="https://www.youtube.com/embed/OlJuSZeyug8"
               title="CHCI Introduction Video"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
