@@ -8,28 +8,30 @@ export function AboutSection() {
               Know More about <span className="text-primary">CHCI</span>
             </h2>
             <p className="mb-4 text-lg leading-relaxed text-muted-foreground">
-              The Center for Human-Computer Interaction (CHCI) at Caraga State University 
-              is a pioneering research center dedicated to advancing the frontiers of 
-              computing through human-centric design and innovation.
+              The Center for Human-Computer Interaction (CHCI) at Caraga State
+              University is a pioneering research center dedicated to advancing
+              the frontiers of computing through human-centric design and
+              innovation.
             </p>
             <p className="text-lg leading-relaxed text-muted-foreground">
-              Our interdisciplinary team of researchers, designers, and engineers 
-              work collaboratively to create technologies that bridge intelligent systems 
-              and human needs, fostering inclusive development and empowering communities 
-              across the Caraga region and beyond.
+              Our interdisciplinary team of researchers, designers, and
+              engineers work collaboratively to create technologies that bridge
+              intelligent systems and human needs, fostering inclusive
+              development and empowering communities across the Caraga region
+              and beyond.
             </p>
           </div>
           <div className="relative aspect-video overflow-hidden rounded-xl border border-border bg-card">
             <iframe
               className="absolute inset-0 h-full w-full"
-              src="https://www.youtube.com/embed/OlJuSZeyug8"
+              src="https://www.youtube.com/embed/OlJuSZeyug8?autoplay=1&mute=1&playsinline=1"
               title="CHCI Introduction Video"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; autoplay"
               allowFullScreen
             />
           </div>
         </div>
       </div>
     </section>
-  )
+  );
 }
