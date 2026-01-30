@@ -3,6 +3,9 @@ import { StickyNavbar } from "./components/navbar";
 import { HeroSection } from "./pages/home";
 import { AboutSection } from "./pages/about";
 import { VisionMissionSection } from "./pages/missionandvision";
+import { ResearchAreasSection } from "./pages/research-areas";
+
+
 
 export default function App() {
   return (
@@ -12,6 +15,7 @@ export default function App() {
         <HeroSection />  
         <AboutSection />
         <VisionMissionSection />
+        <ResearchAreasSection />
       </main>
     </div>
   );
