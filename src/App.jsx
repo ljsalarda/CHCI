@@ -1,3 +1,8 @@
+import '@fontsource/inter/400.css'
+import '@fontsource/inter/500.css'
+import '@fontsource/inter/600.css'
+import '@fontsource/inter/700.css'
+
 
 import { StickyNavbar } from "./components/navbar";
 import { HeroSection } from "./pages/home";
@@ -12,8 +17,9 @@ import { Footer } from "./components/footer";
 export default function App() {
   return (
     <div>
-      <StickyNavbar />
+      
       <main>
+        <StickyNavbar />
         <HeroSection />  
         <AboutSection />
         <VisionMissionSection />
