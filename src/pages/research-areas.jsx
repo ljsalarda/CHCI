@@ -1,10 +1,9 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Brain, Gamepad2, Film, Shield, Globe } from "lucide-react"
 
 const researchAreas = [
   {
-    icon: Brain,
+    image: "/research-areas/multisensory.png",
     title: "Multi-sensory Computing",
     description:
       "Exploring the integration of multiple sensory modalities in computing systems to create immersive and intuitive human-computer interfaces.",
@@ -16,7 +15,7 @@ const researchAreas = [
     ],
   },
   {
-    icon: Gamepad2,
+    image: "/research-areas/gaming.png",
     title: "Gaming Science",
     description:
       "Advancing the science of game design and development, focusing on engagement, learning outcomes, and therapeutic applications.",
@@ -28,7 +27,7 @@ const researchAreas = [
     ],
   },
   {
-    icon: Film,
+    image: "/research-areas/multimedia.png",
     title: "Multimedia Science",
     description:
       "Research on digital media creation, processing, and distribution technologies for enhanced communication and storytelling.",
@@ -40,7 +39,7 @@ const researchAreas = [
     ],
   },
   {
-    icon: Shield,
+    image: "/research-areas/cyber.png",
     title: "Cyber Intelligence Computing",
     description:
       "Developing intelligent systems for cybersecurity, threat detection, and digital forensics to protect communities and institutions.",
@@ -52,7 +51,7 @@ const researchAreas = [
     ],
   },
   {
-    icon: Globe,
+    image: "/research-areas/development.png",
     title: "Computing for Development",
     description:
       "Leveraging computing technologies to address societal challenges and promote inclusive growth in underserved communities.",
@@ -82,8 +81,12 @@ export function ResearchAreasSection() {
               className="border-border bg-card transition-all hover:border-primary/50 hover:shadow-lg hover:shadow-primary/5"
             >
               <CardHeader>
-                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
-                  <area.icon className="h-6 w-6 text-primary" />
+                <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-lg bg-primary/10 overflow-hidden">
+                  <img 
+                    src={area.image} 
+                    alt={area.title}
+                    className="h-12 w-12 object-contain"
+                  />
                 </div>
                 <CardTitle className="text-xl text-card-foreground">{area.title}</CardTitle>
               </CardHeader>
