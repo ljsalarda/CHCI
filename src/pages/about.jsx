@@ -1,7 +1,10 @@
+import { Button } from "@/components/ui/button"
+import { ArrowRight } from "lucide-react"
+
 export function AboutSection() {
   return (
     <section id="about" className="py-24">
-      <div className="container mx-auto px-25">
+      <div className="container mx-auto px-26">
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-16 items-center">
           <div>
             <h2 className="mb-6 text-3xl font-bold text-foreground md:text-4xl">
@@ -20,6 +23,15 @@ export function AboutSection() {
               development and empowering communities across the Caraga region
               and beyond.
             </p>
+            <div className="pt-6">
+              <Button 
+                size="lg"
+                className="gap-2 text-base px-6 py-5 rounded-full font-semibold shadow-md hover:shadow-lg transition-all hover:scale-105"
+              >
+                Know More
+                <ArrowRight className="h-4 w-4" />
+              </Button>
+            </div>
           </div>
           <div className="relative aspect-video overflow-hidden rounded-xl border border-border bg-card">
             <iframe
