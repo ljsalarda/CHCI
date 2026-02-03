@@ -20,6 +20,8 @@ export function HeroSection() {
           </Button>
         </div>
       </div>
+
+      
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-linear-to-t from-background to-transparent" />
     </section>
   )
