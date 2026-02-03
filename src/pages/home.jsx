@@ -28,12 +28,11 @@ export function HeroSection() {
           </p>
 
           {/* Stats section */}
-          <div className="pt-12 grid grid-cols-3 md:grid-cols-4 gap-6 max-w-2xl mx-auto">
+          <div className="pt-12 grid grid-cols-3 md:grid-cols-3 gap-6 max-w-2xl mx-auto">
             {[
-              { number: "5+", label: "Research Areas" },
-              { number: "20+", label: "Researchers" },
-              { number: "50+", label: "Publications" },
-              { number: "10+", label: "Partners" },
+              { number: "5", label: "Research Areas" },
+              { number: "0", label: "Publications" },
+              { number: "6", label: "Partners" },
             ].map((stat) => (
               <div key={stat.label} className="space-y-1 p-3 rounded-lg hover:bg-primary/5 transition-colors">
                 <div className="text-3xl md:text-4xl font-bold text-primary">{stat.number}</div>
