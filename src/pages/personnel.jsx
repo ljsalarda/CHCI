@@ -2,11 +2,11 @@ import { ChevronDown } from "lucide-react"
 
 export function PersonnelSection() {
   const units = [
-    { name: "Multi-Sensory Computing Unit", image: "/public/MSC.png" },
-    { name: "Gaming Science Unit", image: "/public/GS.png" },
-    { name: "Cyber Intelligence Computing Unit", image: "/public/CIC.png" },
-    { name: "Computing for Development Unit", image: "/public/CFD.png" },
-    { name: "Multimedia Science Unit", image: "/public/MS.png" }
+    { name: "Multi-Sensory Computing Unit", image: "/MSC.png" },
+    { name: "Gaming Science Unit", image: "/GS.png" },
+    { name: "Cyber Intelligence Computing Unit", image: "/CIC.png" },
+    { name: "Computing for Development Unit", image: "/CFD.png" },
+    { name: "Multimedia Science Unit", image: "/MS.png" }
   ]
 
   return (

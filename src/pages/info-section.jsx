@@ -16,10 +16,10 @@ import {
   Shield,
   FileText,
 } from "lucide-react";
-import CertImg from "/public/CSU_PAB_Certification001.png";
-import CovidImg from "/public/CSU-Covid-19-Safety-Seal-1.jpg";
-import FoiImg from "/public/foi.png";
-import TsImg from "/public/ts.png";
+import CertImg from "/CSU_PAB_Certification001.png";
+import CovidImg from "/CSU-Covid-19-Safety-Seal-1.jpg";
+import FoiImg from "/foi.png";
+import TsImg from "/ts.png";
 
 const infoItems = [
   {
