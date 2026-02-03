@@ -1,92 +1,74 @@
+import { ChevronDown } from "lucide-react"
+
 export function PersonnelSection() {
+  const units = [
+    { name: "Multi-Sensory Computing Unit", image: "/public/MSC.png" },
+    { name: "Gaming Science Unit", image: "/public/GS.png" },
+    { name: "Cyber Intelligence Computing Unit", image: "/public/CIC.png" },
+    { name: "Computing for Development Unit", image: "/public/CFD.png" },
+    { name: "Multimedia Science Unit", image: "/public/MS.png" }
+  ]
+
   return (
-    <section id="personnel" className="py-24">
+    <section id="personnel" className="py-24 bg-linear-to-b from-white to-[#0A3D91]/5">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl font-bold text-foreground md:text-4xl mb-4">
-            Organizational Structure
+        <div className="text-center mb-10">
+          <h2 className="text-4xl md:text-5xl font-bold text-[#0A3D91] mb-3">
+            Personnel
           </h2>
-          <div className="w-16 h-1 bg-[#0A3D91] mx-auto" />
+          <div className="h-1 bg-linear-to-r from-[#0A3D91] to-[#3A7CC3] w-24 mx-auto rounded-full" />
         </div>
 
         {/* Org Chart */}
         <div className="flex flex-col items-center">
           {/* University President */}
-          <div className="px-6 py-3 border-2 border-[#4a4a4a] rounded-lg bg-white text-center">
-            <span className="font-semibold text-[#4a4a4a]">University<br />President</span>
+          <div className="relative group mb-4">
+            <div className="absolute -inset-1 bg-linear-to-r from-[#0A3D91] to-[#3A7CC3] rounded-xl blur opacity-40 group-hover:opacity-100 transition duration-300" />
+            <div className="relative w-45 py-5 px-8 border border-[#0A3D91] rounded-xl bg-white text-center font-bold text-[#0A3D91] shadow-lg hover:shadow-xl transition-shadow">
+              University<br />President
+            </div>
           </div>
           
-          {/* Connector line */}
-          <div className="w-0.5 h-8 bg-[#4a4a4a]" />
+          <ChevronDown className="w-6 h-6 text-[#3A7CC3] mb-2" />
           
           {/* VP for RIE */}
-          <div className="px-6 py-3 border-2 border-[#9b4d96] rounded-lg bg-white text-center">
-            <span className="font-semibold text-[#9b4d96]">VP for RIE</span>
+          <div className="relative group mb-4">
+            <div className="absolute -inset-1 bg-linear-to-r from-[#0A3D91] to-[#3A7CC3] rounded-xl blur opacity-40 group-hover:opacity-100 transition duration-300" />
+            <div className="relative w-45 py-5 px-8 border border-[#3A7CC3] rounded-xl bg-white text-center font-bold text-[#0A3D91] shadow-lg hover:shadow-xl transition-shadow">
+              VP for RIE
+            </div>
           </div>
           
-          {/* Connector line */}
-          <div className="w-0.5 h-8 bg-[#4a4a4a]" />
+          <ChevronDown className="w-6 h-6 text-[#3A7CC3] mb-2" />
           
           {/* RDISO */}
-          <div className="px-6 py-3 border-2 border-[#4a8c4a] rounded-lg bg-white text-center">
-            <span className="font-semibold text-[#4a8c4a]">RDISO</span>
+          <div className="relative group mb-4">
+            <div className="absolute -inset-1 bg-linear-to-r from-[#0A3D91] to-[#3A7CC3] rounded-xl blur opacity-40 group-hover:opacity-100 transition duration-300" />
+            <div className="relative w-45 py-5 px-8 border border-[#0A3D91] rounded-xl bg-white text-center font-bold text-[#0A3D91] shadow-lg hover:shadow-xl transition-shadow">
+              RDISO
+            </div>
           </div>
           
-          {/* Connector line */}
-          <div className="w-0.5 h-8 bg-[#4a4a4a]" />
+          <ChevronDown className="w-6 h-6 text-[#3A7CC3] mb-2" />
           
           {/* CHCI Center Chief */}
-          <div className="px-8 py-4 border-2 border-[#0A3D91] rounded-lg bg-white text-center">
-            <span className="font-semibold text-[#0A3D91]">CHCI Center<br />Chief</span>
-          </div>
-          
-          {/* Connector line down */}
-          <div className="w-0.5 h-8 bg-[#0A3D91]" />
-          
-          {/* Horizontal connector line */}
-          <div className="hidden md:block w-full max-w-4xl h-0.5 bg-[#0A3D91]" />
-          
-          {/* Five vertical connector lines - desktop */}
-          <div className="hidden md:flex w-full max-w-4xl justify-between px-12">
-            <div className="w-0.5 h-8 bg-[#0A3D91]" />
-            <div className="w-0.5 h-8 bg-[#0A3D91]" />
-            <div className="w-0.5 h-8 bg-[#0A3D91]" />
-            <div className="w-0.5 h-8 bg-[#0A3D91]" />
-            <div className="w-0.5 h-8 bg-[#0A3D91]" />
-          </div>
-          
-          {/* Units - Desktop */}
-          <div className="hidden md:grid grid-cols-5 gap-4 w-full max-w-5xl">
-            <div className="px-3 py-4 border-2 border-[#0A3D91] rounded-lg bg-white text-center hover:bg-[#0A3D91]/5 transition-colors">
-              <span className="text-sm font-semibold text-[#0A3D91]">Multi-Sensory<br />Computing Unit</span>
-            </div>
-            <div className="px-3 py-4 border-2 border-[#0A3D91] rounded-lg bg-white text-center hover:bg-[#0A3D91]/5 transition-colors">
-              <span className="text-sm font-semibold text-[#0A3D91]">Gaming Science<br />Unit</span>
-            </div>
-            <div className="px-3 py-4 border-2 border-[#0A3D91] rounded-lg bg-white text-center hover:bg-[#0A3D91]/5 transition-colors">
-              <span className="text-sm font-semibold text-[#0A3D91]">Cyber Intelligence<br />Computing Unit</span>
-            </div>
-            <div className="px-3 py-4 border-2 border-[#0A3D91] rounded-lg bg-white text-center hover:bg-[#0A3D91]/5 transition-colors">
-              <span className="text-sm font-semibold text-[#0A3D91]">Computing for<br />Development Unit</span>
-            </div>
-            <div className="px-3 py-4 border-2 border-[#0A3D91] rounded-lg bg-white text-center hover:bg-[#0A3D91]/5 transition-colors">
-              <span className="text-sm font-semibold text-[#0A3D91]">Multimedia<br />Science Unit</span>
+          <div className="relative group mb-8">
+            <div className="absolute -inset-1 bg-linear-to-r from-[#0A3D91] to-[#3A7CC3] rounded-xl blur-xl opacity-60 group-hover:opacity-100 transition duration-300" />
+            <div className="relative w-45 py-6 px-8 border border-[#0A3D91] rounded-xl bg-linear-to-br from-[#0A3D91] to-[#3A7CC3] text-center font-bold text-white shadow-xl hover:shadow-2xl transition-shadow">
+              CHCI Center<br />Chief
             </div>
           </div>
           
-          {/* Units - Mobile (stacked) */}
-          <div className="md:hidden flex flex-col items-center gap-2 mt-4">
-            {[
-              "Multi-Sensory Computing Unit",
-              "Gaming Science Unit",
-              "Cyber Intelligence Computing Unit",
-              "Computing for Development Unit",
-              "Multimedia Science Unit"
-            ].map((unit, index) => (
-              <div key={unit}>
-                {index > 0 && <div className="w-0.5 h-4 bg-[#0A3D91] mx-auto" />}
-                <div className="px-6 py-3 border-2 border-[#0A3D91] rounded-lg bg-white text-center">
-                  <span className="text-sm font-semibold text-[#0A3D91]">{unit}</span>
+          {/* Units Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-6 w-full max-w-6xl">
+            {units.map((unit, idx) => (
+              <div key={idx} className="group relative">
+                <div className="absolute -inset-1 bg-linear-to-r from-[#0A3D91] to-[#3A7CC3] rounded-xl blur opacity-30 group-hover:opacity-100 transition duration-300" />
+                <div className="relative p-3 rounded-xl bg-white border border-[#3A7CC3] text-center shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 h-full flex flex-col items-center justify-center gap-3">
+                  <img src={unit.image} alt={unit.name} className="w-14 h-14 object-contain" />
+                  <span className="font-bold text-sm text-[#0A3D91] leading-tight">
+                    {unit.name}
+                  </span>
                 </div>
               </div>
             ))}
