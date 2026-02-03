@@ -27,8 +27,8 @@ export default function App() {
         <ResearchAreasSection />
         <PartnersSection />
         <ProjectsSection />
-        <InfoSection />
         <PersonnelSection />
+        <InfoSection />
         <Footer />
       </main>
     </div>
