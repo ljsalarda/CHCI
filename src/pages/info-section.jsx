@@ -16,6 +16,10 @@ import {
   Shield,
   FileText,
 } from "lucide-react";
+import CertImg from "/public/CSU_PAB_Certification001.png";
+import CovidImg from "/public/CSU-Covid-19-Safety-Seal-1.jpg";
+import FoiImg from "/public/foi.png";
+import TsImg from "/public/ts.png";
 
 const infoItems = [
   {
@@ -45,56 +49,53 @@ const infoItems = [
     icon: GraduationCap,
     title: "Admission",
     content:
-      "The CHCI welcomes applications from graduate students and researchers interested in human-computer interaction. Visit our admissions portal for requirements and deadlines.",
+      "oas@carsu.edu.ph | 09177078764 loc. 231",
   },
   {
     id: "registrar",
     icon: ClipboardList,
     title: "Registrar",
     content:
-      "For academic records, enrollment verification, and transcript requests, please contact the University Registrar's Office at registrar@carsu.edu.ph.",
+      "registrar.csumain@carsu.edu.ph | 09177078713 loc. 232",
   },
   {
     id: "guidance",
     icon: Heart,
     title: "Guidance",
     content:
-      "The Guidance and Counseling Center provides support services for students, including career counseling, psychological support, and academic advising.",
+      "guidance@carsu.edu.ph | 09177078769 loc. 252",
   },
   {
     id: "president",
     icon: Building2,
     title: "Office of the President",
     content:
-      "The Office of the University President oversees the strategic direction of CSU, including support for research centers like CHCI.",
+      "op@carsu.edu.ph 09177078769 | 09177078713 | 09177078764 | loc. 201",
   },
   {
     id: "follow",
     icon: Users,
     title: "Follow Us",
     content:
-      "Stay connected with CHCI on social media: Facebook, Twitter, LinkedIn, and YouTube. Subscribe to our newsletter for the latest updates.",
+      "https://www.facebook.com/csuchci chci@carsu.edu.ph https://www.youtube.com/@csuchcidepartment8354",
   },
   {
     id: "certification",
     icon: Award,
     title: "Certification",
-    content:
-      "CHCI is recognized by the Commission on Higher Education (CHED) as a Center of Excellence in Computing Education.",
+    image: CertImg,
   },
   {
     id: "covid",
     icon: Shield,
     title: "COVID-19 Safety Seal",
-    content:
-      "CSU has been certified with the Safety Seal by the Department of the Interior and Local Government for compliance with health protocols.",
+    image: CovidImg,
   },
   {
     id: "transparency",
     icon: FileText,
     title: "Transparency & FOI",
-    content:
-      "In compliance with the Freedom of Information (FOI) program, CSU maintains transparency in its operations. Access public documents through our FOI portal.",
+    images: [FoiImg, TsImg],
   },
 ];
 
@@ -125,22 +126,23 @@ export function InfoSection() {
                   </div>
                 </AccordionTrigger>
                 <AccordionContent className="pl-11 text-muted-foreground">
-                  {item.content}
+                  {item.content && <div>{item.content}</div>}
+                  {item.image && (
+                    <div className="mt-4 flex justify-center">
+                      <img src={item.image} alt={item.title} className="w-60 max-w-md rounded-lg" />
+                    </div>
+                  )}
+                  {item.images && (
+                    <div className="mt-4 flex justify-center flex-wrap gap-4">
+                      {item.images.map((img, idx) => (
+                        <img key={idx} src={img} alt={`${item.title}-${idx}`} className="w-50 max-w-xs rounded-lg" />
+                      ))}
+                    </div>
+                  )}
                 </AccordionContent>
               </AccordionItem>
             ))}
           </Accordion>
-        </div>
-        <div className="mt-12 flex flex-wrap justify-center gap-4">
-          <Badge variant="outline" className="px-4 py-2 text-sm">
-            Transparency Seal
-          </Badge>
-          <Badge variant="outline" className="px-4 py-2 text-sm">
-            Freedom of Information
-          </Badge>
-          <Badge variant="outline" className="px-4 py-2 text-sm">
-            COVID-19 Safety Seal
-          </Badge>
         </div>
       </div>
     </section>
