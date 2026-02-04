@@ -11,7 +11,7 @@ const partners = [
 
 export function PartnersSection() {
   return (
-    <section id="partners" className="container-fluid skill">
+    <section id="partners" className="py-20 container-fluid skill">
       <h2 className="mb-12 text-center text-3xl font-bold text-foreground md:text-4xl">
           Our <span className="text-primary">Partners</span>
         </h2>
