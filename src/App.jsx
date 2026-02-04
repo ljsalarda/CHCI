@@ -5,7 +5,7 @@ import '@fontsource/inter/700.css'
 
 
 import { StickyNavbar } from "./components/navbar";
-import { HeroSection } from "./pages/home";
+import { Home } from "./pages/home";
 import { AboutSection } from "./pages/about";
 import { VisionMissionSection } from "./pages/missionandvision";
 import { ResearchAreasSection } from "./pages/research-areas";
@@ -21,7 +21,7 @@ export default function App() {
       
       <main>
         <StickyNavbar />
-        <HeroSection />  
+        <Home />  
         <AboutSection />
         <VisionMissionSection />
         <ResearchAreasSection />

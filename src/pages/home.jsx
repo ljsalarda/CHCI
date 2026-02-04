@@ -1,4 +1,4 @@
-export function HeroSection() {
+export function Home() {
   return (
     <section id="home" className="relative  flex items-center justify-center overflow-hidden py-32">
       {/* Gradient background with animation */}
