@@ -1,6 +1,3 @@
-import { Button } from "@/components/ui/button"
-import { ArrowRight, Sparkles } from "lucide-react"
-
 export function HeroSection() {
   return (
     <section id="home" className="relative  flex items-center justify-center overflow-hidden py-32">
