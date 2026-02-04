@@ -61,11 +61,32 @@ export function Home() {
       </div>
 
       {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce">
-        <span className="text-xs text-muted-foreground uppercase tracking-widest">Scroll</span>
-        <div className="w-6 h-10 border-2 border-muted-foreground rounded-full flex items-start justify-center p-2">
-          <div className="w-1 h-2 bg-muted-foreground rounded-full animate-bounce" style={{ animationDuration: '2s' }} />
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+        <div className="flex flex-col items-center gap-2 md:hidden">
+          <span className="text-xs text-muted-foreground uppercase tracking-widest">Swipe</span>
+          <svg 
+            xmlns="http://www.w3.org/2000/svg" 
+            width="24" 
+            height="24" 
+            viewBox="0 0 24 24" 
+            fill="none" 
+            stroke="currentColor" 
+            strokeWidth="2" 
+            strokeLinecap="round" 
+            strokeLinejoin="round" 
+            className="text-muted-foreground"
+          >
+            <path d="M12 5v14" />
+            <path d="m19 12-7 7-7-7" />
+          </svg>
+        </div>    
+        <div className="hidden md:flex flex-col items-center gap-2">
+          <span className="text-xs text-muted-foreground uppercase tracking-widest">Scroll</span>
+          <div className="w-6 h-10 border-2 border-muted-foreground rounded-full flex items-start justify-center p-2">
+            <div className="w-1 h-2 bg-muted-foreground rounded-full animate-bounce" style={{ animationDuration: '2s' }} />
+          </div>
         </div>
+
       </div>
     </section>
   )
