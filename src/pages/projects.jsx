@@ -7,7 +7,7 @@ const projects = [
 
 export function ProjectsSection() {
   return (
-    <section id="projects" className="py-24 relative overflow-hidden">
+    <section id="projects" className="py-18 relative overflow-hidden">
       <div className="absolute inset-0 bg-linear-to-b from-primary/5 to-transparent pointer-events-none" />
       
       <div className="container mx-auto px-4 relative z-10">
