@@ -1,6 +1,6 @@
 "use client"
 
-const partners = [
+export const partners = [
   { name: "DOST", img: "/dost.jpg", href: "https://www.dost.gov.ph/" },
   { name: "CSU", img: "/CSU.png", href: "https://www.carsu.edu.ph/" },
   { name: "DOA", img: "/DOA.png", href: "https://www.da.gov.ph/" },

@@ -1,4 +1,17 @@
+"use client"
+
+import React from "react";
+import { partners } from "./partners.jsx";
+import { researchAreas } from "./research-areas.jsx";
+import { projects } from "./projects.jsx";
+
 export function Home() {
+   const stats = [
+    { number: researchAreas.length, label: "Research Areas", link: "#research" },
+    { number: 0, label: "Publications" },
+    { number: projects.length, label: "Projects", link: "#projects" },
+    { number: partners.length, label: "Partners", link: "#partners" },
+  ]
   return (
     <section id="home" className="relative  flex items-center justify-center overflow-hidden py-32">
       {/* Gradient background with animation */}
@@ -26,26 +39,21 @@ export function Home() {
 
           {/* Stats section */}
           <div className="pt-12 grid grid-cols-3 md:grid-cols-4 gap-6 max-w-2xl mx-auto">
-            {[
-              { number: "5", label: "Research Areas", link: "#research" },
-              { number: "0", label: "Publications" },
-              { number: "4", label: "Projects", link: "#projects" },
-              { number: "6", label: "Partners", link: "#partners" },
-            ].map((stat) => (
+            {stats.map((stat) => (
               <a 
                 key={stat.label}
                 href={stat.link || "#"}
-                onClick={(e) => {
-                  if (!stat.link) {
-                    e.preventDefault()
-                  }
-                }}
+                onClick={(e) => !stat.link && e.preventDefault()}
                 className={`space-y-1 p-3 rounded-lg transition-colors ${
                   stat.link ? "cursor-pointer hover:bg-primary/10" : "hover:bg-primary/5"
                 }`}
               >
-                <div className="text-3xl md:text-4xl font-bold text-primary">{stat.number}</div>
-                <div className="text-xs md:text-sm text-muted-foreground font-medium">{stat.label}</div>
+                <div className="text-3xl md:text-4xl font-bold text-primary">
+                  {stat.number}
+                </div>
+                <div className="text-xs md:text-sm text-muted-foreground font-medium">
+                  {stat.label}
+                </div>
               </a>
             ))}
           </div>

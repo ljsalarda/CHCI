@@ -1,4 +1,4 @@
-const researchAreas = [
+export const researchAreas = [
   {
     image: "/MSC.png",
     title: "Multi-sensory Computing",

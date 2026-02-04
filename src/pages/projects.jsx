@@ -1,4 +1,4 @@
-const projects = [
+export const projects = [
   { name: "MARVEL", img: "/marvel.png" },
   { name: "GEOAGR", img: "/geoagr.png" },
   { name: "SMART", img: "/smart.png" },
