@@ -23,9 +23,8 @@ const socialLinks = [
     icon: Facebook,
     href: "https://www.facebook.com/csuchci",
   },
-  { name: "Twitter", icon: Twitter, href: "#" },
-  { name: "LinkedIn", icon: Linkedin, href: "#" },
-  { name: "YouTube", icon: Youtube, href: "#" },
+  { name: "LinkedIn", icon: Linkedin, href: "https://www.linkedin.com/in/jaymer-jayoma-33872362/" },
+  { name: "YouTube", icon: Youtube, href: "https://www.youtube.com/@csuchcidepartment8354" },
 ];
 
 export function Footer() {
@@ -37,24 +36,28 @@ export function Footer() {
       <div className="container mx-auto px-25 py-12">
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
           <div>
-            <div className="mb-4 flex items-center gap-2">
-              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary">
+            <div className="mb-4 flex items-center">
+              {/* <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary">
                 <img
                   src="/CCIS-LOGO.png"
                   alt="CCIS logo"
                   className="h-32 w-32 object-contain"
                 />
-              </div>
-              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary">
+              </div> */}
+              <div className="flex items-center justify-center rounded-lg bg-primary">
                 <img
                   src="/CSU-LOGO.png"
                   alt="CSU logo"
-                  className="h-14 w-14 object-contain"
+                  className="h-16 w-16 object-contain"
                 />
               </div>
-              <span className="text-xl font-bold text-primary-foreground">
-                CHCI
-              </span>
+              <div className="flex items-center justify-center rounded-lg bg-primary">
+                <img
+                  src="/CHCI-LOGO.png"
+                  alt="CHCI logo"
+                  className="w-32 object-contain"
+                />
+              </div>
             </div>
             <p className="text-sm text-primary-foreground/80">
               CSU – Center for Human-Computer Interaction at Caraga State
@@ -127,8 +130,7 @@ export function Footer() {
         <div className="mt-12 border-t border-primary-foreground/20 pt-8">
           <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
             <p className="text-sm text-primary-foreground/80">
-              © {new Date().getFullYear()} CHCI – Caraga State University. All
-              rights reserved.
+              © {new Date().getFullYear()} Center for Human-Computer Interaction
             </p>
             <div className="flex gap-4">
               <a
