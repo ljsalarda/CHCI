@@ -28,16 +28,28 @@ export function HeroSection() {
           </p>
 
           {/* Stats section */}
-          <div className="pt-12 grid grid-cols-3 md:grid-cols-3 gap-6 max-w-2xl mx-auto">
+          <div className="pt-12 grid grid-cols-3 md:grid-cols-4 gap-6 max-w-2xl mx-auto">
             {[
-              { number: "5", label: "Research Areas" },
+              { number: "5", label: "Research Areas", link: "#research" },
               { number: "0", label: "Publications" },
-              { number: "6", label: "Partners" },
+              { number: "4", label: "Projects", link: "#projects" },
+              { number: "6", label: "Partners", link: "#partners" },
             ].map((stat) => (
-              <div key={stat.label} className="space-y-1 p-3 rounded-lg hover:bg-primary/5 transition-colors">
+              <a 
+                key={stat.label}
+                href={stat.link || "#"}
+                onClick={(e) => {
+                  if (!stat.link) {
+                    e.preventDefault()
+                  }
+                }}
+                className={`space-y-1 p-3 rounded-lg transition-colors ${
+                  stat.link ? "cursor-pointer hover:bg-primary/10" : "hover:bg-primary/5"
+                }`}
+              >
                 <div className="text-3xl md:text-4xl font-bold text-primary">{stat.number}</div>
                 <div className="text-xs md:text-sm text-muted-foreground font-medium">{stat.label}</div>
-              </div>
+              </a>
             ))}
           </div>
         </div>
