@@ -38,7 +38,7 @@ export function Home() {
           </p>
 
           {/* Stats section */}
-          <div className="pt-12 grid grid-cols-3 md:grid-cols-4 gap-6 max-w-2xl mx-auto">
+          <div className="pt-12 grid grid-cols-4 md:grid-cols-4 gap-6 max-w-2xl mx-auto">
             {stats.map((stat) => (
               <a 
                 key={stat.label}
