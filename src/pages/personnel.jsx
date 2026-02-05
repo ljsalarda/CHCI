@@ -10,7 +10,7 @@ export function PersonnelSection() {
   ]
 
   return (
-    <section id="personnel" className="py-24 bg-linear-to-b from-white to-[#0A3D91]/5">
+    <section id="personnel" className="py-16 bg-linear-to-b from-white to-[#0A3D91]/5">
       <div className="container mx-auto px-4">
         <div className="text-center mb-10">
           <h2 className="text-4xl md:text-5xl font-bold text-[#0A3D91] mb-3">
