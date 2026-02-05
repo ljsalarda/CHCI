@@ -20,17 +20,17 @@ export function ProjectsSection() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
           {projects.map((project) => (
             <div 
               key={project.name} 
-              className="group relative flex flex-col items-center justify-center p-8 rounded-xl border border-border bg-card shadow-sm hover:shadow-xl hover:border-primary/50 transition-all duration-300 hover:scale-105 cursor-pointer overflow-hidden"
+              className="group relative flex flex-col items-center justify-center p-2 rounded-xl border border-border bg-card shadow-sm hover:shadow-xl hover:border-primary/50 transition-all duration-300 hover:scale-105 cursor-pointer overflow-hidden"
             >
               <div className="absolute inset-0 bg-linear-to-br from-primary/0 to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               
               <div className="relative z-10 flex flex-col items-center">
                 <div className="relative mb-6">
-                  <div className="absolute inset-0 bg-primary/20 rounded-full blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 -m-4" />
+                  <div className="absolute inset-5 bg-primary/20 rounded-full blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 -m-4" />
                   <img 
                     src={project.img} 
                     alt={project.name}
