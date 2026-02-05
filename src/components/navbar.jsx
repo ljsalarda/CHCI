@@ -21,7 +21,7 @@ export function StickyNavbar() {
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60 ">
       <div className="container mx-auto flex h-16 items-center justify-between px-4 sm:px-6 lg:px-10">
         {/* Logos */}
-        <div className="flex items-center mb-1 ml-16 p-2 pb-1">
+        <div className="flex-1 flex justify-start lg:justify-start lg:ml-15 md:justify-center">
           {/* <a href="#">
             <img src="/CCIS-LOGO.png" alt="CCIS Logo" className="w-11" />
           </a> */}
