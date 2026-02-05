@@ -1,15 +1,17 @@
-import { Button } from "@/components/ui/button"
-import { ArrowRight } from "lucide-react"
+"use client"
+
+import { useState } from "react"
+import { Button } from "@/components/ui/button";
+import { ChevronDown, ChevronUp } from "lucide-react";
 
 export function AboutSection() {
+   const [isExpanded, setIsExpanded] = useState(false)
   return (
     <section id="about" className="py-12 md:py-16 lg:py-24">
       {/* Adjusted container padding: px-4 (mobile) -> px-8 (tablet) -> px-12 (desktop) */}
       <div className="container mx-auto px-4 md:px-8 lg:px-26">
         {/* Adjusted grid gap: gap-8 (mobile) -> gap-16 (desktop) */}
         <div className="grid gap-8 lg:grid-cols-2 lg:gap-16 items-center">
-          
-          {/* Text Content */}
           <div className="flex flex-col justify-center">
             <h2 className="mb-4 text-2xl font-bold text-foreground md:mb-6 md:text-3xl lg:text-4xl">
               Know More about <span className="text-primary">CHCI</span>
@@ -30,15 +32,18 @@ export function AboutSection() {
               and beyond.
             </p>
             
-            <div className="pt-6 md:pt-8">
               <Button 
-                size="lg"
-                className="w-full sm:w-auto gap-2 text-base px-6 py-5 rounded-full font-semibold shadow-md hover:shadow-lg transition-all hover:scale-105"
-              >
-                Know More
-                <ArrowRight className="h-4 w-4" />
-              </Button>
-            </div>
+              variant="outline"
+              onClick={() => setIsExpanded(!isExpanded)}
+              className={`gap-2 mt-4 w-35 transition-colors self-center ${
+                isExpanded
+                  ? "bg-blue-100 text-blue-600 border-blue-200 hover:bg-blue-200"
+                  : "bg-blue-800 text-white"
+              }`}
+            >
+              {isExpanded ? "Show Less" : "Know More"}
+              {isExpanded ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
+            </Button>
           </div>
 
           {/* Video Content */}
@@ -51,8 +56,42 @@ export function AboutSection() {
               allowFullScreen
             />
           </div>
-          
+          <div className={`lg:col-span-2 overflow-hidden transition-all duration-500 ${isExpanded ? "max-h-250 opacity-100 mt-8" : "max-h-0 opacity-0"}`}>
+            <div className="grid gap-8 lg:grid-cols-2 lg:gap-16">
+              <div>
+                 <h3 className="text-xl font-bold text-[#0A3D91] mb-3">Sustainability Plan</h3>
+                  <p className="text-muted-foreground leading-relaxed">
+                    Utilizing human sciences, computational, engineering and information technologies and fostering research and development on the area of artificial intelligence, augmented reality, and other HCIs-related field of specialization to deploy computing Research Development Innovation outputs for the development of Caraga region and beyond.
+                  </p>
+              </div>
+              <div>
+                
+                
+                {/* Research Publication */}
+                <div>
+                  <h3 className="text-xl font-bold text-[#0A3D91] mb-3">Research Publication</h3>
+                  <p className="text-muted-foreground mb-4">
+                    With the collaborative efforts of the members and staff, the following research papers have been published:
+                  </p>
+                  <ul className="space-y-2">
+                    <li className="flex gap-2 text-muted-foreground">
+                      <span className="text-[#3A7CC3] font-bold">•</span>
+                      Deep Imitation Learning for Safe Indoor Autonomous Micro-Aerial Vehicle Navigation
+                    </li>
+                    <li className="flex gap-2 text-muted-foreground">
+                      <span className="text-[#3A7CC3] font-bold">•</span>
+                      Faculty Facial Recognition using Deep Learning, a tool for Smart Academic Monitoring
+                    </li>
+                    <li className="flex gap-2 text-muted-foreground">
+                      <span className="text-[#3A7CC3] font-bold">•</span>
+                      OCR based Document Archiving and Indexing using PyTesseract: A Record Management System for DSWD Caraga, Philippines.
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
         </div>
+      </div>
       </div>
     </section>
   );
