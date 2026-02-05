@@ -7,7 +7,7 @@ import { ChevronDown, ChevronUp } from "lucide-react";
 export function AboutSection() {
    const [isExpanded, setIsExpanded] = useState(false)
   return (
-    <section id="about" className="py-12 md:py-16 lg:py-24">
+    <section id="about" className="py-12 md:py-16 lg:py-12">
       {/* Adjusted container padding: px-4 (mobile) -> px-8 (tablet) -> px-12 (desktop) */}
       <div className="container mx-auto px-4 md:px-8 lg:px-26">
         {/* Adjusted grid gap: gap-8 (mobile) -> gap-16 (desktop) */}
