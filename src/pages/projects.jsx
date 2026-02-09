@@ -1,0 +1,53 @@
+export const projects = [
+  { name: "MARVEL", img: "/marvel.png" },
+  { name: "GEOAGR", img: "/geoagr.png" },
+  { name: "SMART", img: "/smart.png" },
+  { name: "FAMRIA", img: "/famria.png" },
+]
+
+export function ProjectsSection() {
+  return (
+    <section id="projects" className="py-18 relative overflow-hidden">
+      <div className="absolute inset-0 bg-linear-to-b from-primary/5 to-transparent pointer-events-none" />
+      
+      <div className="container mx-auto px-4 relative z-10">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl font-bold text-foreground md:text-4xl mb-4">
+            Our <span className="text-primary">Projects</span>
+          </h2>
+          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+            Innovative research initiatives driving technological advancement
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+          {projects.map((project) => (
+            <div 
+              key={project.name} 
+              className="group relative flex flex-col items-center justify-center p-2 rounded-xl border border-border bg-card shadow-sm hover:shadow-xl hover:border-primary/50 transition-all duration-300 hover:scale-105 cursor-pointer overflow-hidden"
+            >
+              <div className="absolute inset-0 bg-linear-to-br from-primary/0 to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              
+              <div className="relative z-10 flex flex-col items-center">
+                <div className="relative mb-6">
+                  <div className="absolute inset-5 bg-primary/20 rounded-full blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 -m-4" />
+                  <img 
+                    src={project.img} 
+                    alt={project.name}
+                    className="h-28 w-28 object-contain transition-transform duration-300 group-hover:scale-125 group-hover:drop-shadow-lg relative"
+                  />
+                </div>
+                
+                <h3 className="text-center font-bold text-foreground text-lg mb-2 group-hover:text-primary transition-colors duration-300">
+                  {project.name}
+                </h3>
+                
+                <div className="h-1 w-12 bg-linear-to-r from-primary to-secondary rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}

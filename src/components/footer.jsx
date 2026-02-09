@@ -1,4 +1,12 @@
-import { Facebook, Twitter, Linkedin, Youtube, Mail, Phone, MapPin } from "lucide-react"
+import {
+  Facebook,
+  Twitter,
+  Linkedin,
+  Youtube,
+  Mail,
+  Phone,
+  MapPin,
+} from "lucide-react";
 
 const quickLinks = [
   { name: "Home", href: "#home" },
@@ -7,35 +15,51 @@ const quickLinks = [
   { name: "Projects", href: "#projects" },
   { name: "Publications", href: "#publications" },
   { name: "Contact Us", href: "#contact" },
-]
+];
 
 const socialLinks = [
-  { name: "Facebook", icon: Facebook, href: "#" },
-  { name: "Twitter", icon: Twitter, href: "#" },
-  { name: "LinkedIn", icon: Linkedin, href: "#" },
-  { name: "YouTube", icon: Youtube, href: "#" },
-]
+  {
+    name: "Facebook",
+    icon: Facebook,
+    href: "https://www.facebook.com/csuchci",
+  },
+  { name: "LinkedIn", icon: Linkedin, href: "https://www.linkedin.com/in/jaymer-jayoma-33872362/" },
+  { name: "YouTube", icon: Youtube, href: "https://www.youtube.com/@csuchcidepartment8354" },
+];
 
 export function Footer() {
   return (
-    <footer id="contact" className="border-t border-border bg-primary text-primary-foreground">
-      <div className="container mx-auto px-25 py-12">
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+    <footer
+      id="contact"
+      className="border-t border-border bg-primary text-primary-foreground"
+    >
+      <div className="container py-12 sm:px-6 lg:px-30 md:py-16">
+        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4 lg:gap-8">
           <div>
             <div className="mb-4 flex items-center gap-2">
-              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary">
-                <span className="text-lg font-bold text-primary-foreground">C</span>
-              </div>
-              <span className="text-xl font-bold text-primary-foreground">CHCI</span>
+              <a href="https://www.carsu.edu.ph/" target="_blank" rel="noopener noreferrer">
+                <img
+                  src="/CSU-LOGO.png"
+                  alt="CSU logo"
+                  className="h-12 w-12 object-contain"
+                />
+              </a>
+              <a href="#home">
+                <img
+                  src="/CHCI-LOGO.png"
+                  alt="CHCI logo"
+                  className="h-10 object-contain"
+                />
+              </a>
             </div>
             <p className="text-sm text-primary-foreground/80">
-              FIRST – Center for Human-Computer Interaction at Caraga State University. 
-              Humanizing Technology.
+              CSU – Center for Human-Computer Interaction at Caraga State
+              University. Humanizing Technology.
             </p>
           </div>
 
-          <div>
-            <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-primary-foreground">
+          <div className="lg:justify-items-center">
+            <h3 className="mb-4  font-semibold uppercase tracking-wider text-primary-foreground">
               Quick Links
             </h3>
             <ul className="space-y-2">
@@ -59,7 +83,10 @@ export function Footer() {
             <ul className="space-y-3">
               <li className="flex items-start gap-2 text-sm text-primary-foreground/80">
                 <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-secondary" />
-                <span>Caraga State University, Ampayon, Butuan City, Philippines 8600</span>
+                <span>
+                  2nd Flr. Mechatronics Building, Caraga State University,
+                  Ampayon, Butuan City, Philippines, 8600
+                </span>
               </li>
               <li className="flex items-center gap-2 text-sm text-primary-foreground/80">
                 <Mail className="h-4 w-4 text-secondary" />
@@ -67,40 +94,46 @@ export function Footer() {
               </li>
               <li className="flex items-center gap-2 text-sm text-primary-foreground/80">
                 <Phone className="h-4 w-4 text-secondary" />
-                <span>+63 85 225 0000</span>
+                <span>+63 981 518 9143</span>
               </li>
             </ul>
           </div>
 
-          <div>
-            <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-primary-foreground">
-              Follow Us
-            </h3>
-            <div className="flex gap-3">
-              {socialLinks.map((social) => (
-                <a
-                  key={social.name}
-                  href={social.href}
-                  className="flex h-10 w-10 items-center justify-center rounded-lg bg-secondary text-primary-foreground transition-colors hover:bg-primary-foreground hover:text-primary"
-                  aria-label={social.name}
-                >
-                  <social.icon className="h-5 w-5" />
-                </a>
-              ))}
+           <div className="lg:justify-items-center">
+              <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-primary-foreground">
+                Follow Us
+              </h3>
+              <div className="flex gap-3">
+                {socialLinks.map((social) => (
+                  <a
+                    key={social.name}
+                    href={social.href}
+                    className="flex h-10 w-10 items-center justify-center rounded-lg bg-secondary text-primary-foreground transition-colors hover:bg-primary-foreground hover:text-primary"
+                    aria-label={social.name}
+                  >
+                    <social.icon className="h-5 w-5" />
+                  </a>
+                ))}
+              </div>
             </div>
-          </div>
         </div>
 
         <div className="mt-12 border-t border-primary-foreground/20 pt-8">
           <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
             <p className="text-sm text-primary-foreground/80">
-              © {new Date().getFullYear()} CHCI – Caraga State University. All rights reserved.
+              © {new Date().getFullYear()} Center for Human-Computer Interaction
             </p>
             <div className="flex gap-4">
-              <a href="#" className="text-sm text-primary-foreground/80 hover:text-primary-foreground">
+              <a
+                href="#"
+                className="text-sm text-primary-foreground/80 hover:text-primary-foreground"
+              >
                 Privacy Policy
               </a>
-              <a href="#" className="text-sm text-primary-foreground/80 hover:text-primary-foreground">
+              <a
+                href="#"
+                className="text-sm text-primary-foreground/80 hover:text-primary-foreground"
+              >
                 Terms of Service
               </a>
             </div>
@@ -108,5 +141,5 @@ export function Footer() {
         </div>
       </div>
     </footer>
-  )
+  );
 }

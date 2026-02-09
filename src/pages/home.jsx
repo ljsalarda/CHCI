@@ -1,26 +1,93 @@
-import { Button } from "@/components/ui/button"
-import { ArrowRight } from "lucide-react"
+"use client"
 
-export function HeroSection() {
+import React from "react";
+import { partners } from "./partners.jsx";
+import { researchAreas } from "./research-areas.jsx";
+import { projects } from "./projects.jsx";
+
+export function Home() {
+   const stats = [
+    { number: researchAreas.length, label: "Research Areas", link: "#research" },
+    { number: 0, label: "Publications" },
+    { number: projects.length, label: "Projects", link: "#projects" },
+    { number: partners.length, label: "Partners", link: "#partners" },
+  ]
   return (
-    <section id="home" className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,var(--tw-gradient-stops))] from-primary/10 via-background to-background" />
-      <div className="container relative mx-auto px-4 py-24 text-center">
-        <div className="mx-auto max-w-4xl">
-          <h1 className="mb-6 text-4xl font-bold tracking-tight text-foreground sm:text-5xl md:text-6xl lg:text-7xl text-balance">
-            FIRST – Center for{" "}
-            <span className="text-primary">Human-Computer Interaction</span>
-          </h1>
-          <p className="mb-8 text-xl text-muted-foreground md:text-2xl">
-            &ldquo;Humanizing Technology.&rdquo;
+    <section id="home" className="relative  flex items-center justify-center overflow-hidden py-32">
+      {/* Gradient background with animation */}
+      <div className="absolute inset-0 bg-linear-to-br from-primary/5 via-background to-primary/10" />
+      
+      <div className="container relative mx-auto px-4 py-auto text-center z-10">
+        <div className="mx-auto max-w-5xl space-y-8">
+
+          {/* Main heading */}
+          <div className="space-y-4">
+            <h1 className="text-5xl sm:text-6xl md:text-7xl font-black tracking-tight text-balance leading-tight">
+              Center for{" "}
+              <span className="bg-linear-to-r from-primary to-primary/70 bg-clip-text text-transparent">
+                Human-Computer
+              </span>
+              <br />
+              Interaction
+            </h1>
+          </div>
+
+          {/* Tagline */}
+          <p className="text-2xl md:text-3xl font-light text-muted-foreground italic">
+            &ldquo;Humanizing Technology&rdquo;
           </p>
-          <Button size="lg" className="gap-2 text-lg">
-            Explore CHCI
-            <ArrowRight className="h-5 w-5" />
-          </Button>
+
+          {/* Stats section */}
+          <div className="pt-12 grid grid-cols-4 md:grid-cols-4 gap-6 max-w-2xl mx-auto">
+            {stats.map((stat) => (
+              <a 
+                key={stat.label}
+                href={stat.link || "#"}
+                onClick={(e) => !stat.link && e.preventDefault()}
+                className={`space-y-1 p-3 rounded-lg transition-colors ${
+                  stat.link ? "cursor-pointer hover:bg-primary/10" : "hover:bg-primary/5"
+                }`}
+              >
+                <div className="text-3xl md:text-4xl font-bold text-primary">
+                  {stat.number}
+                </div>
+                <div className="text-xs md:text-sm text-muted-foreground font-medium">
+                  {stat.label}
+                </div>
+              </a>
+            ))}
+          </div>
         </div>
       </div>
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-linear-to-t from-background to-transparent" />
+
+      {/* Scroll indicator */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+        <div className="flex flex-col items-center gap-2 md:hidden">
+          <span className="text-xs text-muted-foreground uppercase tracking-widest">Swipe</span>
+          <svg 
+            xmlns="http://www.w3.org/2000/svg" 
+            width="24" 
+            height="24" 
+            viewBox="0 0 24 24" 
+            fill="none" 
+            stroke="currentColor" 
+            strokeWidth="2" 
+            strokeLinecap="round" 
+            strokeLinejoin="round" 
+            className="text-muted-foreground"
+          >
+            <path d="M12 5v14" />
+            <path d="m19 12-7 7-7-7" />
+          </svg>
+        </div>    
+        <div className="hidden md:flex flex-col items-center gap-2">
+          <span className="text-xs text-muted-foreground uppercase tracking-widest">Scroll</span>
+          <div className="w-6 h-10 border-2 border-muted-foreground rounded-full flex items-start justify-center p-2">
+            <div className="w-1 h-2 bg-muted-foreground rounded-full animate-bounce" style={{ animationDuration: '2s' }} />
+          </div>
+        </div>
+
+      </div>
     </section>
   )
 }

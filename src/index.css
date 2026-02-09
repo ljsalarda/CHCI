@@ -1,7 +1,10 @@
 @import 'tailwindcss';
 @import 'tw-animate-css';
-
 @custom-variant dark (&:is(.dark *));
+
+body {
+  font-family: 'Inter', sans-serif;
+}
 
 :root {
   --background: #ffffff;
@@ -88,3 +91,121 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Partners Section Styles */
+
+.partners {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  overflow: hidden;
+}
+
+.partners:hover .partners-slide {
+  animation-play-state: paused;
+}
+
+.partners-wrapper {
+  display: flex;
+  width: 200%;
+}
+
+.partners-slide {
+  display: flex;
+  animation: slide 35s linear infinite;
+}
+
+.partner-item {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 40px;
+}
+
+.partners-slide img {
+  height: 100px;
+  max-width: 100px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.partner-item p {
+  margin-top: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #c3c3c3;
+}
+
+@keyframes slide {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+.partners-slide img:hover {
+  transform: scale(1.1);
+}
+
+/* Partners Section Styles */
+
+/* Projects Section Styles */
+
+.projects {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  overflow: hidden;
+}
+
+.projects:hover .projects-slide {
+  animation-play-state: paused;
+}
+
+.projects-wrapper {
+  display: flex;
+  width: 200%;
+}
+
+.projects-slide {
+  display: flex;
+  animation: slide 35s linear infinite;
+}
+
+.project-item {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 40px;
+}
+
+.projects-slide img {
+  height: 100px;
+  max-width: 100px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.project-item p {
+  margin-top: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #c3c3c3;
+}
+
+@keyframes slide {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+.projects-slide img:hover {
+  transform: scale(1.1);
+}
+
+/* Projects Section Styles */
