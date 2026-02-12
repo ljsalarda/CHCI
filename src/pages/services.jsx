@@ -79,7 +79,7 @@ const steps = [
 
 export default function ServicesSection() {
   return (
-    <section id="services" className="bg-background py-20 lg:py-28">
+    <section id="services" className="bg-background py-14 lg:py-14">
       <div className="mx-auto max-w-7xl px-4 lg:px-8">
         <AnimateOnScroll>
           <div className="text-center">
