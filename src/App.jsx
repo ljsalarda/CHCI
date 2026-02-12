@@ -9,10 +9,10 @@ import AboutSection from "./pages/about";
 import { ResearchAreasSection } from "./pages/research-areas";
 import { PartnersSection } from "./pages/partners";
 import { ProjectsSection } from "./pages/projects";
-import { InfoSection } from "./pages/info-section";
 import { Footer } from "./components/footer";
 import ServicesSection from "./pages/services";
 import AffiliationSection from "./pages/affiliation";
+import ContactSection from "./pages/contact";
 
 function App() {
   return (
@@ -26,7 +26,7 @@ function App() {
         <AffiliationSection />
         <ProjectsSection />
         <PartnersSection />
-        <InfoSection />
+        <ContactSection />
         <Footer />
       </main>
     </div>
