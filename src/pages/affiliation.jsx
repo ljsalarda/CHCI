@@ -1,155 +1,194 @@
 "use client";
 
+import { useState } from "react";
+import {
+  Users,
+  UserCheck,
+  GraduationCap,
+  Shield,
+  Star,
+  AlertTriangle,
+  CheckCircle2,
+} from "lucide-react";
 import AnimateOnScroll from "@/components/ui/animate-on-scroll";
 
+const memberCategories = [
+  {
+    icon: UserCheck,
+    letter: "A",
+    title: "Primary Affiliate Members (Core Researchers)",
+    requirements: [
+        "Full-time faculty members of the College of Computing and Information Sciences (CCIS) whose primary research interest aligns with one of the 5 Pillars.",
+      "Must have at least one (1) ongoing research project registered under the Center or a published paper in the last academic year related to HCI.",
+      "Eligible to be appointed as Unit Heads and vote on internal policy matters.",
+    ],
+    color: "bg-primary",
+  },
+  {
+    icon: Users,
+    letter: "B",
+    title: "Secondary Affiliate Members (Collaborators)",
+    requirements: [
+        "Faculty members from other colleges (e.g., Engineering, Arts & Sciences) or external industry partners collaborating on specific projects.",
+      "Invitation by a Unit Head for the duration of a specific project or grant.",
+      "Specific access to Center resources relevant to their project; non-voting status.",
+    ],
+    color: "bg-secondary",
+  },
+  {
+    icon: GraduationCap,
+    letter: "C",
+    title: "Student Researchers (Junior Fellows)",
+    requirements: [
+        "Undergraduate or Graduate students currently conducting their thesis/capstone projects or any research-related activities for the Center under the supervision of a Primary Member.",
+      "Acceptance of their research proposal by the Center's Research Committee.",
+      "Access to laboratory facilities during designated hours.",
+    ],
+    color: "bg-primary",
+  },
+];
+
+const rights = [
+  "Priority use of the CHCI Laboratory, including specialized equipment (VR headsets, sensors, high-performance computing units).",
+  "Endorsement for internal university funding and administrative support for external grant applications.",
+  "Priority slots for training, workshops, and certification programs funded, organized, initiated or supported by the Center.",
+  "Right to be credited in publications and intellectual property filings resulting from their contributions.",
+];
+
+const duties = [
+  "Acquire or be part of an externally/internally-funded research projects recognized by the OVPRIE.",
+  "Produce at least one (1) research output (publication, prototype, copyright or IP application) annually.",
+  "Mentor or actively supervise Student Researchers within the Center.",
+  "Participate in the activities and Annual Strategic Planning and the HCI Summit.",
+  "Acknowledge the \"Center for Human-Computer Interaction (CHCI)\" as their affiliation in all relevant publications and presentations.",
+];
+
+const termination = [
+  "Failure to comply with duties and responsibilities.",
+  "Violation of research ethics, data privacy laws, or misuse of Center assets.",
+];
+
 export default function AffiliationSection() {
+  const [activeTab, setActiveTab] = useState("rights");
+
+  const tabs = [
+    { key: "rights", label: "Rights & Privileges", icon: Star },
+    { key: "duties", label: "Duties & Responsibilities", icon: Shield },
+    { key: "termination", label: "Termination", icon: AlertTriangle },
+  ];
+
+  const tabContent = {
+    rights: { items: rights, icon: CheckCircle2 },
+    duties: { items: duties, icon: CheckCircle2 },
+    termination: { items: termination, icon: AlertTriangle },
+  };
+
   return (
-    <section id="affiliation" className="bg-muted py-20 lg:py-28">
-      <div className="mx-auto max-w-7xl px-4 lg:px-8">
+    <section id="affiliation" className="relative overflow-hidden bg-muted py-20 lg:py-28">
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute top-0 left-0 h-full w-full bg-[radial-gradient(ellipse_at_top_right,hsl(var(--primary)/0.04),transparent_50%)]" />
+        <div className="absolute bottom-0 right-0 h-full w-full bg-[radial-gradient(ellipse_at_bottom_left,hsl(var(--secondary)/0.04),transparent_50%)]" />
+      </div>
+
+      <div className="relative mx-auto max-w-7xl px-4 lg:px-8">
         <AnimateOnScroll>
           <div className="text-center">
-            <p className="mb-2 text-sm font-semibold uppercase tracking-widest text-secondary">
+            <span className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-primary">
+              <Users className="h-3.5 w-3.5" />
               Get Involved
-            </p>
-            <h2 className="font-heading text-3xl font-bold text-foreground text-balance md:text-4xl">
+            </span>
+            <h2 className="mt-4 font-heading text-3xl font-bold text-foreground text-balance md:text-4xl lg:text-5xl">
               Membership and Participation
             </h2>
-            <p>To maintain a culture of high performance, membership in the Center is privilege-based and output-oriented. It is open to individuals who demonstrate active engagement in the Center’s research agenda.</p>
+            <p className="mx-auto mt-6 max-w-3xl leading-relaxed text-muted-foreground">
+              To maintain a culture of high performance, membership in the Center is privilege-based and output-oriented. It is open to individuals who demonstrate active engagement in the Center's research agenda.
+            </p>
           </div>
         </AnimateOnScroll>
 
-        <div className="mx-auto mt-12 max-w-4xl">
-          <AnimateOnScroll>
-            <div className="rounded-lg border border-border bg-card p-6 shadow-sm md:p-8">
-              {/* Categories */}
-              <h3 className="font-heading text-lg font-bold text-primary">
-                Categories of Membership
-              </h3>
-              <ul className="mt-4 space-y-3">
-                <li className="flex items-start gap-3">
-                  <span className="mt-0.5 flex h-6 w-6 shrink-0s-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">
-                    A
-                  </span>
-                  <div>
-                    <p className="font-semibold text-foreground">
-                      Regular Members
-                    </p>
-                    <ul className="mt-2 list-disc list-outside pl-5 space-y-1 text-sm leading-relaxed text-muted-foreground">
-                        <li>Full-time faculty members of the College of Computing and Information Sciences (CCIS) whose primary research interest aligns with one of the 5 Pillars.</li>
-                        <li>Must have at least one (1) ongoing research project registered under the Center or a published paper in the last academic year related to HCI.</li>
-                        <li>Eligible to be appointed as Unit Heads and vote on internal policy matters.</li>
-                    </ul>
+        <div className="mt-14 grid grid-cols-1 gap-6 md:grid-cols-3">
+          {memberCategories.map((cat) => (
+            <AnimateOnScroll key={cat.letter}>
+              <div className="group relative flex flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                <div className={`h-1.5 w-full ${cat.color}`} />
+
+                <div className="flex flex-1 flex-col p-6">
+                  <div className="mb-4 flex items-center gap-4">
+                    <div className={`flex h-14 w-14 items-center justify-center rounded-xl ${cat.color} text-primary-foreground shadow-lg transition-transform group-hover:scale-110`}>
+                      <cat.icon className="h-7 w-7" />
+                    </div>
+                    <div>
+                      <span className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
+                        Category {cat.letter}
+                      </span>
+                      <h3 className="font-heading text-lg font-bold text-foreground">
+                        {cat.title}
+                      </h3>
+                    </div>
                   </div>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">
-                    B
-                  </span>
-                  <div>
-                    <p className="font-semibold text-foreground">
-                      Associate Members
-                    </p>
-                    <ul className="mt-2 list-disc list-outside pl-5 space-y-1 text-sm leading-relaxed text-muted-foreground">
-                        <li>Faculty members from other colleges (e.g., Engineering, Arts & Sciences) or external industry partners collaborating on specific projects.</li>
-                        <li>Invitation by a Unit Head for the duration of a specific project or grant.</li>
-                        <li>Specific access to Center resources relevant to their project; non-voting status.</li>
-                    </ul>
-                  </div>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">
-                    C
-                  </span>
-                  <div>
-                    <p className="font-semibold text-foreground">
-                      Student Members
-                    </p>
-                     <ul className="mt-2 list-disc list-outside pl-5 space-y-1 text-sm leading-relaxed text-muted-foreground">
-                        <li>Undergraduate or Graduate students currently conducting their thesis/capstone projects or any research-related activities for the Center under the supervision of a Primary Member.</li>
-                        <li>Acceptance of their research proposal by the Center’s Research Committee.</li>
-                        <li>Access to laboratory facilities during designated hours.</li>
-                    </ul>
-                  </div>
-                </li>
-              </ul>
-
-              {/* Divider */}
-              <hr className="my-8 border-border" />
-
-              {/* Rights and Privileges */}
-              <h3 className="font-heading text-lg font-bold text-primary">
-                Rights and Privileges
-              </h3>
-              <p>Members in good standing are entitled to:</p>
-              <ol className="mt-4 list-inside space-y-2 text-sm leading-relaxed text-muted-foreground">
-                <li className="flex items-start gap-2">
-                  <span className="font-semibold text-foreground">1.</span>
-                  Priority use of the CHCI Laboratory, including specialized equipment (VR headsets, sensors, high-performance computing units).
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="font-semibold text-foreground">2.</span>
-                  Endorsement for internal university funding and administrative support for external grant applications.
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="font-semibold text-foreground">3.</span>
-                  Priority slots for training, workshops, and certification programs funded, organized, initiated or supported by the Center.
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="font-semibold text-foreground">4.</span>
-                  Right to be credited in publications and intellectual property filings resulting from their contributions.
-                </li>
-              </ol>
-
-              <hr className="my-8 border-border" />
-
-              {/* Duties and Responsibilities */}
-              <h3 className="font-heading text-lg font-bold text-primary">
-                Duties and Responsibilities
-              </h3>
-              <p>To retain membership, individuals must:</p>
-              <ol className="mt-4 list-inside space-y-2 text-sm leading-relaxed text-muted-foreground">
-                <li className="flex items-start gap-2">
-                  <span className="font-semibold text-foreground">1.</span>
-                  Acquire or be part of an externally/internally-funded research projects recognized by the OVPRIE.
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="font-semibold text-foreground">2.</span>
-                  Produce at least one (1) research output (publication, prototype, copyright or IP application) annually.
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="font-semibold text-foreground">3.</span>
-                  Mentor or actively supervise Student Researchers within the Center.
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="font-semibold text-foreground">4.</span>
-                  Participate in the activities and Annual Strategic Planning and the HCI Summit.
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="font-semibold text-foreground">5.</span>
-                  Acknowledge the "Center for Human-Computer Interaction (CHCI)" as their affiliation in all relevant publications and presentations.
-                </li>
-              </ol>
-
-              <hr className="my-8 border-border" />
-
-              {/* Termination */}
-              <h3 className="font-heading text-lg font-bold text-primary">
-                Termination of Membership
-              </h3>
-              <p>Membership or affiliation may be revoked or suspended by the Center’s Research Committee upon approval of the Director for:</p>
-              <ul className="mt-4 space-y-2 text-sm leading-relaxed text-muted-foreground">
-                <li className="flex items-start gap-2">
-                  <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-secondary" />
-                  Failure to comply the duties and responsibilities.
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-secondary" />
-                  VViolation of research ethics, data privacy laws, or misuse of Center assets.
-                </li>
-              </ul>
-            </div>
-          </AnimateOnScroll>
+                  <p className="text-sm leading-relaxed text-muted-foreground">
+                    {cat.description}
+                  </p>
+                  <ul className="mt-3 list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    {cat.requirements.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </AnimateOnScroll>
+          ))}
         </div>
+
+        <AnimateOnScroll className="mt-14">
+          <div className="overflow-hidden rounded-2xl border border-border bg-card shadow-md">
+            <div className="flex border-b border-border bg-muted/50">
+              {tabs.map((tab) => (
+                <button
+                  key={tab.key}
+                  type="button"
+                  onClick={() => setActiveTab(tab.key)}
+                  className={`flex flex-1 items-center justify-center gap-2 px-4 py-4 text-sm font-semibold transition-all ${
+                    activeTab === tab.key
+                      ? "border-b-2 border-primary bg-card text-primary"
+                      : "text-muted-foreground hover:bg-card/50 hover:text-foreground"
+                  }`}
+                >
+                  <tab.icon className="h-4 w-4" />
+                  <span className="hidden sm:inline">{tab.label}</span>
+                  <span className="sm:hidden">{tab.label.split(" ")[0]}</span>
+                </button>
+              ))}
+            </div>
+
+            <div className="p-6 md:p-8">
+              <ol className="space-y-3">
+                {tabContent[activeTab].items.map((item, i) => {
+                  const ItemIcon = tabContent[activeTab].icon;
+                  return (
+                    <li
+                      key={item}
+                      className="flex items-start gap-3 rounded-lg border border-transparent p-3 transition-colors hover:border-border hover:bg-muted/50"
+                    >
+                      <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary/10">
+                        <ItemIcon
+                          className={`h-3.5 w-3.5 ${
+                            activeTab === "termination" ? "text-destructive" : "text-primary"
+                          }`}
+                        />
+                      </span>
+
+                      <div className="flex items-start gap-2">
+                        <span className="text-sm font-bold text-foreground">{i + 1}.</span>
+                        <span className="text-sm leading-relaxed text-muted-foreground">{item}</span>
+                      </div>
+                    </li>
+                  );
+                })}
+              </ol>
+            </div>
+          </div>
+        </AnimateOnScroll>
       </div>
     </section>
   );
