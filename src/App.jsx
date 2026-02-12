@@ -12,6 +12,7 @@ import { ProjectsSection } from "./pages/projects";
 import { InfoSection } from "./pages/info-section";
 import { Footer } from "./components/footer";
 import ServicesSection from "./pages/services";
+import AffiliationSection from "./pages/affiliation";
 
 function App() {
   return (
@@ -22,8 +23,9 @@ function App() {
         <AboutSection />
         <ResearchAreasSection />
         <ServicesSection />
-        <PartnersSection />
+        <AffiliationSection />
         <ProjectsSection />
+        <PartnersSection />
         <InfoSection />
         <Footer />
       </main>
