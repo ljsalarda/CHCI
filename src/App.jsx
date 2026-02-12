@@ -3,10 +3,9 @@ import '@fontsource/inter/500.css'
 import '@fontsource/inter/600.css'
 import '@fontsource/inter/700.css'
 
-
 import { StickyNavbar } from "./components/navbar";
 import { Home } from "./pages/home";
-import { AboutSection } from "./pages/about";
+import AboutSection from "./pages/about";
 import { VisionMissionSection } from "./pages/missionandvision";
 import { ResearchAreasSection } from "./pages/research-areas";
 import { PartnersSection } from "./pages/partners";
@@ -15,13 +14,12 @@ import { InfoSection } from "./pages/info-section";
 import { Footer } from "./components/footer";
 import { PersonnelSection } from "./pages/personnel";
 
-export default function App() {
+function App() {
   return (
     <div>
-      
       <main>
         <StickyNavbar />
-        <Home />  
+        <Home />
         <AboutSection />
         <VisionMissionSection />
         <ResearchAreasSection />
@@ -34,3 +32,6 @@ export default function App() {
     </div>
   );
 }
+
+export { App };
+export default App;
