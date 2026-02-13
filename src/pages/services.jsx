@@ -4,9 +4,6 @@ import {
   GraduationCap,
   Search,
   Briefcase,
-  ClipboardList,
-  FileCheck,
-  Rocket,
   ArrowRight,
   BookOpen,
   Award,
@@ -64,26 +61,56 @@ const serviceCards = [
   },
 ];
 
-const steps = [
+const flowRows = [
   {
-    icon: ClipboardList,
-    step: "Step 1",
-    title: "Inquiry",
-    description: "Submit your interest and initial requirements to get started.",
+    responsible: "Client",
+    activity: "Service Inquiry",
+    activityType: "single",
+    iface: "Email, Website, Physical Visit",
   },
   {
-    icon: FileCheck,
-    step: "Step 2",
-    title: "Evaluation & Proposal",
-    description:
-      "Our team reviews your needs and prepares a tailored service proposal.",
+    responsible: "CHCI Admin Staff",
+    activity: null,
+    activityType: "branches",
+    branches: [
+      "Internship and Student Immersion Programs",
+      "Research and Innovation Support",
+      "Facilities and Equipment Access",
+      "Other Services",
+    ],
+    iface: "Service Request Form",
   },
   {
-    icon: Rocket,
-    step: "Step 3",
-    title: "Engagement & Delivery",
-    description:
-      "We execute the engagement and deliver quality results on schedule.",
+    responsible: "Client",
+    activity: null,
+    activityType: "dual",
+    left: "Submit Letter of Intent",
+    right: "Submits a Service Request Form",
+    iface: "",
+  },
+  {
+    responsible: "Center Chief / Faculty Affiliates",
+    activity: "Evaluates request",
+    activityType: "single",
+    iface: "",
+  },
+  {
+    responsible: "",
+    activity: "Approval and Terms Agreement",
+    activityType: "single",
+    iface: "",
+  },
+  {
+    responsible: "Center Chief / CSU Legal",
+    activity: "Service Implementation",
+    activityType: "single",
+    iface: "",
+  },
+  {
+    responsible: "Center Chief",
+    activity: "Completion and Feedback",
+    activityType: "single",
+    iface: "",
   },
 ];
 
@@ -183,42 +210,139 @@ export default function ServicesSection() {
           ))}
         </div>
 
-        {/* Availing the Services */}
+        {/* Process Flow for Availing Services */}
         <AnimateOnScroll className="mt-20">
-          <div className="rounded-2xl bg-primary px-6 py-12 md:px-12 md:py-16">
-            <h3 className="mb-4 text-center font-heading text-2xl font-bold text-primary-foreground md:text-3xl">
-              Availing the Services
-            </h3>
-            <p className="mx-auto mb-12 max-w-xl text-center text-sm leading-relaxed text-primary-foreground/80">
-              Getting started is simple. Follow these three steps to engage with
-              our team and receive expert support.
-            </p>
+          <div className="rounded-2xl border border-border bg-card shadow-lg overflow-hidden">
+            <div className="px-6 pt-8 pb-4 md:px-10 md:pt-10">
+              <h3 className="mb-2 text-center font-heading text-2xl font-bold text-foreground md:text-3xl">
+                Process Flow for Availing the Services of CHCI
+              </h3>
+              <p className="mx-auto mb-0 max-w-xl text-center text-sm leading-relaxed text-muted-foreground">
+                Follow this step-by-step process to engage with our center and
+                access the services you need.
+              </p>
+            </div>
 
-            <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
-              {steps.map((s, i) => (
-                <div key={s.step} className="relative flex flex-col items-center text-center">
-                  {/* Connector line (desktop) */}
-                  {i < steps.length - 1 && (
-                    <div className="absolute top-8 left-[calc(50%+40px)] hidden h-px w-[calc(100%-80px)] bg-primary-foreground/20 md:block lg:left-[calc(50%+48px)] lg:w-[calc(100%-96px)]" />
-                  )}
-
-                  <div className="relative mb-5 flex h-16 w-16 items-center justify-center rounded-2xl bg-primary-foreground/10 ring-2 ring-primary-foreground/20 backdrop-blur-sm">
-                    <s.icon className="h-7 w-7 text-primary-foreground" />
-                    <span className="absolute -top-2 -right-2 flex h-7 w-7 items-center justify-center rounded-full bg-secondary text-xs font-bold text-secondary-foreground shadow-lg">
-                      {i + 1}
-                    </span>
+            {/* Table-style flowchart */}
+            <div className="mx-4 mb-8 overflow-x-auto md:mx-8">
+              <div className="min-w-[640px]">
+                {/* Table Header */}
+                <div className="flex border-b-2 border-foreground bg-primary">
+                  <div className="flex w-40 shrink-0 items-center justify-center border-r border-primary-foreground/20 px-3 py-3 md:w-48">
+                    <p className="text-center text-xs font-bold uppercase tracking-wider text-primary-foreground">
+                      Responsible Person
+                    </p>
                   </div>
-                  <p className="text-xs font-bold uppercase tracking-wider text-primary-foreground/60">
-                    {s.step}
-                  </p>
-                  <h4 className="mt-1.5 font-heading text-lg font-bold text-primary-foreground">
-                    {s.title}
-                  </h4>
-                  <p className="mt-2 text-sm leading-relaxed text-primary-foreground/80">
-                    {s.description}
-                  </p>
+                  <div className="flex flex-1 items-center justify-center px-3 py-3">
+                    <p className="text-center text-xs font-bold uppercase tracking-wider text-primary-foreground">
+                      Activities
+                    </p>
+                  </div>
+                  <div className="flex w-32 shrink-0 items-center justify-center border-l border-primary-foreground/20 px-3 py-3 md:w-40">
+                    <p className="text-center text-xs font-bold uppercase tracking-wider text-primary-foreground">
+                      Interface
+                    </p>
+                  </div>
                 </div>
-              ))}
+
+                {/* Rows */}
+                {flowRows.map((row, i) => (
+                  <div
+                    key={`${row.responsible}-${i}`}
+                    className={`flex border-b border-border ${i % 2 === 0 ? "bg-card" : "bg-muted/30"}`}
+                  >
+                    {/* Responsible Person */}
+                    <div className="flex w-40 shrink-0 items-center justify-center border-r border-border px-3 py-5 md:w-48">
+                      <p className="text-center text-xs font-bold text-primary md:text-sm">
+                        {row.responsible || "\u00A0"}
+                      </p>
+                    </div>
+
+                    {/* Activity (center) */}
+                    <div className="flex flex-1 flex-col items-center justify-center px-4 py-5">
+                      {/* Arrow from previous row */}
+                      {i > 0 && (
+                        <div className="mb-3 flex flex-col items-center">
+                          <div className="h-4 w-0.5 bg-primary" />
+                          <div className="h-0 w-0 border-x-[5px] border-t-[7px] border-x-transparent border-t-primary" />
+                        </div>
+                      )}
+
+                      {row.activityType === "single" && (
+                        <div className="rounded-md border-2 border-foreground/80 bg-card px-8 py-3 text-center shadow-sm">
+                          <p className="text-sm font-semibold text-foreground">
+                            {row.activity}
+                          </p>
+                        </div>
+                      )}
+
+                      {row.activityType === "branches" && (
+                        <div className="flex w-full flex-col items-center gap-3">
+                          {/* Horizontal connector line */}
+                          <div className="relative flex w-full items-center justify-center">
+                            <div className="absolute top-1/2 left-[12%] right-[12%] h-0.5 bg-primary/50" />
+                          </div>
+                          <div className="grid w-full grid-cols-2 gap-2 md:grid-cols-4">
+                            {row.branches?.map((b) => (
+                              <div
+                                key={b}
+                                className="relative rounded-md border-2 border-foreground/60 bg-card px-3 py-2.5 text-center shadow-sm"
+                              >
+                                <p className="text-xs font-medium text-foreground leading-tight">
+                                  {b}
+                                </p>
+                              </div>
+                            ))}
+                          </div>
+                          {/* Downward arrows from branches */}
+                          <div className="flex w-full justify-around px-[12%]">
+                            <div className="flex flex-col items-center">
+                              <div className="h-3 w-0.5 bg-primary/50" />
+                              <div className="h-0 w-0 border-x-[4px] border-t-[5px] border-x-transparent border-t-primary/50" />
+                            </div>
+                            <div className="flex flex-col items-center">
+                              <div className="h-3 w-0.5 bg-primary/50" />
+                              <div className="h-0 w-0 border-x-[4px] border-t-[5px] border-x-transparent border-t-primary/50" />
+                            </div>
+                          </div>
+                        </div>
+                      )}
+
+                      {row.activityType === "dual" && (
+                        <div className="flex w-full items-center justify-center gap-3 md:gap-6">
+                          <div className="rounded-md border-2 border-foreground/60 bg-card px-4 py-2.5 text-center shadow-sm">
+                            <p className="text-xs font-semibold text-foreground md:text-sm">
+                              {row.left}
+                            </p>
+                          </div>
+                          <div className="flex flex-col items-center">
+                            <div className="h-0.5 w-6 bg-primary/50" />
+                          </div>
+                          <div className="rounded-md border-2 border-foreground/80 bg-card px-4 py-2.5 text-center shadow-sm">
+                            <p className="text-xs font-semibold text-foreground md:text-sm">
+                              {row.right}
+                            </p>
+                          </div>
+                        </div>
+                      )}
+
+                      {/* Arrow to next row */}
+                      {i < flowRows.length - 1 && (
+                        <div className="mt-3 flex flex-col items-center">
+                          <div className="h-4 w-0.5 bg-primary" />
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Interface */}
+                    <div className="flex w-32 shrink-0 items-center justify-center border-l border-border px-3 py-5 md:w-40">
+                      <p className="text-center text-xs font-medium text-muted-foreground md:text-sm">
+                        {row.iface || "\u00A0"}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </AnimateOnScroll>

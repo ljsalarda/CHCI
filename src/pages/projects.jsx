@@ -1,9 +1,4 @@
-export const projects = [
-  { name: "MARVEL", img: "/marvel.png" },
-  { name: "GEOAGR", img: "/geoagr.png" },
-  { name: "SMART", img: "/smart.png" },
-  { name: "FAMRIA", img: "/famria.png" },
-]
+import { projects } from "../data/site-data";
 
 export function ProjectsSection() {
   return (

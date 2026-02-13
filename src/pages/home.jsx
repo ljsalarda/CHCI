@@ -1,9 +1,7 @@
 "use client"
 
 import React from "react";
-import { partners } from "./partners.jsx";
-import { researchAreas } from "./research-areas.jsx";
-import { projects } from "./projects.jsx";
+import { partners, projects, researchAreas } from "../data/site-data";
 
 export function Home() {
    const stats = [
