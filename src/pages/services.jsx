@@ -95,13 +95,13 @@ const flowRows = [
     iface: "",
   },
   {
-    responsible: "",
+    responsible: "Center Chief / CSU Legal",
     activity: "Approval and Terms Agreement",
     activityType: "single",
     iface: "",
   },
   {
-    responsible: "Center Chief / CSU Legal",
+    responsible: "Center Chief",
     activity: "Service Implementation",
     activityType: "single",
     iface: "",
