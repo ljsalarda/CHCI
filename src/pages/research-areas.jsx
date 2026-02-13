@@ -35,9 +35,12 @@ export function ResearchAreasSection() {
   return (
     <section id="research" className="py-16 md:py-16">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-10">
-          <h2 className="text-3xl font-bold text-foreground md:text-4xl mb-4">
-            Research Areas
+        <div className="text-center mb-5">
+          <span className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-primary">
+              What We Study
+            </span>
+          <h2 className="text-3xl font-bold text-foreground md:text-4xl mb-3 mt-2">
+            Research Priority Areas
           </h2>
           <div className="w-16 h-1 bg-[#0A3D91] mx-auto" />
         </div>
@@ -67,7 +70,7 @@ export function ResearchAreasSection() {
               </div>
             ))}
           </div>
-          <div className="grid gap-10 sm:grid-cols-2 mt-10 lg:w-2/3">
+          <div className="grid gap-10 sm:grid-cols-2 mt-0 lg:w-2/3">
             {researchAreas.slice(3).map((area) => (
               <div key={area.title} className="group text-center p-6">
                 <div className="relative mx-auto w-28 h-28 mb-6">
