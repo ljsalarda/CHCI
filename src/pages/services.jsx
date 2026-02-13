@@ -89,7 +89,7 @@ const steps = [
 
 export default function ServicesSection() {
   return (
-    <section id="services" className="relative overflow-hidden bg-background py-20 lg:py-28">
+    <section id="services" className="relative overflow-hidden bg-background py-18 lg:py-18">
       {/* Decorative background accent */}
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute -top-40 -right-40 h-80 w-80 rounded-full bg-primary/5 blur-3xl" />
