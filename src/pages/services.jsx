@@ -107,7 +107,7 @@ export default function ServicesSection() {
             <h2 className="mt-4 font-heading text-3xl font-bold text-foreground text-balance md:text-4xl lg:text-5xl">
               Services and Extensions Portfolio
             </h2>
-            <p className="mx-auto mt-6 max-w-3xl leading-relaxed text-muted-foreground">
+            <p className="mx-auto mt-2 max-w-3xl leading-relaxed text-muted-foreground">
               To sustain its operations and fulfill its mandate as a social
               catalyst, the Center offers a portfolio of specialized services to
               industry, government, and the academe. These services are designed to
@@ -118,9 +118,9 @@ export default function ServicesSection() {
         </AnimateOnScroll>
 
         {/* Training & Certification */}
-        <AnimateOnScroll className="mt-16">
+        <AnimateOnScroll className="mt-8">
           <div className="rounded-2xl border border-border bg-card p-6 shadow-md md:p-8">
-            <div className="mb-8 flex items-center gap-3">
+            <div className="mb-4 flex items-center gap-3">
               <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary text-primary-foreground">
                 <GraduationCap className="h-5 w-5" />
               </div>
@@ -152,7 +152,7 @@ export default function ServicesSection() {
         </AnimateOnScroll>
 
         {/* Service Feature Cards */}
-        <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-3">
+        <div className="mt-5 grid grid-cols-1 gap-6 md:grid-cols-3">
           {serviceCards.map((card) => (
             <AnimateOnScroll key={card.title}>
               <div className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
