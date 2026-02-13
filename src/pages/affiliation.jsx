@@ -84,7 +84,7 @@ export default function AffiliationSection() {
   };
 
   return (
-    <section id="affiliation" className="relative overflow-hidden bg-muted py-20 lg:py-28">
+    <section id="affiliation" className="relative overflow-hidden bg-muted py-18 lg:py-18">
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute top-0 left-0 h-full w-full bg-[radial-gradient(ellipse_at_top_right,hsl(var(--primary)/0.04),transparent_50%)]" />
         <div className="absolute bottom-0 right-0 h-full w-full bg-[radial-gradient(ellipse_at_bottom_left,hsl(var(--secondary)/0.04),transparent_50%)]" />
@@ -100,13 +100,13 @@ export default function AffiliationSection() {
             <h2 className="mt-4 font-heading text-3xl font-bold text-foreground text-balance md:text-4xl lg:text-5xl">
               Membership and Participation
             </h2>
-            <p className="mx-auto mt-6 max-w-3xl leading-relaxed text-muted-foreground">
+            <p className="mx-auto mt-3 max-w-3xl leading-relaxed text-muted-foreground">
               To maintain a culture of high performance, membership in the Center is privilege-based and output-oriented. It is open to individuals who demonstrate active engagement in the Center's research agenda.
             </p>
           </div>
         </AnimateOnScroll>
 
-        <div className="mt-14 grid grid-cols-1 gap-6 md:grid-cols-3">
+        <div className="mt-5 grid grid-cols-1 gap-6 md:grid-cols-3">
           {memberCategories.map((cat) => (
             <AnimateOnScroll key={cat.letter}>
               <div className="group relative flex flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
@@ -140,7 +140,7 @@ export default function AffiliationSection() {
           ))}
         </div>
 
-        <AnimateOnScroll className="mt-14">
+        <AnimateOnScroll className="mt-8">
           <div className="overflow-hidden rounded-2xl border border-border bg-card shadow-md">
             <div className="flex border-b border-border bg-muted/50">
               {tabs.map((tab) => (
