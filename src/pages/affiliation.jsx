@@ -84,7 +84,7 @@ export default function AffiliationSection() {
   };
 
   return (
-    <section id="affiliation" className="relative overflow-hidden bg-muted py-18 lg:py-18">
+    <section id="affiliation" className="relative overflow-hidden bg-muted py-15 lg:py-15">
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute top-0 left-0 h-full w-full bg-[radial-gradient(ellipse_at_top_right,hsl(var(--primary)/0.04),transparent_50%)]" />
         <div className="absolute bottom-0 right-0 h-full w-full bg-[radial-gradient(ellipse_at_bottom_left,hsl(var(--secondary)/0.04),transparent_50%)]" />
@@ -106,14 +106,14 @@ export default function AffiliationSection() {
           </div>
         </AnimateOnScroll>
 
-        <div className="mt-5 grid grid-cols-1 gap-6 md:grid-cols-3">
+        <div className="mt-3 grid grid-cols-1 gap-6 md:grid-cols-3">
           {memberCategories.map((cat) => (
             <AnimateOnScroll key={cat.letter}>
               <div className="group relative flex flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
                 <div className={`h-1.5 w-full ${cat.color}`} />
 
                 <div className="flex flex-1 flex-col p-6">
-                  <div className="mb-4 flex items-center gap-4">
+                  <div className="mb-0 flex items-center gap-4">
                     <div className={`flex h-14 w-14 items-center justify-center rounded-xl ${cat.color} text-primary-foreground shadow-lg transition-transform group-hover:scale-110`}>
                       <cat.icon className="h-7 w-7" />
                     </div>
@@ -140,7 +140,7 @@ export default function AffiliationSection() {
           ))}
         </div>
 
-        <AnimateOnScroll className="mt-8">
+        <AnimateOnScroll className="mt-5">
           <div className="overflow-hidden rounded-2xl border border-border bg-card shadow-md">
             <div className="flex border-b border-border bg-muted/50">
               {tabs.map((tab) => (
