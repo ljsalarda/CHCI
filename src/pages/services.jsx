@@ -116,13 +116,22 @@ const flowRows = [
 
 export default function ServicesSection() {
   return (
-    <section id="services" className="relative overflow-hidden bg-background py-20 lg:py-24">
-      {/* Decorative background accent */}
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute -top-40 -right-40 h-80 w-80 rounded-full bg-primary/5 blur-3xl" />
-        <div className="absolute -bottom-40 -left-40 h-80 w-80 rounded-full bg-secondary/5 blur-3xl" />
-      </div>
+    <section id="services" className="relative overflow-hidden py-16 md:py-16 bg-linear-to-b from-white via-blue-50/40 to-white">
+      {/* 🔵 Background Design Layer */}
+  <div className="absolute inset-0 -z-10 pointer-events-none">
 
+  
+
+    {/* left accent */}
+    <div className="absolute top-20 -left-30 w-75 h-75 bg-[#3A7CC3]/20 rounded-full blur-3xl" />
+
+    {/* right accent */}
+    <div className="absolute bottom-10 -right-30 w-65 h-65 bg-[#0A3D91]/20 rounded-full blur-3xl" />
+
+    {/* subtle tech grid overlay */}
+    <div className="absolute inset-0 opacity-[0.15] bg-[linear-gradient(#0A3D91_1px,transparent_1px),linear-gradient(90deg,#0A3D91_1px,transparent_1px)] bg-size-[50px_50px]" />
+
+  </div>
       <div className="relative mx-auto max-w-7xl px-4 lg:px-8">
         {/* Section Header */}
         <AnimateOnScroll>
