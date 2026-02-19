@@ -18,7 +18,7 @@ export default function AnimateOnScroll({ children, className }) {
           observer.unobserve(el);
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0.1 },
     );
 
     observer.observe(el);
@@ -31,7 +31,7 @@ export default function AnimateOnScroll({ children, className }) {
       className={cn(
         "transition-all duration-700",
         isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6",
-        className
+        className,
       )}
     >
       {children}

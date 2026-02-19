@@ -116,22 +116,21 @@ const flowRows = [
 
 export default function ServicesSection() {
   return (
-    <section id="services" className="relative overflow-hidden py-16 md:py-16 bg-linear-to-b from-white via-blue-50/40 to-white">
+    <section
+      id="services"
+      className="relative overflow-hidden py-16 md:py-16 bg-linear-to-b from-white via-blue-50/40 to-white"
+    >
       {/* 🔵 Background Design Layer */}
-  <div className="absolute inset-0 -z-10 pointer-events-none">
+      <div className="absolute inset-0 -z-10 pointer-events-none">
+        {/* left accent */}
+        <div className="absolute top-20 -left-30 w-75 h-75 bg-[#3A7CC3]/20 rounded-full blur-3xl" />
 
-  
+        {/* right accent */}
+        <div className="absolute bottom-10 -right-30 w-65 h-65 bg-[#0A3D91]/20 rounded-full blur-3xl" />
 
-    {/* left accent */}
-    <div className="absolute top-20 -left-30 w-75 h-75 bg-[#3A7CC3]/20 rounded-full blur-3xl" />
-
-    {/* right accent */}
-    <div className="absolute bottom-10 -right-30 w-65 h-65 bg-[#0A3D91]/20 rounded-full blur-3xl" />
-
-    {/* subtle tech grid overlay */}
-    <div className="absolute inset-0 opacity-[0.15] bg-[linear-gradient(#0A3D91_1px,transparent_1px),linear-gradient(90deg,#0A3D91_1px,transparent_1px)] bg-size-[50px_50px]" />
-
-  </div>
+        {/* subtle tech grid overlay */}
+        <div className="absolute inset-0 opacity-[0.15] bg-[linear-gradient(#0A3D91_1px,transparent_1px),linear-gradient(90deg,#0A3D91_1px,transparent_1px)] bg-size-[50px_50px]" />
+      </div>
       <div className="relative mx-auto max-w-7xl px-4 lg:px-8">
         {/* Section Header */}
         <AnimateOnScroll>
@@ -146,9 +145,9 @@ export default function ServicesSection() {
             <p className="mx-auto mt-2 max-w-3xl leading-relaxed text-muted-foreground">
               To sustain its operations and fulfill its mandate as a social
               catalyst, the Center offers a portfolio of specialized services to
-              industry, government, and the academe. These services are designed to
-              translate the Center&apos;s technical expertise into tangible value
-              for stakeholders.
+              industry, government, and the academe. These services are designed
+              to translate the Center&apos;s technical expertise into tangible
+              value for stakeholders.
             </p>
           </div>
         </AnimateOnScroll>
@@ -176,7 +175,9 @@ export default function ServicesSection() {
                     <div className="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-secondary/10 text-secondary transition-colors group-hover:bg-secondary group-hover:text-secondary-foreground">
                       <row.icon className="h-5 w-5" />
                     </div>
-                    <p className="text-sm font-bold text-foreground">{row.type}</p>
+                    <p className="text-sm font-bold text-foreground">
+                      {row.type}
+                    </p>
                     <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
                       {row.items}
                     </p>
@@ -254,7 +255,9 @@ export default function ServicesSection() {
 
                       {row.activityType === "single" && (
                         <div className="rounded-xl border border-border bg-muted/20 px-4 py-3 text-center">
-                          <p className="text-sm font-semibold text-foreground">{row.activity}</p>
+                          <p className="text-sm font-semibold text-foreground">
+                            {row.activity}
+                          </p>
                         </div>
                       )}
 

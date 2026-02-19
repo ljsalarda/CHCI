@@ -48,22 +48,19 @@ const infoItems = [
     id: "admission",
     icon: GraduationCap,
     title: "Admission",
-    content:
-      "oas@carsu.edu.ph | 09177078764 loc. 231",
+    content: "oas@carsu.edu.ph | 09177078764 loc. 231",
   },
   {
     id: "registrar",
     icon: ClipboardList,
     title: "Registrar",
-    content:
-      "registrar.csumain@carsu.edu.ph | 09177078713 loc. 232",
+    content: "registrar.csumain@carsu.edu.ph | 09177078713 loc. 232",
   },
   {
     id: "guidance",
     icon: Heart,
     title: "Guidance",
-    content:
-      "guidance@carsu.edu.ph | 09177078769 loc. 252",
+    content: "guidance@carsu.edu.ph | 09177078769 loc. 252",
   },
   {
     id: "president",
@@ -129,13 +126,22 @@ export function InfoSection() {
                   {item.content && <div>{item.content}</div>}
                   {item.image && (
                     <div className="mt-4 flex justify-center">
-                      <img src={item.image} alt={item.title} className="w-60 max-w-md rounded-lg" />
+                      <img
+                        src={item.image}
+                        alt={item.title}
+                        className="w-60 max-w-md rounded-lg"
+                      />
                     </div>
                   )}
                   {item.images && (
                     <div className="mt-4 flex justify-center flex-wrap gap-4">
                       {item.images.map((img, idx) => (
-                        <img key={idx} src={img} alt={`${item.title}-${idx}`} className="w-50 max-w-xs rounded-lg" />
+                        <img
+                          key={idx}
+                          src={img}
+                          alt={`${item.title}-${idx}`}
+                          className="w-50 max-w-xs rounded-lg"
+                        />
                       ))}
                     </div>
                   )}
