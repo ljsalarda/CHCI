@@ -1,15 +1,23 @@
-export const projects = [
-  { name: "MARVEL", img: "/marvel.png" },
-  { name: "GEOAGR", img: "/geoagr.png" },
-  { name: "SMART", img: "/smart.png" },
-  { name: "FAMRIA", img: "/famria.png" },
-]
+import { projects } from "../data/site-data";
 
 export function ProjectsSection() {
   return (
-    <section id="projects" className="py-18 relative overflow-hidden">
-      <div className="absolute inset-0 bg-linear-to-b from-primary/5 to-transparent pointer-events-none" />
-      
+    <section id="projects" className="relative overflow-hidden py-16 md:py-16 bg-linear-to-b from-white via-blue-50/40 to-white">
+      {/* 🔵 Background Design Layer */}
+  <div className="absolute inset-0 -z-10 pointer-events-none">
+
+  
+
+    {/* left accent */}
+    <div className="absolute top-20 -left-30 w-75 h-75 bg-[#3A7CC3]/20 rounded-full blur-3xl" />
+
+    {/* right accent */}
+    <div className="absolute bottom-10 -right-30 w-65 h-65 bg-[#0A3D91]/20 rounded-full blur-3xl" />
+
+    {/* subtle tech grid overlay */}
+    <div className="absolute inset-0 opacity-[0.15] bg-[linear-gradient(#0A3D91_1px,transparent_1px),linear-gradient(90deg,#0A3D91_1px,transparent_1px)] bg-size-[50px_50px]" />
+
+  </div>
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-3xl font-bold text-foreground md:text-4xl mb-4">

@@ -1,9 +1,7 @@
 "use client"
 
 import React from "react";
-import { partners } from "./partners.jsx";
-import { researchAreas } from "./research-areas.jsx";
-import { projects } from "./projects.jsx";
+import { partners, projects, researchAreas } from "../data/site-data";
 
 export function Home() {
    const stats = [
@@ -13,10 +11,23 @@ export function Home() {
     { number: partners.length, label: "Partners", link: "#partners" },
   ]
   return (
-    <section id="home" className="relative  flex items-center justify-center overflow-hidden py-32">
-      {/* Gradient background with animation */}
-      <div className="absolute inset-0 bg-linear-to-br from-primary/5 via-background to-primary/10" />
-      
+    <section id="home" className="relative flex items-center justify-center overflow-hidden py-32 bg-linear-to-b from-white via-blue-50/40 to-white">
+  {/* 🔵 Background Design Layer */}
+  <div className="absolute inset-0 -z-10 pointer-events-none">
+
+  
+
+    {/* left accent */}
+    <div className="absolute top-20 -left-30 w-75 h-75 bg-[#3A7CC3]/10 rounded-full blur-3xl" />
+
+    {/* right accent */}
+    <div className="absolute bottom-10 -right-30 w-65 h-65 bg-[#0A3D91]/10 rounded-full blur-3xl" />
+
+    {/* subtle tech grid overlay */}
+    <div className="absolute inset-0 opacity-[0.15] bg-[linear-gradient(#0A3D91_1px,transparent_1px),linear-gradient(90deg,#0A3D91_1px,transparent_1px)] bg-size-[50px_50px]" />
+
+  </div>
+
       <div className="container relative mx-auto px-4 py-auto text-center z-10">
         <div className="mx-auto max-w-5xl space-y-8">
 

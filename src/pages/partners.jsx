@@ -1,13 +1,6 @@
 "use client"
 
-export const partners = [
-  { name: "DOST", img: "/dost.jpg", href: "https://www.dost.gov.ph/" },
-  { name: "CSU", img: "/CSU.png", href: "https://www.carsu.edu.ph/" },
-  { name: "DOA", img: "/DOA.png", href: "https://www.da.gov.ph/" },
-  { name: "TMC", img: "/tmc.png", href: "https://www.mgb.gov.ph/" },
-  { name: "APEX", img: "/apex.png", href: "https://www.apexmines.com/" },
-  { name: "DSWD", img: "/dswd.png", href: "https://caraga.dswd.gov.ph/" },
-]
+import { partners } from "../data/site-data";
 
 export function PartnersSection() {
   return (
