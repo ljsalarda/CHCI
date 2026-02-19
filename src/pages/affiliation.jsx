@@ -108,16 +108,17 @@ export default function AffiliationSection() {
 
         <div className="mt-3 grid grid-cols-1 gap-6 md:grid-cols-3">
           {memberCategories.map((cat) => (
-            <AnimateOnScroll key={cat.letter}>
-              <div className="group relative flex flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+            <AnimateOnScroll key={cat.letter} className="h-full">
+              <div className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-sm ring-1 ring-transparent transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:ring-primary/20">
                 <div className={`h-1.5 w-full ${cat.color}`} />
+                <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,hsl(var(--primary)/0.08),transparent_45%)] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
                 <div className="flex flex-1 flex-col p-6">
-                  <div className="mb-0 flex items-center gap-4">
+                  <div className="mb-2 flex items-center gap-4">
                     <div className={`flex h-14 w-14 items-center justify-center rounded-xl ${cat.color} text-primary-foreground shadow-lg transition-transform group-hover:scale-110`}>
                       <cat.icon className="h-7 w-7" />
                     </div>
-                    <div>
+                    <div className="flex-1">
                       <span className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
                         Category {cat.letter}
                       </span>

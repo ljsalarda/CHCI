@@ -81,17 +81,17 @@ export default function ContactSection() {
               <MessageSquare className="h-3.5 w-3.5" />
               Reach Out
             </span>
-            <h2 className="mt-4 font-heading text-3xl font-bold text-foreground text-balance md:text-4xl lg:text-5xl">
+            <h2 className="mt-2 font-heading text-3xl font-bold text-foreground text-balance md:text-4xl lg:text-5xl">
               Get in Touch
             </h2>
-            <p className="mx-auto mt-4 max-w-xl text-muted-foreground leading-relaxed">
+            <p className="mx-auto mt-2 max-w-xl text-muted-foreground leading-relaxed">
               Have questions about our research, services, or membership?
               We&apos;d love to hear from you.
             </p>
           </div>
         </AnimateOnScroll>
 
-        <div className="mt-14 grid grid-cols-1 gap-10 lg:grid-cols-5">
+        <div className="mt-5 grid grid-cols-1 gap-10 lg:grid-cols-5">
           {/* Left: Contact Info */}
           <AnimateOnScroll className="lg:col-span-2">
             <div className="flex h-full flex-col gap-6">

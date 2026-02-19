@@ -3,9 +3,11 @@ import { Facebook, Linkedin, Youtube, Mail, Phone, MapPin } from "lucide-react";
 const quickLinks = [
   { name: "Home", href: "#home" },
   { name: "About Us", href: "#about" },
-  { name: "Events", href: "#events" },
+  { name: "Research Areas", href: "#research" },
+  { name: "Services", href: "#services" },
   { name: "Projects", href: "#projects" },
-  { name: "Publications", href: "#publications" },
+  { name: "Affiliation", href: "#affiliation" },
+  { name: "Partners", href: "#partners" },
   { name: "Contact Us", href: "#contact" },
 ];
 
@@ -60,25 +62,39 @@ export function Footer() {
           </div>
 
           <div className="rounded-2xl border border-primary-foreground/15 bg-primary-foreground/4 p-5 text-center sm:text-left lg:justify-items-center lg:rounded-none lg:border-0 lg:bg-transparent lg:p-0">
-            <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-primary-foreground">
+            <h3 className="mb-4 lg:mr-10 text-sm font-semibold uppercase tracking-wider text-primary-foreground">
               Quick Links
             </h3>
-            <ul className="grid grid-cols-2 gap-x-4 gap-y-2 sm:grid-cols-1">
-              {quickLinks.map((link) => (
-                <li key={link.name}>
-                  <a
-                    href={link.href}
-                    className="text-sm text-primary-foreground/80 transition-colors hover:text-secondary"
-                  >
-                    {link.name}
-                  </a>
-                </li>
-              ))}
-            </ul>
+            <div className="grid grid-cols-2 gap-x-6 gap-y-2">
+              <ul className="space-y-2">
+                {quickLinks.slice(0, 4).map((link) => (
+                  <li key={link.name}>
+                    <a
+                      href={link.href}
+                      className="text-sm text-primary-foreground/80 transition-colors hover:text-secondary"
+                    >
+                      {link.name}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+              <ul className="space-y-2">
+                {quickLinks.slice(4, 8).map((link) => (
+                  <li key={link.name}>
+                    <a
+                      href={link.href}
+                      className="text-sm text-primary-foreground/80 transition-colors hover:text-secondary"
+                    >
+                      {link.name}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
 
           <div className="rounded-2xl border border-primary-foreground/15 bg-primary-foreground/4 p-5 text-center sm:text-left lg:rounded-none lg:border-0 lg:bg-transparent lg:p-0">
-            <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-primary-foreground">
+            <h3 className="mb-4 lg:text-center text-sm font-semibold uppercase tracking-wider text-primary-foreground">
               Contact
             </h3>
             <ul className="space-y-3">
@@ -119,19 +135,11 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-10 border-t border-primary-foreground/20 pt-6 md:mt-12 md:pt-8">
-          <div className="flex flex-col items-center justify-between gap-3 sm:flex-row">
-            <p className="text-center text-sm text-primary-foreground/80 sm:text-left">
+        <div className="mt-10 border-t  border-primary-foreground/20 pt-6 md:mt-12 md:pt-8">
+          <div className="flex items-center justify-center">
+            <p className="text-center text-sm text-primary-foreground/80">
               © {new Date().getFullYear()} Center for Human-Computer Interaction
             </p>
-            <div className="flex items-center gap-4">
-              <a href="#" className="text-sm text-primary-foreground/80 hover:text-secondary">
-                Privacy Policy
-              </a>
-              <a href="#" className="text-sm text-primary-foreground/80 hover:text-secondary">
-                Terms of Service
-              </a>
-            </div>
           </div>
         </div>
       </div>
