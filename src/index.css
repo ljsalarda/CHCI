@@ -1,9 +1,9 @@
-@import 'tailwindcss';
-@import 'tw-animate-css';
+@import "tailwindcss";
+@import "tw-animate-css";
 @custom-variant dark (&:is(.dark *));
 
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
 }
 
 :root {
@@ -13,38 +13,38 @@ body {
   --card-foreground: #000000;
   --popover: #ffffff;
   --popover-foreground: #000000;
-  --primary: #0A3D91;
+  --primary: #0a3d91;
   --primary-foreground: #ffffff;
-  --secondary: #3A7CC3;
+  --secondary: #3a7cc3;
   --secondary-foreground: #ffffff;
   --muted: #f1f5f9;
   --muted-foreground: #4b5563;
-  --accent: #3A7CC3;
+  --accent: #3a7cc3;
   --accent-foreground: #ffffff;
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: #ffffff;
-  --border: #3A7CC3;
+  --border: #3a7cc3;
   --input: #f1f5f9;
-  --ring: #0A3D91;
-  --chart-1: #0A3D91;
-  --chart-2: #3A7CC3;
+  --ring: #0a3d91;
+  --chart-1: #0a3d91;
+  --chart-2: #3a7cc3;
   --chart-3: #5a9bd4;
   --chart-4: #7bb3e0;
   --chart-5: #a8cce8;
   --radius: 0.625rem;
-  --sidebar: #0A3D91;
+  --sidebar: #0a3d91;
   --sidebar-foreground: #ffffff;
-  --sidebar-primary: #3A7CC3;
+  --sidebar-primary: #3a7cc3;
   --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #3A7CC3;
+  --sidebar-accent: #3a7cc3;
   --sidebar-accent-foreground: #ffffff;
-  --sidebar-border: #3A7CC3;
-  --sidebar-ring: #3A7CC3;
+  --sidebar-border: #3a7cc3;
+  --sidebar-ring: #3a7cc3;
 }
 
 @theme inline {
-  --font-sans: 'Geist', 'Geist Fallback';
-  --font-mono: 'Geist Mono', 'Geist Mono Fallback';
+  --font-sans: "Geist", "Geist Fallback";
+  --font-mono: "Geist Mono", "Geist Mono Fallback";
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);

@@ -34,7 +34,8 @@ export default function ContactSection() {
 
   const validate = () => {
     const newErrors = {};
-    if (!formData.fullName.trim()) newErrors.fullName = "Full name is required.";
+    if (!formData.fullName.trim())
+      newErrors.fullName = "Full name is required.";
     if (!formData.email.trim()) {
       newErrors.email = "Email is required.";
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
@@ -57,22 +58,21 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contact" className="relative overflow-hidden py-16 md:py-16 bg-linear-to-b from-white via-blue-50/40 to-white">
+    <section
+      id="contact"
+      className="relative overflow-hidden py-16 md:py-16 bg-linear-to-b from-white via-blue-50/40 to-white"
+    >
       {/* 🔵 Background Design Layer */}
-  <div className="absolute inset-0 -z-10 pointer-events-none">
+      <div className="absolute inset-0 -z-10 pointer-events-none">
+        {/* left accent */}
+        <div className="absolute top-20 -left-30 w-75 h-75 bg-[#3A7CC3]/10 rounded-full blur-3xl" />
 
-  
+        {/* right accent */}
+        <div className="absolute bottom-10 -right-30 w-65 h-65 bg-[#0A3D91]/10 rounded-full blur-3xl" />
 
-    {/* left accent */}
-    <div className="absolute top-20 -left-30 w-75 h-75 bg-[#3A7CC3]/10 rounded-full blur-3xl" />
-
-    {/* right accent */}
-    <div className="absolute bottom-10 -right-30 w-65 h-65 bg-[#0A3D91]/10 rounded-full blur-3xl" />
-
-    {/* subtle tech grid overlay */}
-    <div className="absolute inset-0 opacity-[0.15] bg-[linear-gradient(#0A3D91_1px,transparent_1px),linear-gradient(90deg,#0A3D91_1px,transparent_1px)] bg-size-[50px_50px]" />
-
-  </div>
+        {/* subtle tech grid overlay */}
+        <div className="absolute inset-0 opacity-[0.15] bg-[linear-gradient(#0A3D91_1px,transparent_1px),linear-gradient(90deg,#0A3D91_1px,transparent_1px)] bg-size-[50px_50px]" />
+      </div>
       <div className="relative mx-auto max-w-7xl px-4 lg:px-8">
         {/* Header */}
         <AnimateOnScroll>
@@ -268,7 +268,8 @@ export default function ContactSection() {
                 </button>
                 {isSubmitted && (
                   <p className="text-sm text-green-600">
-                    Message sent successfully. We will get back to you as soon as possible.
+                    Message sent successfully. We will get back to you as soon
+                    as possible.
                   </p>
                 )}
               </div>
