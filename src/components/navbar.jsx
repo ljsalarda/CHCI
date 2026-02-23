@@ -116,8 +116,8 @@ export function StickyNavbar() {
                 <div key={item.name} className="group relative">
                   {renderNavLink(
                     item,
-                    "inline-flex h-9 items-center rounded-md px-4 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-foreground cursor-pointer",
-                    "bg-accent text-foreground",
+                    "inline-flex h-9 items-center px-4 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground hover:underline hover:underline-offset-8 hover:decoration-2 hover:decoration-primary cursor-pointer",
+                    "text-foreground underline underline-offset-8 decoration-2 decoration-primary",
                     false,
                     <>
                       {item.name}
@@ -129,7 +129,7 @@ export function StickyNavbar() {
                       <a
                         key={project.name}
                         href={project.href}
-                        className="block rounded-md px-3 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-primary/10 hover:text-primary"
+                        className="block px-3 py-2 text-sm font-medium text-gray-700 transition-colors hover:text-primary hover:underline hover:underline-offset-4 hover:decoration-2 hover:decoration-primary"
                       >
                         {project.name}
                       </a>
@@ -143,8 +143,8 @@ export function StickyNavbar() {
               <React.Fragment key={item.name}>
                 {renderNavLink(
                   item,
-                  "inline-flex h-9 items-center rounded-md px-4 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-foreground cursor-pointer",
-                  "bg-accent text-foreground"
+                  "inline-flex h-9 items-center px-4 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground hover:underline hover:underline-offset-8 hover:decoration-2 hover:decoration-primary cursor-pointer",
+                  "text-foreground underline underline-offset-8 decoration-2 decoration-primary"
                 )}
               </React.Fragment>
             );
@@ -168,8 +168,8 @@ export function StickyNavbar() {
                 <div key={item.name}>
                   {renderNavLink(
                     item,
-                    "block text-lg font-medium text-gray-700 hover:text-blue-600 cursor-pointer",
-                    "text-blue-600",
+                    "block text-lg font-medium text-gray-700 hover:text-blue-600 hover:underline hover:underline-offset-4 hover:decoration-2 cursor-pointer",
+                    "text-blue-600 underline underline-offset-4 decoration-2",
                     true
                   )}
                   {item.children && (
@@ -180,7 +180,7 @@ export function StickyNavbar() {
                             key={project.name}
                             href={project.href}
                             onClick={() => setIsOpen(false)}
-                            className="text-base font-medium text-gray-700 hover:text-blue-600"
+                            className="text-base font-medium text-gray-700 hover:text-blue-600 hover:underline hover:underline-offset-4 hover:decoration-2"
                           >
                             {project.name}
                           </a>
