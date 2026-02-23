@@ -26,7 +26,6 @@ export function SmartDescription() {
         </a>
       </div>
       <div className="overflow-hidden rounded-xl border border-border bg-card">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/smart-DUnsMAbz62p25Sx0NQvLdufIss27c4.png"
           alt="SMART system architecture showing Data Import, Data Process, Data Storage, and Data Management workflows with user authentication through SSO"

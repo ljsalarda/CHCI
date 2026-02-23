@@ -54,7 +54,6 @@ export function SmartFeatures() {
         })}
       </div>
       <div className="overflow-hidden rounded-xl border border-border bg-card">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/smart2-Gxj3IZBK22CJIQtNf88kpc7R0ZOsOG.png"
           alt="SMART system interface showing document scanning/upload area with file thumbnails and classification form with region, division, section, and record classification selectors"

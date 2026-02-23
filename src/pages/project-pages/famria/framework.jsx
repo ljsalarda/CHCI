@@ -6,10 +6,9 @@ export function FamriaFramework() {
         </p>
         <h2 className="text-center text-2xl font-bold md:text-3xl">
           Conceptual Framework
-        </h2>
+      </h2>
       {/* Image Card */}
       <div className="rounded-2xl border border-white/20 bg-linear-to-br from-white/80 to-white/60 p-5 shadow-xl backdrop-blur-md transition hover:shadow-2xl">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/conceptualframework-2l9ABOwAWsGSH7YQsR8VQ1Nt4SQNyC.png"
           alt="FAMRIA Conceptual Framework diagram showing monitoring and evaluation phases including outputs, results, impact, policy adjustments, and project optimization"

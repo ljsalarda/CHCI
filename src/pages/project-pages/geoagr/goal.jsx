@@ -15,7 +15,6 @@ export function GeoagriGoal() {
         outputs for the development of Caraga region and beyond.
       </p>
       <div className="overflow-hidden rounded-xl border border-border bg-card">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/geoagri-IndABmbsvSFhHXC9riTWthUgsxiSaI.png"
           alt="GEOAGRI platform showing three main features: Data Management for road and GIS data, Public Map for transparent reporting and map views, and Grievance and Requests for community feedback"
