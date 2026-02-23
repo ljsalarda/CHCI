@@ -14,6 +14,7 @@ import ServicesSection from "./pages/services";
 import AffiliationSection from "./pages/affiliation";
 import ContactSection from "./pages/contact";
 import FamriaPage from "./pages/project-pages/famria/page";
+import MarvelPage from "./pages/project-pages/marvel/page";
 
 
 function App() {
@@ -21,6 +22,9 @@ function App() {
 
   if (pathname === "/famria") {
     return <FamriaPage />;
+  }
+  if (pathname === "/marvel") {
+    return <MarvelPage />;
   }
 
   return (

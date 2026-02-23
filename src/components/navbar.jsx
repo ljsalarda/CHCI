@@ -6,7 +6,7 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { ChevronDown, Menu, X } from "lucide-react";
 
 const projectItems = [
-  { name: "MARVEL", href: "#projects" },
+  { name: "MARVEL", href: "/marvel" },
   { name: "GEOAGR", href: "#projects" },
   { name: "SMART", href: "#projects" },
   { name: "FAMRIA", href: "/famria" },
