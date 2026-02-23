@@ -16,32 +16,28 @@ export function SmartPage() {
             WE INTERACT IN THE MODERN WORLD
           </p>
           <h1 className="text-3xl text-white font-bold md:text-5xl">
-            Records Management System
+            Smart - Records Management System for DSWD
           </h1>
           <p className="mx-auto mt-5 max-w-3xl text-base leading-relaxed text-white/85 md:text-lg">
-            Digital archiving and indexing of documents for the DSWD.
+            2nd Flr. Hiraya Building, Caraga State University, Ampayon, Butuan City, Philippines
           </p>
         </div>
       </div>
 
       <div className="container mx-auto space-y-12 px-4 py-12 md:py-16">
         <section>
-          <h2 className="mb-6 text-2xl font-semibold text-foreground">General Description</h2>
           <SmartDescription />
         </section>
 
         <section>
-          <h2 className="mb-6 text-2xl font-semibold text-foreground">How It Works</h2>
           <SmartWorkflow />
         </section>
 
         <section>
-          <h2 className="mb-6 text-2xl font-semibold text-foreground">System Features</h2>
           <SmartFeatures />
         </section>
 
         <section>
-          <h2 className="mb-6 text-2xl font-semibold text-foreground">System Functional Directory</h2>
           <SmartDirectory />
         </section>
       </div>

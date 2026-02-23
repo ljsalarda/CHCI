@@ -42,7 +42,7 @@ const services = [
 
 export function GeoagriObjectives() {
   return (
-    <section className="relative mx-auto  px-4 py-20 sm:px-6 lg:px-8">
+    <section className="relative mx-auto px-4 py-20 sm:px-6 lg:px-8">
       {/* Background accents (subtle, no cards) */}
       <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
         <div className="absolute -top-24 -left-28 h-80 w-80 rounded-full bg-primary/10 blur-3xl" />
@@ -65,12 +65,12 @@ export function GeoagriObjectives() {
           </p>
         </div>
 
-        {/* OBJECTIVES (NO CARDS) — with connector line */}
+        {/* Objectives list with connector line */}
         <div className="mx-auto grid max-w-6xl justify-items-center gap-x-14 gap-y-10 md:grid-cols-2">
-          {objectives.map((obj, i) => {
+          {objectives.map((obj) => {
             const Icon = obj.icon
             return (
-              <div key={i} className="group relative flex w-full max-w-xl gap-4">
+              <div key={obj.text} className="group relative flex w-full max-w-xl gap-4">
                 {/* Connector line */}
                 <div className="absolute left-5 top-12 hidden h-[calc(100%-2.25rem)] w-px bg-linear-to-b from-border to-transparent md:block" />
 
@@ -107,10 +107,10 @@ export function GeoagriObjectives() {
           </div>
 
           <div className="mx-auto grid max-w-6xl justify-items-center gap-x-14 gap-y-10 md:grid-cols-2">
-            {services.map((svc, i) => {
+            {services.map((svc) => {
               const Icon = svc.icon
               return (
-                <div key={i} className="group flex w-full max-w-xl items-start gap-4">
+                <div key={svc.title} className="group flex w-full max-w-xl items-start gap-4">
                   <div className="mt-1 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-linear-to-br from-primary/15 to-sky-400/15 ring-1 ring-border/60 transition-all duration-300 group-hover:ring-primary/30">
                     <Icon className="h-5 w-5 text-primary transition-transform duration-300 group-hover:scale-110" />
                   </div>

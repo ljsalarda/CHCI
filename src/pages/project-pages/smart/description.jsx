@@ -2,9 +2,26 @@ import { Facebook } from "lucide-react"
 
 export function SmartDescription() {
   return (
-    <div className="grid items-center gap-10 md:grid-cols-2">
-      <div>
-        <p className="text-base leading-relaxed text-muted-foreground">
+    <section className="  relative mx-auto max-w-7xl px-4 py-18 sm:px-6 lg:px-8">
+          {/* Header */}
+          <div className="mx-auto max-w-3xl text-center space-y-3">
+            <p className="text-center text-sm font-semibold uppercase tracking-[0.25em] text-primary">
+                SMART General Description
+            </p>
+            <h2 className="text-center text-2xl font-bold md:text-3xl">
+                General Description 
+            </h2>
+          </div>
+
+          {/* Main Card */}
+          <div className="mt-12 rounded-3xl border border-white/20 bg-white/10 p-6 shadow-2xl backdrop-blur-xl md:p-10">
+            <div className="grid items-center gap-10 md:grid-cols-2">
+              {/* Left */}
+              <div>
+                <p>
+                <h2 className="text-xl font-semibold mb-3">
+                  Project Overview
+                </h2>
           A Records Management System was developed to assist the DSWD records
           officer and the organization itself for fast record tracking and to
           provide fast and efficient service. It is an application for digital
@@ -33,5 +50,8 @@ export function SmartDescription() {
         />
       </div>
     </div>
+    </div>
+    </section>
+ 
   )
 }

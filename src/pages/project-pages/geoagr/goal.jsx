@@ -1,8 +1,8 @@
 export function GeoagriGoal() {
   return (
-    <section className=" py-16 md:py-28 mx-auto max-w-5xl space-y-3">
+    <section className="mx-auto max-w-5xl space-y-3 py-16 md:py-28">
          <p className="text-center text-sm font-semibold uppercase tracking-[0.25em] text-primary">
-          GEOARGI Goal
+          GEOAGRI Goal
         </p>
         <h2 className="text-center text-2xl font-bold md:text-3xl">
            Statement of Goal
