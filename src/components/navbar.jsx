@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { ChevronDown, Menu, X } from "lucide-react";
+import { Link as ScrollLink } from "react-scroll";
 
 const projectItems = [
   { name: "MARVEL", href: "/marvel" },
@@ -23,23 +24,13 @@ const navItems = [
   { name: "Contact Us", sectionId: "contact" },
 ];
 
+const NAVBAR_OFFSET = -64;
+const SCROLL_DURATION_MS = 500;
+
 export function StickyNavbar() {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = typeof window !== "undefined" ? window.location.pathname : "/";
-
-  const scrollToSection = (sectionId) => {
-    const section = document.getElementById(sectionId);
-    if (!section) return;
-
-    const nav = document.querySelector("header");
-    const navOffset = nav ? nav.getBoundingClientRect().height : 0;
-    const top = section.getBoundingClientRect().top + window.scrollY - navOffset;
-    window.scrollTo({ top });
-
-    if (window.location.pathname === "/" && (window.location.search || window.location.hash)) {
-      window.history.replaceState({}, "", "/");
-    }
-  };
+  const isHomePage = pathname === "/";
 
   const getNavHref = (item) => {
     if (item.sectionId) {
@@ -48,20 +39,38 @@ export function StickyNavbar() {
     return item.href || undefined;
   };
 
-  const handleNavClick = (event, item, closeMobile = false) => {
-    if (item.sectionId) {
-      event.preventDefault();
+  const handleCloseMobile = (closeMobile) => {
+    if (!closeMobile) return;
+    setIsOpen(false);
+  };
 
-      if (pathname === "/") {
-        scrollToSection(item.sectionId);
-      } else {
-        window.location.href = `/?section=${item.sectionId}`;
-      }
+  const renderNavLink = (item, className, activeClass, closeMobile = false, content = item.name) => {
+    if (item.sectionId && isHomePage) {
+      return (
+        <ScrollLink
+          to={item.sectionId}
+          spy
+          smooth
+          duration={SCROLL_DURATION_MS}
+          offset={item.sectionId === "home" ? 0 : NAVBAR_OFFSET}
+          activeClass={activeClass}
+          className={className}
+          onClick={() => handleCloseMobile(closeMobile)}
+        >
+          {content}
+        </ScrollLink>
+      );
     }
 
-    if (closeMobile) {
-      setIsOpen(false);
-    }
+    return (
+      <a
+        href={getNavHref(item)}
+        className={className}
+        onClick={() => handleCloseMobile(closeMobile)}
+      >
+        {content}
+      </a>
+    );
   };
 
   return (
@@ -69,12 +78,34 @@ export function StickyNavbar() {
       <div className="container mx-auto flex h-16 items-center justify-between px-4 sm:px-6 lg:px-10">
         {/* Logos */}
         <div className="flex-1 flex justify-start lg:justify-start lg:ml-19 md:justify-center">
-          <a href={getNavHref({ sectionId: "home" })} onClick={(event) => handleNavClick(event, { sectionId: "home" })}>
-            <img src="/CSU-LOGO.png" alt="CCIS Logo" className="w-8 mt-1 " />
-          </a>
-          <a href={getNavHref({ sectionId: "home" })} onClick={(event) => handleNavClick(event, { sectionId: "home" })}>
-            <img src="/CHCI-LOGO.png" alt="CHCI Logo" className="w-19 mt-2" />
-          </a>
+          {isHomePage ? (
+            <ScrollLink
+              to="home"
+              smooth
+              duration={SCROLL_DURATION_MS}
+              className="cursor-pointer"
+            >
+              <img src="/CSU-LOGO.png" alt="CCIS Logo" className="w-8 mt-1 " />
+            </ScrollLink>
+          ) : (
+            <a href="/">
+              <img src="/CSU-LOGO.png" alt="CCIS Logo" className="w-8 mt-1 " />
+            </a>
+          )}
+          {isHomePage ? (
+            <ScrollLink
+              to="home"
+              smooth
+              duration={SCROLL_DURATION_MS}
+              className="cursor-pointer"
+            >
+              <img src="/CHCI-LOGO.png" alt="CHCI Logo" className="w-19 mt-2" />
+            </ScrollLink>
+          ) : (
+            <a href="/">
+              <img src="/CHCI-LOGO.png" alt="CHCI Logo" className="w-19 mt-2" />
+            </a>
+          )}
         </div>
 
         {/* Desktop Menu */}
@@ -83,14 +114,16 @@ export function StickyNavbar() {
             if (item.children) {
               return (
                 <div key={item.name} className="group relative">
-                  <a
-                    href={getNavHref(item)}
-                    onClick={(event) => handleNavClick(event, item)}
-                    className="inline-flex h-9 items-center rounded-md px-4 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
-                  >
-                    {item.name}
-                    <ChevronDown className="ml-1 h-4 w-4" />
-                  </a>
+                  {renderNavLink(
+                    item,
+                    "inline-flex h-9 items-center rounded-md px-4 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-foreground cursor-pointer",
+                    "bg-accent text-foreground",
+                    false,
+                    <>
+                      {item.name}
+                      <ChevronDown className="ml-1 h-4 w-4" />
+                    </>
+                  )}
                   <div className="invisible absolute right-0 top-full z-50 mt-2 w-44 rounded-xl border border-border bg-white p-2 opacity-0 shadow-lg transition-all duration-200 group-hover:visible group-hover:opacity-100">
                     {item.children.map((project) => (
                       <a
@@ -107,16 +140,13 @@ export function StickyNavbar() {
             }
 
             return (
-              <Button
-                key={item.name}
-                variant="ghost"
-                asChild
-                className="text-muted-foreground hover:text-foreground"
-              >
-                <a href={getNavHref(item)} onClick={(event) => handleNavClick(event, item)}>
-                  {item.name}
-                </a>
-              </Button>
+              <React.Fragment key={item.name}>
+                {renderNavLink(
+                  item,
+                  "inline-flex h-9 items-center rounded-md px-4 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-foreground cursor-pointer",
+                  "bg-accent text-foreground"
+                )}
+              </React.Fragment>
             );
           })}
         </nav>
@@ -136,13 +166,12 @@ export function StickyNavbar() {
             <div className="flex flex-col gap-4">
               {navItems.map((item) => (
                 <div key={item.name}>
-                  <a
-                    href={getNavHref(item)}
-                    onClick={(event) => handleNavClick(event, item, true)}
-                    className="text-lg font-medium text-gray-700 hover:text-blue-600"
-                  >
-                    {item.name}
-                  </a>
+                  {renderNavLink(
+                    item,
+                    "block text-lg font-medium text-gray-700 hover:text-blue-600 cursor-pointer",
+                    "text-blue-600",
+                    true
+                  )}
                   {item.children && (
                     <div className="mt-2 border-l border-border pl-3">
                       <div className="flex flex-col gap-2">
