@@ -11,20 +11,25 @@ export function MarvelPage() {
 
       <div
         className="relative flex min-h-screen items-center justify-center bg-cover bg-center bg-no-repeat px-4 text-center"
-        style={{ backgroundImage: "url('/famriabg.jpg')" }}
+        style={{ backgroundImage: "url('/marvelbg.jpg')" }}
       >
         <div className="absolute inset-0 bg-black/45" />
         <div className="relative z-10 max-w-3xl">
-          <p className="mb-2 text-sm font-semibold uppercase tracking-widest text-white/90">
+          <p className="mb-5 text-sm font-semibold uppercase tracking-widest text-white/90">
             Mining Beyond Reality
           </p>
-          <h2 className="text-3xl font-bold text-white md:text-5xl">
+          <h2 className="text-3xl mb-15 font-bold text-white md:text-5xl">
             MARVEL Technologies 
           </h2>
-          <p className="mx-auto mt-4 mb-4 text-base leading-relaxed text-white/85 md:text-lg">
-            Industry 4.0 Learning Factory for Mining Engineering and Geology using Augmented Reality and Virtual Reality Technologies
-          </p>
-          <span className="text-white">2nd Flr. Hiraya Building, Caraga State University, Ampayon, Butuan City, Philippines</span>
+          
+        <a
+            href="https://drive.google.com/drive/folders/1jp9FA4NitzAyFPpBm_VgIm_tw_FAdedq"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-lg border border-border bg-card px-5 py-2.5 text-sm font-medium text-card-foreground transition-colors hover:bg-secondary"
+          >
+            Download Application
+          </a>
         </div>
       </div>
 

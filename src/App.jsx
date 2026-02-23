@@ -2,6 +2,7 @@ import "@fontsource/inter/400.css";
 import "@fontsource/inter/500.css";
 import "@fontsource/inter/600.css";
 import "@fontsource/inter/700.css";
+import { useEffect } from "react";
 
 import { StickyNavbar } from "./components/navbar";
 import { Home } from "./pages/home";
@@ -21,6 +22,29 @@ import SmartPage from "./pages/project-pages/smart/page";
 
 function App() {
   const pathname = typeof window !== "undefined" ? window.location.pathname : "/";
+
+  useEffect(() => {
+    if (typeof window === "undefined" || window.location.pathname !== "/") {
+      return;
+    }
+
+    const params = new URLSearchParams(window.location.search);
+    const section = params.get("section");
+    if (!section) return;
+
+    const raf = window.requestAnimationFrame(() => {
+      const target = document.getElementById(section);
+      if (target) {
+        const nav = document.querySelector("header");
+        const navOffset = nav ? nav.getBoundingClientRect().height : 0;
+        const top = target.getBoundingClientRect().top + window.scrollY - navOffset;
+        window.scrollTo({ top, behavior: "smooth" });
+      }
+      window.history.replaceState({}, "", "/");
+    });
+
+    return () => window.cancelAnimationFrame(raf);
+  }, [pathname]);
 
   if (pathname === "/famria") {
     return <FamriaPage />;

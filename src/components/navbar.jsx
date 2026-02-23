@@ -13,23 +13,55 @@ const projectItems = [
 ];
 
 const navItems = [
-  { name: "Home", href: "#home" },
-  { name: "About Us", href: "#about" },
-  { name: "Research Areas", href: "#research" },
-  { name: "Services", href: "#services" },
-  { name: "Affiliation", href: "#affiliation" },
-  { name: "Projects", href: "#projects", children: projectItems },
+  { name: "Home", sectionId: "home" },
+  { name: "About Us", sectionId: "about" },
+  { name: "Research Areas", sectionId: "research" },
+  { name: "Services", sectionId: "services" },
+  { name: "Affiliation", sectionId: "affiliation" },
+  { name: "Projects", sectionId: "projects", children: projectItems },
   { name: "Publications", href: "" },
-  { name: "Contact Us", href: "#contact" },
+  { name: "Contact Us", sectionId: "contact" },
 ];
 
 export function StickyNavbar() {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = typeof window !== "undefined" ? window.location.pathname : "/";
-  const resolveHref = (href) => {
-    if (!href) return href;
-    if (href.startsWith("#") && pathname !== "/") return `/${href}`;
-    return href;
+
+  const scrollToSection = (sectionId) => {
+    const section = document.getElementById(sectionId);
+    if (!section) return;
+
+    const nav = document.querySelector("header");
+    const navOffset = nav ? nav.getBoundingClientRect().height : 0;
+    const top = section.getBoundingClientRect().top + window.scrollY - navOffset;
+    window.scrollTo({ top, behavior: "smooth" });
+
+    if (window.location.pathname === "/" && (window.location.search || window.location.hash)) {
+      window.history.replaceState({}, "", "/");
+    }
+  };
+
+  const getNavHref = (item) => {
+    if (item.sectionId) {
+      return item.sectionId === "home" ? "/" : `/?section=${item.sectionId}`;
+    }
+    return item.href || undefined;
+  };
+
+  const handleNavClick = (event, item, closeMobile = false) => {
+    if (item.sectionId) {
+      event.preventDefault();
+
+      if (pathname === "/") {
+        scrollToSection(item.sectionId);
+      } else {
+        window.location.href = `/?section=${item.sectionId}`;
+      }
+    }
+
+    if (closeMobile) {
+      setIsOpen(false);
+    }
   };
 
   return (
@@ -37,10 +69,10 @@ export function StickyNavbar() {
       <div className="container mx-auto flex h-16 items-center justify-between px-4 sm:px-6 lg:px-10">
         {/* Logos */}
         <div className="flex-1 flex justify-start lg:justify-start lg:ml-19 md:justify-center">
-          <a href={resolveHref("#home")}>
+          <a href={getNavHref({ sectionId: "home" })} onClick={(event) => handleNavClick(event, { sectionId: "home" })}>
             <img src="/CSU-LOGO.png" alt="CCIS Logo" className="w-8 mt-1 " />
           </a>
-          <a href={resolveHref("#home")}>
+          <a href={getNavHref({ sectionId: "home" })} onClick={(event) => handleNavClick(event, { sectionId: "home" })}>
             <img src="/CHCI-LOGO.png" alt="CHCI Logo" className="w-19 mt-2" />
           </a>
         </div>
@@ -52,7 +84,8 @@ export function StickyNavbar() {
               return (
                 <div key={item.name} className="group relative">
                   <a
-                    href={resolveHref(item.href)}
+                    href={getNavHref(item)}
+                    onClick={(event) => handleNavClick(event, item)}
                     className="inline-flex h-9 items-center rounded-md px-4 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
                   >
                     {item.name}
@@ -62,7 +95,7 @@ export function StickyNavbar() {
                     {item.children.map((project) => (
                       <a
                         key={project.name}
-                        href={resolveHref(project.href)}
+                        href={project.href}
                         className="block rounded-md px-3 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-primary/10 hover:text-primary"
                       >
                         {project.name}
@@ -80,7 +113,9 @@ export function StickyNavbar() {
                 asChild
                 className="text-muted-foreground hover:text-foreground"
               >
-                <a href={resolveHref(item.href)}>{item.name}</a>
+                <a href={getNavHref(item)} onClick={(event) => handleNavClick(event, item)}>
+                  {item.name}
+                </a>
               </Button>
             );
           })}
@@ -102,8 +137,8 @@ export function StickyNavbar() {
               {navItems.map((item) => (
                 <div key={item.name}>
                   <a
-                    href={resolveHref(item.href)}
-                    onClick={() => setIsOpen(false)}
+                    href={getNavHref(item)}
+                    onClick={(event) => handleNavClick(event, item, true)}
                     className="text-lg font-medium text-gray-700 hover:text-blue-600"
                   >
                     {item.name}
@@ -114,7 +149,7 @@ export function StickyNavbar() {
                         {item.children.map((project) => (
                           <a
                             key={project.name}
-                            href={resolveHref(project.href)}
+                            href={project.href}
                             onClick={() => setIsOpen(false)}
                             className="text-base font-medium text-gray-700 hover:text-blue-600"
                           >

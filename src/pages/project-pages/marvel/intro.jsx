@@ -36,17 +36,9 @@ export function MarvelIntro() {
              target="_blank"
              rel="noopener noreferrer"
              className="inline-flex items-center gap-2 rounded-xl bg-[#0A3D91] px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-[#3A7CC3]/90"
-           >
+            >
             <Facebook className="h-4 w-4" />
             Visit our Facebook Page
-          </a>
-          <a
-            href="https://drive.google.com/drive/folders/1jp9FA4NitzAyFPpBm_VgIm_tw_FAdedq"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-lg border border-border bg-card px-5 py-2.5 text-sm font-medium text-card-foreground transition-colors hover:bg-secondary"
-          >
-            Download Application
           </a>
         </div>
       </div>
