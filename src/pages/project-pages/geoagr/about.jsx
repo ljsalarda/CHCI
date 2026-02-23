@@ -2,8 +2,25 @@ import { Facebook } from "lucide-react"
 
 export function GeoagriAbout() {
   return (
-    <div className="grid items-center gap-10 md:grid-cols-2">
-      <div>
+    <section className="  relative mx-auto max-w-7xl px-4 py-28 sm:px-6 lg:px-8">
+          {/* Header */}
+          <div className="mx-auto max-w-3xl text-center space-y-3">
+            <p className="text-center text-sm font-semibold uppercase tracking-[0.25em] text-primary">
+                GEOAGRI About
+            </p>
+            <h2 className="text-center text-2xl font-bold md:text-3xl">
+                About 
+            </h2>
+          </div>
+
+          {/* Main Card */}
+          <div className="mt-12 rounded-3xl border border-white/20 bg-white/10 p-6 shadow-2xl backdrop-blur-xl md:p-10">
+            <div className="grid items-center gap-10 md:grid-cols-2">
+              {/* Left */}
+              <div>
+                <h2 className="text-xl font-semibold mb-3">
+                  Project Overview
+                </h2>
         <p className="text-base leading-relaxed text-muted-foreground">
           GEOAGRI is an in-house web-based system jointly developed by the Bureau
           of Agricultural and Fisheries Engineering and Caraga State University
@@ -35,5 +52,7 @@ export function GeoagriAbout() {
         </div>
       </div>
     </div>
+    </div>
+    </section>
   )
 }
