@@ -15,6 +15,7 @@ import AffiliationSection from "./pages/affiliation";
 import ContactSection from "./pages/contact";
 import FamriaPage from "./pages/project-pages/famria/page";
 import MarvelPage from "./pages/project-pages/marvel/page";
+import GeoagrPage from "./pages/project-pages/geoagr/page";
 
 
 function App() {
@@ -25,6 +26,9 @@ function App() {
   }
   if (pathname === "/marvel") {
     return <MarvelPage />;
+  }
+  if (pathname === "/geoagr") {
+    return <GeoagrPage />;
   }
 
   return (

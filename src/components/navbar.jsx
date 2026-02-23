@@ -7,7 +7,7 @@ import { ChevronDown, Menu, X } from "lucide-react";
 
 const projectItems = [
   { name: "MARVEL", href: "/marvel" },
-  { name: "GEOAGR", href: "#projects" },
+  { name: "GEOAGR", href: "/geoagr" },
   { name: "SMART", href: "#projects" },
   { name: "FAMRIA", href: "/famria" },
 ];
