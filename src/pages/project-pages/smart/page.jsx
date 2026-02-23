@@ -6,19 +6,19 @@ import { SmartDirectory } from "./directory";
 
 export function SmartPage() {
   return (
-    <section id="smart" className="relative bg-linear-to-b from-white via-blue-50/40 to-white">
+    <section id="smart" className="relative bg-linear-to-b  from-white via-blue-50/40 to-white">
       <StickyNavbar />
 
-      <div className="relative flex min-h-[70vh] items-center justify-center overflow-hidden px-4 text-center">
+      <div className="relative flex min-h-screen items-center justify-center bg-cover bg-center bg-no-repeat px-4 text-center" style={{ backgroundImage: "url('/CCIS.jpg')" }}>
         <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_20%_20%,rgba(58,124,195,0.2),transparent_40%),radial-gradient(circle_at_80%_80%,rgba(10,61,145,0.2),transparent_45%)]" />
-        <div className="max-w-4xl">
-          <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-secondary">
-            SMART
+        <div className="max-w-4xl ">
+          <p className="mb-2 text-sm font-semibold uppercase tracking-widest text-white/90">
+            WE INTERACT IN THE MODERN WORLD
           </p>
-          <h1 className="text-3xl font-bold text-foreground md:text-5xl">
+          <h1 className="text-3xl text-white font-bold md:text-5xl">
             Records Management System
           </h1>
-          <p className="mx-auto mt-5 max-w-3xl text-base leading-relaxed text-muted-foreground md:text-lg">
+          <p className="mx-auto mt-5 max-w-3xl text-base leading-relaxed text-white/85 md:text-lg">
             Digital archiving and indexing of documents for the DSWD.
           </p>
         </div>
