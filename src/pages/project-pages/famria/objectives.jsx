@@ -69,7 +69,7 @@ export function FamriaObjectives() {
           FAMRIA Objectives
         </p>
         <h2 className="text-2xl font-bold md:text-3xl">
-          Strategic Monitoring & Evaluation Goals
+          Objectives
         </h2>
         {/* <p className="mx-auto max-w-3xl text-muted-foreground">
           These objectives guide the evaluation of Farm-to-Market Road (FMR)
