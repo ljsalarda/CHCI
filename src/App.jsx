@@ -38,7 +38,7 @@ function App() {
         const nav = document.querySelector("header");
         const navOffset = nav ? nav.getBoundingClientRect().height : 0;
         const top = target.getBoundingClientRect().top + window.scrollY - navOffset;
-        window.scrollTo({ top, behavior: "smooth" });
+        window.scrollTo({ top });
       }
       window.history.replaceState({}, "", "/");
     });

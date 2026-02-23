@@ -34,7 +34,7 @@ export function StickyNavbar() {
     const nav = document.querySelector("header");
     const navOffset = nav ? nav.getBoundingClientRect().height : 0;
     const top = section.getBoundingClientRect().top + window.scrollY - navOffset;
-    window.scrollTo({ top, behavior: "smooth" });
+    window.scrollTo({ top });
 
     if (window.location.pathname === "/" && (window.location.search || window.location.hash)) {
       window.history.replaceState({}, "", "/");
