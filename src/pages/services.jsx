@@ -9,7 +9,6 @@ import {
   Award,
   Wrench,
 } from "lucide-react";
-import AnimateOnScroll from "@/components/ui/animate-on-scroll";
 
 const trainingRows = [
   {
@@ -133,7 +132,7 @@ export default function ServicesSection() {
       </div>
       <div className="relative mx-auto max-w-7xl px-4 lg:px-8">
         {/* Section Header */}
-        <AnimateOnScroll>
+        <div>
           <div className="text-center">
             <span className="inline-flex items-center gap-2 rounded-full border border-secondary/30 bg-secondary/10 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-secondary">
               <Briefcase className="h-3.5 w-3.5" />
@@ -150,10 +149,10 @@ export default function ServicesSection() {
               value for stakeholders.
             </p>
           </div>
-        </AnimateOnScroll>
+        </div>
 
         {/* Training & Certification */}
-        <AnimateOnScroll className="mt-10">
+        <div className="mt-10">
           <div className="rounded-3xl border border-border/70 bg-card p-6 shadow-lg md:p-8">
             <div className="mb-5 flex items-center gap-3">
               <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary text-primary-foreground shadow-sm">
@@ -186,12 +185,12 @@ export default function ServicesSection() {
               ))}
             </div>
           </div>
-        </AnimateOnScroll>
+        </div>
 
         {/* Service Feature Cards */}
         <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-3">
           {serviceCards.map((card) => (
-            <AnimateOnScroll key={card.title}>
+            <div key={card.title}>
               <div className="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-border/70 bg-card shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
                 {/* Colored top bar */}
                 <div className={`h-1.5 w-full bg-linear-to-r ${card.accent}`} />
@@ -216,12 +215,12 @@ export default function ServicesSection() {
                   </ul>
                 </div>
               </div>
-            </AnimateOnScroll>
+            </div>
           ))}
         </div>
 
         {/* Process Flow for Availing Services */}
-        <AnimateOnScroll className="mt-20">
+        <div className="mt-20">
           <div className="overflow-hidden rounded-3xl border border-border/70 bg-card shadow-xl">
             <div className="px-6 pt-8 pb-4 md:px-10 md:pt-10">
               <h3 className="mb-2 text-center font-heading text-2xl font-bold text-foreground md:text-3xl">
@@ -436,7 +435,7 @@ export default function ServicesSection() {
               </div>
             </div>
           </div>
-        </AnimateOnScroll>
+        </div>
       </div>
     </section>
   );

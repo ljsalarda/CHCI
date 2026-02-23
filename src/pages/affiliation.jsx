@@ -10,7 +10,6 @@ import {
   AlertTriangle,
   CheckCircle2,
 } from "lucide-react";
-import AnimateOnScroll from "@/components/ui/animate-on-scroll";
 
 const memberCategories = [
   {
@@ -91,7 +90,7 @@ export default function AffiliationSection() {
       </div>
 
       <div className="relative mx-auto max-w-7xl px-4 lg:px-8">
-        <AnimateOnScroll>
+        <div>
           <div className="text-center">
             <span className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-primary">
               <Users className="h-3.5 w-3.5" />
@@ -104,11 +103,11 @@ export default function AffiliationSection() {
               To maintain a culture of high performance, membership in the Center is privilege-based and output-oriented. It is open to individuals who demonstrate active engagement in the Center's research agenda.
             </p>
           </div>
-        </AnimateOnScroll>
+        </div>
 
         <div className="mt-3 grid grid-cols-1 gap-6 md:grid-cols-3">
           {memberCategories.map((cat) => (
-            <AnimateOnScroll key={cat.letter} className="h-full">
+            <div key={cat.letter} className="h-full">
               <div className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-sm ring-1 ring-transparent transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:ring-primary/20">
                 <div className={`h-1.5 w-full ${cat.color}`} />
                 <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,hsl(var(--primary)/0.08),transparent_45%)] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
@@ -137,11 +136,11 @@ export default function AffiliationSection() {
                   </ul>
                 </div>
               </div>
-            </AnimateOnScroll>
+            </div>
           ))}
         </div>
 
-        <AnimateOnScroll className="mt-5">
+        <div className="mt-5">
           <div className="overflow-hidden rounded-2xl border border-border bg-card shadow-md">
             <div className="flex border-b border-border bg-muted/50">
               {tabs.map((tab) => (
@@ -189,7 +188,7 @@ export default function AffiliationSection() {
               </ol>
             </div>
           </div>
-        </AnimateOnScroll>
+        </div>
       </div>
     </section>
   );

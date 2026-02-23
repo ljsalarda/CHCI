@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { Eye, Target, HeartHandshake, Layers, Users, ChevronDown, ChevronUp } from "lucide-react";
-import AnimateOnScroll from "@/components/ui/animate-on-scroll";
 
 
 const units = [
@@ -19,7 +18,7 @@ export default function AboutSection() {
   return (
     <section id="about" className="bg-background py-20 lg:py-28">
       <div className="mx-auto max-w-7xl px-4 lg:px-8">
-        <AnimateOnScroll>
+        <div>
           <div className="flex flex-col gap-12 lg:flex-row lg:gap-16">
             {/* Left text */}
             <div className="flex-1">
@@ -169,11 +168,11 @@ export default function AboutSection() {
               )}
             </div>
           </div>
-        </AnimateOnScroll>
+        </div>
 
         {/* Organization Structure — inside expanded Know More */}
         {expanded && (
-          <AnimateOnScroll className="mt-12">
+          <div className="mt-12">
             <div className="animate-in fade-in slide-in-from-top-2 rounded-lg border border-border bg-card p-6 lg:p-8">
               <p className="mb-2 text-center text-sm font-semibold uppercase tracking-widest text-secondary">
                 Organization
@@ -238,7 +237,7 @@ export default function AboutSection() {
           </div>
         </div>
             </div>
-          </AnimateOnScroll>
+          </div>
         )}
       </div>
     </section>

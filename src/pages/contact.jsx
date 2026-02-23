@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { Send, Mail, MapPin, Phone, MessageSquare } from "lucide-react";
-import AnimateOnScroll from "@/components/ui/animate-on-scroll";
 
 const contactInfo = [
   {
@@ -75,7 +74,7 @@ export default function ContactSection() {
       </div>
       <div className="relative mx-auto max-w-7xl px-4 lg:px-8">
         {/* Header */}
-        <AnimateOnScroll>
+        <div>
           <div className="text-center">
             <span className="inline-flex items-center gap-2 rounded-full border border-secondary/30 bg-secondary/10 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-secondary">
               <MessageSquare className="h-3.5 w-3.5" />
@@ -89,11 +88,11 @@ export default function ContactSection() {
               We&apos;d love to hear from you.
             </p>
           </div>
-        </AnimateOnScroll>
+        </div>
 
         <div className="mt-5 grid grid-cols-1 gap-10 lg:grid-cols-5">
           {/* Left: Contact Info */}
-          <AnimateOnScroll className="lg:col-span-2">
+          <div className="lg:col-span-2">
             <div className="flex h-full flex-col gap-6">
               {/* Contact info cards */}
               {contactInfo.map((info) => (
@@ -130,10 +129,10 @@ export default function ContactSection() {
                 </p>
               </div>
             </div>
-          </AnimateOnScroll>
+          </div>
 
           {/* Right: Contact Form */}
-          <AnimateOnScroll className="lg:col-span-3">
+          <div className="lg:col-span-3">
             <form
               onSubmit={handleSubmit}
               noValidate
@@ -274,7 +273,7 @@ export default function ContactSection() {
                 )}
               </div>
             </form>
-          </AnimateOnScroll>
+          </div>
         </div>
       </div>
     </section>
