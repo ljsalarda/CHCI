@@ -16,6 +16,7 @@ import ContactSection from "./pages/contact";
 import FamriaPage from "./pages/project-pages/famria/page";
 import MarvelPage from "./pages/project-pages/marvel/page";
 import GeoagrPage from "./pages/project-pages/geoagr/page";
+import SmartPage from "./pages/project-pages/smart/page";
 
 
 function App() {
@@ -29,6 +30,9 @@ function App() {
   }
   if (pathname === "/geoagr") {
     return <GeoagrPage />;
+  }
+  if (pathname === "/smart") {
+    return <SmartPage />;
   }
 
   return (
