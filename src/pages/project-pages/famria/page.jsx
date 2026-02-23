@@ -1,11 +1,12 @@
 import { FamriaAbout } from "./about";
 import { FamriaObjectives } from "./objectives";
 import { FamriaFramework } from "./framework";
-
+import { StickyNavbar } from "@/components/navbar";
 
 export function FamriaPage() {
   return (
     <section id="famria" className="relative">
+        <StickyNavbar />
       <div
         className="relative flex min-h-screen items-center justify-center bg-cover bg-center bg-no-repeat px-4 text-center"
         style={{ backgroundImage: "url('/famriabg.jpg')" }}

@@ -25,16 +25,22 @@ const navItems = [
 
 export function StickyNavbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const pathname = typeof window !== "undefined" ? window.location.pathname : "/";
+  const resolveHref = (href) => {
+    if (!href) return href;
+    if (href.startsWith("#") && pathname !== "/") return `/${href}`;
+    return href;
+  };
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60 ">
       <div className="container mx-auto flex h-16 items-center justify-between px-4 sm:px-6 lg:px-10">
         {/* Logos */}
         <div className="flex-1 flex justify-start lg:justify-start lg:ml-19 md:justify-center">
-          <a href="#">
+          <a href={resolveHref("#home")}>
             <img src="/CSU-LOGO.png" alt="CCIS Logo" className="w-8 mt-1 " />
           </a>
-          <a href="#">
+          <a href={resolveHref("#home")}>
             <img src="/CHCI-LOGO.png" alt="CHCI Logo" className="w-19 mt-2" />
           </a>
         </div>
@@ -46,7 +52,7 @@ export function StickyNavbar() {
               return (
                 <div key={item.name} className="group relative">
                   <a
-                    href={item.href}
+                    href={resolveHref(item.href)}
                     className="inline-flex h-9 items-center rounded-md px-4 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
                   >
                     {item.name}
@@ -56,7 +62,7 @@ export function StickyNavbar() {
                     {item.children.map((project) => (
                       <a
                         key={project.name}
-                        href={project.href}
+                        href={resolveHref(project.href)}
                         className="block rounded-md px-3 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-primary/10 hover:text-primary"
                       >
                         {project.name}
@@ -74,7 +80,7 @@ export function StickyNavbar() {
                 asChild
                 className="text-muted-foreground hover:text-foreground"
               >
-                <a href={item.href}>{item.name}</a>
+                <a href={resolveHref(item.href)}>{item.name}</a>
               </Button>
             );
           })}
@@ -96,7 +102,7 @@ export function StickyNavbar() {
               {navItems.map((item) => (
                 <div key={item.name}>
                   <a
-                    href={item.href}
+                    href={resolveHref(item.href)}
                     onClick={() => setIsOpen(false)}
                     className="text-lg font-medium text-gray-700 hover:text-blue-600"
                   >
@@ -108,7 +114,7 @@ export function StickyNavbar() {
                         {item.children.map((project) => (
                           <a
                             key={project.name}
-                            href={project.href}
+                            href={resolveHref(project.href)}
                             onClick={() => setIsOpen(false)}
                             className="text-base font-medium text-gray-700 hover:text-blue-600"
                           >
