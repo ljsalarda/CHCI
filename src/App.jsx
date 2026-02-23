@@ -13,8 +13,16 @@ import { Footer } from "./components/footer";
 import ServicesSection from "./pages/services";
 import AffiliationSection from "./pages/affiliation";
 import ContactSection from "./pages/contact";
+import FamriaPage from "./pages/project-pages/famria/page";
+
 
 function App() {
+  const pathname = typeof window !== "undefined" ? window.location.pathname : "/";
+
+  if (pathname === "/famria") {
+    return <FamriaPage />;
+  }
+
   return (
     <div>
       <main>
