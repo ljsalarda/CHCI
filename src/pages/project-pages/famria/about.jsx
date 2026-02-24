@@ -26,7 +26,7 @@ export function FamriaAbout() {
               productivity, and the overall well-being of local communities.
             </p>
 
-            <div className="mt-6 flex flex-wrap gap-3">
+            <div className="mt-6  flex flex-wrap gap-3">
               <a
                 href="https://www.facebook.com/csuchci/"
                 target="_blank"
@@ -42,12 +42,10 @@ export function FamriaAbout() {
           {/* Right */}
           <div className="overflow-hidden rounded-2xl border border-white/20 bg-white/10">
             <div className="aspect-video w-full overflow-hidden rounded-lg shadow-lg">
-              <iframe
-                src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-                title="CHCI Introduction Video"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                className="h-full w-full"
+              <img
+                src="/famriaabout.jpg"
+                alt="FaMRIA project overview"
+                className="h-full w-full object-cover"
               />
             </div>
 
