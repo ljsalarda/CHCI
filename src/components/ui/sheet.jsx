@@ -33,13 +33,7 @@ function SheetOverlay({ className, ...props }) {
   );
 }
 
-function SheetContent({
-  className,
-  children,
-  side = "right",
-  showCloseButton = true,
-  ...props
-}) {
+function SheetContent({ className, children, side = "right", showCloseButton = true, ...props }) {
   return (
     <SheetPortal>
       <SheetOverlay />

@@ -76,11 +76,7 @@ export function Footer() {
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-10">
           <div className="rounded-2xl border border-primary-foreground/15 bg-primary-foreground/4 p-5 text-center sm:text-left lg:rounded-none lg:border-0 lg:bg-transparent lg:p-0">
             <div className="mb-4 flex items-center justify-center gap-2 sm:justify-start">
-              <a
-                href="https://www.carsu.edu.ph/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <a href="https://www.carsu.edu.ph/" target="_blank" rel="noopener noreferrer">
                 <img
                   src="/CSU-LOGO.png"
                   alt="CSU logo"
@@ -99,8 +95,8 @@ export function Footer() {
               </a>
             </div>
             <p className="mx-auto max-w-xs text-sm leading-relaxed text-primary-foreground/80 sm:mx-0 sm:max-w-none">
-              CSU - Center for Human-Computer Interaction at Caraga State
-              University. Humanizing Technology.
+              CSU - Center for Human-Computer Interaction at Caraga State University. Humanizing
+              Technology.
             </p>
           </div>
 
@@ -146,8 +142,8 @@ export function Footer() {
               <li className="flex items-start gap-2 text-sm text-primary-foreground/80">
                 <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-secondary" />
                 <span>
-                  2nd Flr. Mechatronics Building, Caraga State University,
-                  Ampayon, Butuan City, Philippines, 8600
+                  2nd Flr. Mechatronics Building, Caraga State University, Ampayon, Butuan City,
+                  Philippines, 8600
                 </span>
               </li>
               <li className="flex items-center gap-2 text-sm text-primary-foreground/80">

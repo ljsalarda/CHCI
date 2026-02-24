@@ -44,7 +44,13 @@ export function StickyNavbar() {
     setIsOpen(false);
   };
 
-  const renderNavLink = (item, className, activeClass, closeMobile = false, content = item.name) => {
+  const renderNavLink = (
+    item,
+    className,
+    activeClass,
+    closeMobile = false,
+    content = item.name,
+  ) => {
     if (item.sectionId && isHomePage) {
       return (
         <ScrollLink
@@ -79,12 +85,7 @@ export function StickyNavbar() {
         {/* Logos */}
         <div className="flex-1 flex justify-start lg:justify-start lg:ml-19 md:justify-center">
           {isHomePage ? (
-            <ScrollLink
-              to="home"
-              smooth
-              duration={SCROLL_DURATION_MS}
-              className="cursor-pointer"
-            >
+            <ScrollLink to="home" smooth duration={SCROLL_DURATION_MS} className="cursor-pointer">
               <img src="/CSU-LOGO.png" alt="CCIS Logo" className="w-8 mt-1 " />
             </ScrollLink>
           ) : (
@@ -93,12 +94,7 @@ export function StickyNavbar() {
             </a>
           )}
           {isHomePage ? (
-            <ScrollLink
-              to="home"
-              smooth
-              duration={SCROLL_DURATION_MS}
-              className="cursor-pointer"
-            >
+            <ScrollLink to="home" smooth duration={SCROLL_DURATION_MS} className="cursor-pointer">
               <img src="/CHCI-LOGO.png" alt="CHCI Logo" className="w-19 mt-2" />
             </ScrollLink>
           ) : (
@@ -122,7 +118,7 @@ export function StickyNavbar() {
                     <>
                       {item.name}
                       <ChevronDown className="ml-1 h-4 w-4" />
-                    </>
+                    </>,
                   )}
                   <div className="invisible absolute right-0 top-full z-50 mt-2 w-44 rounded-xl border border-border bg-white p-2 opacity-0 shadow-lg transition-all duration-200 group-hover:visible group-hover:opacity-100">
                     {item.children.map((project) => (
@@ -144,7 +140,7 @@ export function StickyNavbar() {
                 {renderNavLink(
                   item,
                   "inline-flex h-9 items-center px-4 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground hover:underline hover:underline-offset-8 hover:decoration-2 hover:decoration-primary cursor-pointer",
-                  "text-foreground underline underline-offset-8 decoration-2 decoration-primary"
+                  "text-foreground underline underline-offset-8 decoration-2 decoration-primary",
                 )}
               </React.Fragment>
             );
@@ -155,11 +151,7 @@ export function StickyNavbar() {
         <Sheet open={isOpen} onOpenChange={setIsOpen}>
           <SheetTrigger asChild className="lg:hidden">
             <Button variant="ghost" size="icon" aria-label="Toggle menu">
-              {isOpen ? (
-                <X className="h-6 w-6" />
-              ) : (
-                <Menu className="h-6 w-6" />
-              )}
+              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </Button>
           </SheetTrigger>
           <SheetContent side="right" className="w-70 bg-white p-6">
@@ -170,7 +162,7 @@ export function StickyNavbar() {
                     item,
                     "block text-lg font-medium text-gray-700 hover:text-blue-600 hover:underline hover:underline-offset-4 hover:decoration-2 cursor-pointer",
                     "text-blue-600 underline underline-offset-4 decoration-2",
-                    true
+                    true,
                   )}
                   {item.children && (
                     <div className="mt-2 border-l border-border pl-3">

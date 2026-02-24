@@ -6,7 +6,7 @@ import { StickyNavbar } from "@/components/navbar";
 export function FamriaPage() {
   return (
     <section id="famria" className="relative">
-        <StickyNavbar />
+      <StickyNavbar />
       <div
         className="relative flex min-h-screen items-center justify-center bg-cover bg-center bg-no-repeat px-4 text-center"
         style={{ backgroundImage: "url('/famriabg.jpg')" }}
@@ -26,17 +26,17 @@ export function FamriaPage() {
       </div>
 
       <div className="container min-h-screen">
-          <div>
-            <FamriaAbout />
-          </div>
+        <div>
+          <FamriaAbout />
+        </div>
 
-          <div>
-            <FamriaObjectives />
-          </div>
+        <div>
+          <FamriaObjectives />
+        </div>
 
-          <div >
-            <FamriaFramework />
-          </div>
+        <div>
+          <FamriaFramework />
+        </div>
       </div>
     </section>
   );

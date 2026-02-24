@@ -33,8 +33,7 @@ export default function ContactSection() {
 
   const validate = () => {
     const newErrors = {};
-    if (!formData.fullName.trim())
-      newErrors.fullName = "Full name is required.";
+    if (!formData.fullName.trim()) newErrors.fullName = "Full name is required.";
     if (!formData.email.trim()) {
       newErrors.email = "Email is required.";
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
@@ -84,8 +83,8 @@ export default function ContactSection() {
               Get in Touch
             </h2>
             <p className="mx-auto mt-2 max-w-xl text-muted-foreground leading-relaxed">
-              Have questions about our research, services, or membership?
-              We&apos;d love to hear from you.
+              Have questions about our research, services, or membership? We&apos;d love to hear
+              from you.
             </p>
           </div>
         </div>
@@ -119,13 +118,10 @@ export default function ContactSection() {
                 <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-primary-foreground/10">
                   <Mail className="h-5 w-5" />
                 </div>
-                <h4 className="font-heading text-lg font-bold">
-                  Let&apos;s Collaborate
-                </h4>
+                <h4 className="font-heading text-lg font-bold">Let&apos;s Collaborate</h4>
                 <p className="mt-2 text-sm leading-relaxed text-primary-foreground/80">
-                  Whether you&apos;re an academic institution, a government
-                  agency, or a private organization, we welcome partnerships
-                  that drive innovation and community impact.
+                  Whether you&apos;re an academic institution, a government agency, or a private
+                  organization, we welcome partnerships that drive innovation and community impact.
                 </p>
               </div>
             </div>
@@ -167,9 +163,7 @@ export default function ContactSection() {
                       placeholder="John Doe"
                     />
                     {errors.fullName && (
-                      <p className="mt-1 text-xs text-destructive">
-                        {errors.fullName}
-                      </p>
+                      <p className="mt-1 text-xs text-destructive">{errors.fullName}</p>
                     )}
                   </div>
 
@@ -195,9 +189,7 @@ export default function ContactSection() {
                       placeholder="john@example.com"
                     />
                     {errors.email && (
-                      <p className="mt-1 text-xs text-destructive">
-                        {errors.email}
-                      </p>
+                      <p className="mt-1 text-xs text-destructive">{errors.email}</p>
                     )}
                   </div>
                 </div>
@@ -224,9 +216,7 @@ export default function ContactSection() {
                     placeholder="Inquiry about services"
                   />
                   {errors.subject && (
-                    <p className="mt-1 text-xs text-destructive">
-                      {errors.subject}
-                    </p>
+                    <p className="mt-1 text-xs text-destructive">{errors.subject}</p>
                   )}
                 </div>
 
@@ -252,9 +242,7 @@ export default function ContactSection() {
                     placeholder="Tell us how we can help..."
                   />
                   {errors.message && (
-                    <p className="mt-1 text-xs text-destructive">
-                      {errors.message}
-                    </p>
+                    <p className="mt-1 text-xs text-destructive">{errors.message}</p>
                   )}
                 </div>
 
@@ -267,8 +255,7 @@ export default function ContactSection() {
                 </button>
                 {isSubmitted && (
                   <p className="text-sm text-green-600">
-                    Message sent successfully. We will get back to you as soon
-                    as possible.
+                    Message sent successfully. We will get back to you as soon as possible.
                   </p>
                 )}
               </div>

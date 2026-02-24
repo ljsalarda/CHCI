@@ -29,8 +29,8 @@ const infoItems = [
     content: (
       <div className="flex flex-col items-center justify-center mt-4 gap-4">
         <h3 className="text-center text-m text-foreground max-w-2xl">
-          2nd Flr. Mechatronics Building, Caraga State University, Ampayon,
-          Butuan City, Philippines, 8600
+          2nd Flr. Mechatronics Building, Caraga State University, Ampayon, Butuan City,
+          Philippines, 8600
         </h3>
         <div className="rounded-xl overflow-hidden border border-border w-full max-w-xl h-64">
           <iframe
@@ -66,8 +66,7 @@ const infoItems = [
     id: "president",
     icon: Building2,
     title: "Office of the President",
-    content:
-      "op@carsu.edu.ph 09177078769 | 09177078713 | 09177078764 | loc. 201",
+    content: "op@carsu.edu.ph 09177078769 | 09177078713 | 09177078764 | loc. 201",
   },
   {
     id: "follow",
@@ -109,11 +108,7 @@ export function InfoSection() {
         <div className="mx-auto max-w-3xl">
           <Accordion type="single" collapsible className="w-full">
             {infoItems.map((item) => (
-              <AccordionItem
-                key={item.id}
-                value={item.id}
-                className="border-border"
-              >
+              <AccordionItem key={item.id} value={item.id} className="border-border">
                 <AccordionTrigger className="hover:text-primary hover:no-underline">
                   <div className="flex items-center gap-3">
                     <div className="flex h-8 w-8 items-center justify-center rounded-md bg-primary/10">
@@ -126,11 +121,7 @@ export function InfoSection() {
                   {item.content && <div>{item.content}</div>}
                   {item.image && (
                     <div className="mt-4 flex justify-center">
-                      <img
-                        src={item.image}
-                        alt={item.title}
-                        className="w-60 max-w-md rounded-lg"
-                      />
+                      <img src={item.image} alt={item.title} className="w-60 max-w-md rounded-lg" />
                     </div>
                   )}
                   {item.images && (

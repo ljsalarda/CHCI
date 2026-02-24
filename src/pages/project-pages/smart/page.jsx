@@ -9,7 +9,10 @@ export function SmartPage() {
     <section id="smart" className="relative bg-linear-to-b  from-white via-blue-50/40 to-white">
       <StickyNavbar />
 
-      <div className="relative flex min-h-screen items-center justify-center bg-cover bg-center bg-no-repeat px-4 text-center" style={{ backgroundImage: "url('/CCIS.jpg')" }}>
+      <div
+        className="relative flex min-h-screen items-center justify-center bg-cover bg-center bg-no-repeat px-4 text-center"
+        style={{ backgroundImage: "url('/CCIS.jpg')" }}
+      >
         <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_20%_20%,rgba(58,124,195,0.2),transparent_40%),radial-gradient(circle_at_80%_80%,rgba(10,61,145,0.2),transparent_45%)]" />
         <div className="max-w-4xl ">
           <p className="hero-subtitle mb-5 text-sm font-semibold uppercase text-white/90">

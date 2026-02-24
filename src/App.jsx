@@ -19,7 +19,6 @@ import MarvelPage from "./pages/project-pages/marvel/page";
 import GeoagrPage from "./pages/project-pages/geoagr/page";
 import SmartPage from "./pages/project-pages/smart/page";
 
-
 function App() {
   const pathname = typeof window !== "undefined" ? window.location.pathname : "/";
 

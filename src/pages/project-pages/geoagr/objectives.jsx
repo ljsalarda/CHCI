@@ -1,11 +1,4 @@
-import {
-  Globe,
-  Share2,
-  MapPinned,
-  Network,
-  FileBarChart,
-  Layers,
-} from "lucide-react"
+import { Globe, Share2, MapPinned, Network, FileBarChart, Layers } from "lucide-react";
 
 const objectives = [
   {
@@ -24,7 +17,7 @@ const objectives = [
     icon: Network,
     text: "Address the issues on FMR location, interconnectivity, elimination of duplication, and build an FMR information system among implementing agencies.",
   },
-]
+];
 
 const services = [
   {
@@ -38,7 +31,7 @@ const services = [
     description:
       "Visualization of roads and connectivity with automated FMR prioritization based on set criteria.",
   },
-]
+];
 
 export function GeoagriObjectives() {
   return (
@@ -56,19 +49,17 @@ export function GeoagriObjectives() {
           <p className="text-sm font-semibold uppercase tracking-[0.25em] text-primary">
             GEOAGRI Objectives
           </p>
-          <h2 className="text-3xl font-bold md:text-4xl">
-            Objectives & Services
-          </h2>
+          <h2 className="text-3xl font-bold md:text-4xl">Objectives & Services</h2>
           <p className="text-base leading-relaxed text-muted-foreground md:text-lg">
-            A GIS-powered MIS that strengthens transparency, interconnectivity,
-            and data-driven planning for Farm-to-Market Road projects.
+            A GIS-powered MIS that strengthens transparency, interconnectivity, and data-driven
+            planning for Farm-to-Market Road projects.
           </p>
         </div>
 
         {/* Objectives list with connector line */}
         <div className="mx-auto grid max-w-6xl justify-items-center gap-x-14 gap-y-10 md:grid-cols-2">
           {objectives.map((obj) => {
-            const Icon = obj.icon
+            const Icon = obj.icon;
             return (
               <div key={obj.text} className="group relative flex w-full max-w-xl gap-4">
                 {/* Connector line */}
@@ -81,13 +72,11 @@ export function GeoagriObjectives() {
 
                 {/* Text */}
                 <div className="space-y-1">
-                  <p className="text-sm leading-relaxed text-muted-foreground">
-                    {obj.text}
-                  </p>
+                  <p className="text-sm leading-relaxed text-muted-foreground">{obj.text}</p>
                   <div className="h-1 w-12 rounded-full bg-linear-to-r from-primary/70 to-sky-400/70 opacity-0 transition-all duration-300 group-hover:w-20 group-hover:opacity-100" />
                 </div>
               </div>
-            )
+            );
           })}
         </div>
 
@@ -99,16 +88,15 @@ export function GeoagriObjectives() {
           <div className="text-center space-y-2 ">
             <h3 className="text-2xl font-bold text-foreground">Services</h3>
             <p className="mx-auto mb-10 max-w-4xl text-base leading-relaxed text-muted-foreground">
-              GEOAGRI is an enhanced IROAD that provides additional
-              functionalities including reports generation, specific user
-              dashboards, enhanced GUI for ease-of-use, and API functions for
-              supporting agencies.
+              GEOAGRI is an enhanced IROAD that provides additional functionalities including
+              reports generation, specific user dashboards, enhanced GUI for ease-of-use, and API
+              functions for supporting agencies.
             </p>
           </div>
 
           <div className="mx-auto grid max-w-6xl justify-items-center gap-x-14 gap-y-10 md:grid-cols-2">
             {services.map((svc) => {
-              const Icon = svc.icon
+              const Icon = svc.icon;
               return (
                 <div key={svc.title} className="group flex w-full max-w-xl items-start gap-4">
                   <div className="mt-1 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-linear-to-br from-primary/15 to-sky-400/15 ring-1 ring-border/60 transition-all duration-300 group-hover:ring-primary/30">
@@ -116,20 +104,18 @@ export function GeoagriObjectives() {
                   </div>
 
                   <div className="space-y-1">
-                    <h4 className="font-semibold text-foreground">
-                      {svc.title}
-                    </h4>
+                    <h4 className="font-semibold text-foreground">{svc.title}</h4>
                     <p className="text-sm leading-relaxed text-muted-foreground">
                       {svc.description}
                     </p>
                     <div className="h-1 w-12 rounded-full bg-linear-to-r from-primary/70 to-sky-400/70 opacity-0 transition-all duration-300 group-hover:w-20 group-hover:opacity-100" />
                   </div>
                 </div>
-              )
+              );
             })}
           </div>
         </div>
       </div>
     </section>
-  )
+  );
 }

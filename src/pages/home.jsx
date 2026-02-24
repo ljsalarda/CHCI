@@ -58,14 +58,10 @@ export function Home() {
                 href={stat.link || "#"}
                 onClick={(e) => !stat.link && e.preventDefault()}
                 className={`space-y-1 p-3 rounded-lg transition-colors ${
-                  stat.link
-                    ? "cursor-pointer hover:bg-primary/10"
-                    : "hover:bg-primary/5"
+                  stat.link ? "cursor-pointer hover:bg-primary/10" : "hover:bg-primary/5"
                 }`}
               >
-                <div className="text-3xl md:text-4xl font-bold text-primary">
-                  {stat.number}
-                </div>
+                <div className="text-3xl md:text-4xl font-bold text-primary">{stat.number}</div>
                 <div className="text-xs md:text-sm text-muted-foreground font-medium">
                   {stat.label}
                 </div>
@@ -78,9 +74,7 @@ export function Home() {
       {/* Scroll indicator */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
         <div className="flex flex-col items-center gap-2 md:hidden">
-          <span className="text-xs text-muted-foreground uppercase tracking-widest">
-            Swipe
-          </span>
+          <span className="text-xs text-muted-foreground uppercase tracking-widest">Swipe</span>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"
@@ -98,9 +92,7 @@ export function Home() {
           </svg>
         </div>
         <div className="hidden md:flex flex-col items-center gap-2">
-          <span className="text-xs text-muted-foreground uppercase tracking-widest">
-            Scroll
-          </span>
+          <span className="text-xs text-muted-foreground uppercase tracking-widest">Scroll</span>
           <div className="w-6 h-10 border-2 border-muted-foreground rounded-full flex items-start justify-center p-2">
             <div
               className="w-1 h-2 bg-muted-foreground rounded-full animate-bounce"

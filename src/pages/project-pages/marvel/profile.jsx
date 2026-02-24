@@ -1,4 +1,4 @@
-import { Target, ShieldCheck, Cog } from "lucide-react"
+import { Target, ShieldCheck, Cog } from "lucide-react";
 
 const details = [
   {
@@ -12,20 +12,18 @@ const details = [
   { label: "Start Date", value: "June 1, 2022" },
   { label: "End Date", value: "December 31, 2024" },
   { label: "Implementing Agency", value: "CHCI, CSU, Ampayon, Butuan City" },
-]
+];
 
 const specificObjectives = [
   {
     icon: Target,
     title: "AR/VR for Anatomy of a Mine",
-    description:
-      "Develop AR/VR technologies for understanding mine anatomy and structure.",
+    description: "Develop AR/VR technologies for understanding mine anatomy and structure.",
   },
   {
     icon: ShieldCheck,
     title: "Mine Safety Training and Drills",
-    description:
-      "Develop AR/VR for mine emergency rescue and evacuation training simulations.",
+    description: "Develop AR/VR for mine emergency rescue and evacuation training simulations.",
   },
   {
     icon: Cog,
@@ -33,7 +31,7 @@ const specificObjectives = [
     description:
       "Develop AR/VR for operating mining equipment like Jack Leg Rock Drilling Machine.",
   },
-]
+];
 
 export function MarvelProfile() {
   return (
@@ -53,7 +51,6 @@ export function MarvelProfile() {
           <div>
             <h3 className="text-xl font-semibold">Project Details</h3>
           </div>
-
         </div>
 
         {/* Info grid instead of plain table */}
@@ -66,9 +63,7 @@ export function MarvelProfile() {
               <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
                 {d.label}
               </p>
-              <p className="mt-2 text-sm leading-relaxed text-foreground">
-                {d.value}
-              </p>
+              <p className="mt-2 text-sm leading-relaxed text-foreground">{d.value}</p>
             </div>
           ))}
         </div>
@@ -77,15 +72,14 @@ export function MarvelProfile() {
         <div className="mt-12">
           <h3 className="text-xl font-bold">Statement of Objectives</h3>
           <p className="mt-2 max-w-4xl text-base leading-relaxed text-muted-foreground">
-            The general objective is to develop Augmented or Virtual Reality
-            technologies for Mining Processes that can aid in the simulation and
-            training of mining scenarios, including training for high-risk
-            situations.
+            The general objective is to develop Augmented or Virtual Reality technologies for Mining
+            Processes that can aid in the simulation and training of mining scenarios, including
+            training for high-risk situations.
           </p>
 
           <div className="mt-6 grid gap-5 md:grid-cols-3">
             {specificObjectives.map((obj) => {
-              const Icon = obj.icon
+              const Icon = obj.icon;
               return (
                 <div
                   key={obj.title}
@@ -103,20 +97,18 @@ export function MarvelProfile() {
                     <div className="h-px flex-1 bg-linear-to-r from-border to-transparent" />
                   </div>
 
-                  <h4 className="relative text-base font-semibold text-foreground">
-                    {obj.title}
-                  </h4>
+                  <h4 className="relative text-base font-semibold text-foreground">{obj.title}</h4>
                   <p className="relative mt-2 text-sm leading-relaxed text-muted-foreground">
                     {obj.description}
                   </p>
 
                   <div className="relative mt-5 h-1 w-14 rounded-full bg-linear-to-r from-primary to-sky-400 transition-all duration-300 group-hover:w-24" />
                 </div>
-              )
+              );
             })}
           </div>
         </div>
       </div>
     </section>
-  )
+  );
 }

@@ -46,11 +46,7 @@ const serviceCards = [
     icon: Search,
     title: "Research-as-a-Service (RaaS)",
     accent: "from-secondary to-secondary/80",
-    bullets: [
-      "Custom Solution Development",
-      "User Testing & Analysis",
-      "Impact Assessment",
-    ],
+    bullets: ["Custom Solution Development", "User Testing & Analysis", "Impact Assessment"],
   },
   {
     icon: GraduationCap,
@@ -142,11 +138,10 @@ export default function ServicesSection() {
               Services and Extensions Portfolio
             </h2>
             <p className="mx-auto mt-2 max-w-3xl leading-relaxed text-muted-foreground">
-              To sustain its operations and fulfill its mandate as a social
-              catalyst, the Center offers a portfolio of specialized services to
-              industry, government, and the academe. These services are designed
-              to translate the Center&apos;s technical expertise into tangible
-              value for stakeholders.
+              To sustain its operations and fulfill its mandate as a social catalyst, the Center
+              offers a portfolio of specialized services to industry, government, and the academe.
+              These services are designed to translate the Center&apos;s technical expertise into
+              tangible value for stakeholders.
             </p>
           </div>
         </div>
@@ -174,9 +169,7 @@ export default function ServicesSection() {
                     <div className="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-secondary/10 text-secondary transition-colors group-hover:bg-secondary group-hover:text-secondary-foreground">
                       <row.icon className="h-5 w-5" />
                     </div>
-                    <p className="text-sm font-bold text-foreground">
-                      {row.type}
-                    </p>
+                    <p className="text-sm font-bold text-foreground">{row.type}</p>
                     <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
                       {row.items}
                     </p>
@@ -199,9 +192,7 @@ export default function ServicesSection() {
                   <div className="mb-4 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10 transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
                     <card.icon className="h-7 w-7 text-primary group-hover:text-primary-foreground" />
                   </div>
-                  <h4 className="font-heading text-lg font-bold text-foreground">
-                    {card.title}
-                  </h4>
+                  <h4 className="font-heading text-lg font-bold text-foreground">{card.title}</h4>
                   <ul className="mt-4 flex-1 space-y-3">
                     {card.bullets.map((bullet) => (
                       <li
@@ -227,8 +218,8 @@ export default function ServicesSection() {
                 Process Flow for Availing the Services of CHCI
               </h3>
               <p className="mx-auto mb-0 max-w-xl text-center text-sm leading-relaxed text-muted-foreground">
-                Follow this step-by-step process to engage with our center and
-                access the services you need.
+                Follow this step-by-step process to engage with our center and access the services
+                you need.
               </p>
             </div>
 
@@ -254,9 +245,7 @@ export default function ServicesSection() {
 
                       {row.activityType === "single" && (
                         <div className="rounded-xl border border-border bg-muted/20 px-4 py-3 text-center">
-                          <p className="text-sm font-semibold text-foreground">
-                            {row.activity}
-                          </p>
+                          <p className="text-sm font-semibold text-foreground">{row.activity}</p>
                         </div>
                       )}
 
@@ -354,9 +343,7 @@ export default function ServicesSection() {
 
                         {row.activityType === "single" && (
                           <div className="rounded-xl border-2 border-foreground/70 bg-card px-8 py-3 text-center shadow-sm">
-                            <p className="text-sm font-semibold text-foreground">
-                              {row.activity}
-                            </p>
+                            <p className="text-sm font-semibold text-foreground">{row.activity}</p>
                           </div>
                         )}
 

@@ -17,7 +17,7 @@ const memberCategories = [
     letter: "A",
     title: "Primary Affiliate Members (Core Researchers)",
     requirements: [
-        "Full-time faculty members of the College of Computing and Information Sciences (CCIS) whose primary research interest aligns with one of the 5 Pillars.",
+      "Full-time faculty members of the College of Computing and Information Sciences (CCIS) whose primary research interest aligns with one of the 5 Pillars.",
       "Must have at least one (1) ongoing research project registered under the Center or a published paper in the last academic year related to HCI.",
       "Eligible to be appointed as Unit Heads and vote on internal policy matters.",
     ],
@@ -28,7 +28,7 @@ const memberCategories = [
     letter: "B",
     title: "Secondary Affiliate Members (Collaborators)",
     requirements: [
-        "Faculty members from other colleges (e.g., Engineering, Arts & Sciences) or external industry partners collaborating on specific projects.",
+      "Faculty members from other colleges (e.g., Engineering, Arts & Sciences) or external industry partners collaborating on specific projects.",
       "Invitation by a Unit Head for the duration of a specific project or grant.",
       "Specific access to Center resources relevant to their project; non-voting status.",
     ],
@@ -39,7 +39,7 @@ const memberCategories = [
     letter: "C",
     title: "Student Researchers (Junior Fellows)",
     requirements: [
-        "Undergraduate or Graduate students currently conducting their thesis/capstone projects or any research-related activities for the Center under the supervision of a Primary Member.",
+      "Undergraduate or Graduate students currently conducting their thesis/capstone projects or any research-related activities for the Center under the supervision of a Primary Member.",
       "Acceptance of their research proposal by the Center's Research Committee.",
       "Access to laboratory facilities during designated hours.",
     ],
@@ -59,7 +59,7 @@ const duties = [
   "Produce at least one (1) research output (publication, prototype, copyright or IP application) annually.",
   "Mentor or actively supervise Student Researchers within the Center.",
   "Participate in the activities and Annual Strategic Planning and the HCI Summit.",
-  "Acknowledge the \"Center for Human-Computer Interaction (CHCI)\" as their affiliation in all relevant publications and presentations.",
+  'Acknowledge the "Center for Human-Computer Interaction (CHCI)" as their affiliation in all relevant publications and presentations.',
 ];
 
 const termination = [
@@ -100,7 +100,9 @@ export default function AffiliationSection() {
               Membership and Participation
             </h2>
             <p className="mx-auto mt-3 max-w-3xl leading-relaxed text-muted-foreground">
-              To maintain a culture of high performance, membership in the Center is privilege-based and output-oriented. It is open to individuals who demonstrate active engagement in the Center's research agenda.
+              To maintain a culture of high performance, membership in the Center is privilege-based
+              and output-oriented. It is open to individuals who demonstrate active engagement in
+              the Center's research agenda.
             </p>
           </div>
         </div>
@@ -114,7 +116,9 @@ export default function AffiliationSection() {
 
                 <div className="flex flex-1 flex-col p-6">
                   <div className="mb-2 flex items-center gap-4">
-                    <div className={`flex h-14 w-14 items-center justify-center rounded-xl ${cat.color} text-primary-foreground shadow-lg transition-transform group-hover:scale-110`}>
+                    <div
+                      className={`flex h-14 w-14 items-center justify-center rounded-xl ${cat.color} text-primary-foreground shadow-lg transition-transform group-hover:scale-110`}
+                    >
                       <cat.icon className="h-7 w-7" />
                     </div>
                     <div className="flex-1">
@@ -126,9 +130,7 @@ export default function AffiliationSection() {
                       </h3>
                     </div>
                   </div>
-                  <p className="text-sm leading-relaxed text-muted-foreground">
-                    {cat.description}
-                  </p>
+                  <p className="text-sm leading-relaxed text-muted-foreground">{cat.description}</p>
                   <ul className="mt-3 list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
                     {cat.requirements.map((item) => (
                       <li key={item}>{item}</li>
@@ -180,7 +182,9 @@ export default function AffiliationSection() {
 
                       <div className="flex items-start gap-2">
                         <span className="text-sm font-bold text-foreground">{i + 1}.</span>
-                        <span className="text-sm leading-relaxed text-muted-foreground">{item}</span>
+                        <span className="text-sm leading-relaxed text-muted-foreground">
+                          {item}
+                        </span>
                       </div>
                     </li>
                   );

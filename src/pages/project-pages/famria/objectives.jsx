@@ -7,7 +7,7 @@ import {
   FileText,
   MessageSquare,
   Scale,
-} from "lucide-react"
+} from "lucide-react";
 
 const objectives = [
   {
@@ -58,7 +58,7 @@ const objectives = [
     description:
       "Offer technical and legal insights to inform the development of reformed policies, structural changes, and new projects related to FMR interventions.",
   },
-]
+];
 
 export function FamriaObjectives() {
   return (
@@ -68,9 +68,7 @@ export function FamriaObjectives() {
         <p className="text-sm font-semibold uppercase tracking-[0.25em] text-primary">
           FAMRIA Objectives
         </p>
-        <h2 className="text-2xl font-bold md:text-3xl">
-          Objectives
-        </h2>
+        <h2 className="text-2xl font-bold md:text-3xl">Objectives</h2>
         {/* <p className="mx-auto max-w-3xl text-muted-foreground">
           These objectives guide the evaluation of Farm-to-Market Road (FMR)
           projects, focusing on infrastructure performance, socio-economic
@@ -81,7 +79,7 @@ export function FamriaObjectives() {
       {/* Objectives Grid */}
       <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
         {objectives.map((obj, index) => {
-          const Icon = obj.icon
+          const Icon = obj.icon;
 
           return (
             <div
@@ -104,9 +102,7 @@ export function FamriaObjectives() {
               </div>
 
               {/* Title */}
-              <h3 className="mb-2 pr-10 text-lg font-semibold text-foreground">
-                {obj.title}
-              </h3>
+              <h3 className="mb-2 pr-10 text-lg font-semibold text-foreground">{obj.title}</h3>
 
               {/* Description */}
               <p className="text-sm leading-relaxed text-muted-foreground md:text-[0.95rem]">
@@ -116,9 +112,9 @@ export function FamriaObjectives() {
               {/* Accent Line */}
               <div className="mt-5 h-1 w-16 rounded-full bg-linear-to-r from-primary to-sky-400 transition-all duration-300 group-hover:w-24" />
             </div>
-          )
+          );
         })}
       </div>
     </section>
-  )
+  );
 }

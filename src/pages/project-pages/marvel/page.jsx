@@ -19,10 +19,10 @@ export function MarvelPage() {
             Mining Beyond Reality
           </p>
           <h2 className="hero-title text-3xl mb-15 font-bold text-white md:text-5xl">
-            MARVEL TECHNOLOGIES 
+            MARVEL TECHNOLOGIES
           </h2>
-          
-        <a
+
+          <a
             href="https://drive.google.com/drive/folders/1jp9FA4NitzAyFPpBm_VgIm_tw_FAdedq"
             target="_blank"
             rel="noopener noreferrer"
