@@ -21,6 +21,7 @@ import SmartPage from "./pages/project-pages/smart/page";
 
 function App() {
   const pathname = typeof window !== "undefined" ? window.location.pathname : "/";
+  const normalizedPath = pathname !== "/" ? pathname.replace(/\/+$/, "") : pathname;
 
   useEffect(() => {
     if (typeof window === "undefined" || window.location.pathname !== "/") {
@@ -45,16 +46,16 @@ function App() {
     return () => window.cancelAnimationFrame(raf);
   }, [pathname]);
 
-  if (pathname === "/famria") {
+  if (normalizedPath === "/famria") {
     return <FamriaPage />;
   }
-  if (pathname === "/marvel") {
+  if (normalizedPath === "/marvel") {
     return <MarvelPage />;
   }
-  if (pathname === "/geoagr") {
+  if (normalizedPath === "/geoagr") {
     return <GeoagrPage />;
   }
-  if (pathname === "/smart") {
+  if (normalizedPath === "/smart") {
     return <SmartPage />;
   }
 

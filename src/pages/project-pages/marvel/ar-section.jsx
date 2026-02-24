@@ -1,4 +1,6 @@
 export function MarvelAR() {
+  const driveVideoId = "1qRv9vodADQwbYpc_Gk-IB_Y2ju6BS5ny";
+
   return (
     <section className="  relative mx-auto max-w-7xl px-4 py-28 sm:px-6 lg:px-8">
       {/* Header */}
@@ -13,11 +15,11 @@ export function MarvelAR() {
           <div className="overflow-hidden rounded-xl border border-border">
             <div className="aspect-video bg-secondary">
               <iframe
-                src="https://www.youtube.com/embed/0XlkjM-Bwu8"
-                title="MARVEL AR Demo Video"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
                 className="h-full w-full"
+                src={`https://drive.google.com/file/d/${driveVideoId}/preview`}
+                title="MARVEL AR Demo Video"
+                allow="autoplay; encrypted-media"
+                allowFullScreen
               />
             </div>
           </div>
