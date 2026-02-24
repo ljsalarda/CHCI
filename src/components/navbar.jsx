@@ -8,7 +8,7 @@ import { Link as ScrollLink } from "react-scroll";
 
 const projectItems = [
   { name: "MARVEL", href: "/marvel" },
-  { name: "GEOAGR", href: "/geoagr" },
+  { name: "GEOAGRI", href: "/geoagr" },
   { name: "SMART", href: "/smart" },
   { name: "FAMRIA", href: "/famria" },
 ];

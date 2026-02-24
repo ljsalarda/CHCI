@@ -12,13 +12,13 @@ export function SmartPage() {
       <div className="relative flex min-h-screen items-center justify-center bg-cover bg-center bg-no-repeat px-4 text-center" style={{ backgroundImage: "url('/CCIS.jpg')" }}>
         <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_20%_20%,rgba(58,124,195,0.2),transparent_40%),radial-gradient(circle_at_80%_80%,rgba(10,61,145,0.2),transparent_45%)]" />
         <div className="max-w-4xl ">
-          <p className="mb-2 text-sm font-semibold uppercase tracking-widest text-white/90">
+          <p className="hero-subtitle mb-5 text-sm font-semibold uppercase text-white/90">
             WE INTERACT IN THE MODERN WORLD
           </p>
-          <h1 className="text-3xl text-white font-bold md:text-5xl">
+          <h1 className="hero-title text-3xl text-white font-bold md:text-5xl">
             Smart - Records Management System for DSWD
           </h1>
-          <p className="mx-auto mt-5 max-w-3xl text-base leading-relaxed text-white/85 md:text-lg">
+          <p className="mx-auto mt-10 max-w-3xl text-base leading-relaxed text-white/85 md:text-sm">
             2nd Flr. Hiraya Building, Caraga State University, Ampayon, Butuan City, Philippines
           </p>
         </div>

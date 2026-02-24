@@ -12,13 +12,13 @@ export function GeoagrPage() {
         style={{ backgroundImage: "url('/geoagribg.jpg')" }}>
         <div className="absolute inset-0 bg-black/45" />
         <div className="relative z-10 max-w-6xl">
-          <p className="mb-2 text-sm font-semibold uppercase tracking-widest text-white/90">
+          <p className="hero-subtitle mb-5 text-sm font-semibold uppercase text-white/90">
             WE INTERACT IN THE MODERN WORLD
           </p>
-          <h2 className="text-3xl font-bold text-white md:text-5xl">
+          <h2 className="hero-title font-bold text-white md:text-4xl">
             Geographic Information System for Agricultural and Fisheries Machinery and Infrastructure (GEOAGRI)
           </h2>
-          <p className="mx-auto mt-4 text-base leading-relaxed text-white/85 md:text-lg">
+          <p className="mx-auto mt-10 text-base leading-relaxed text-white/85 md:text-SM">
             2nd Flr. Hiraya Building, Caraga State University, Ampayon, Butuan City, Philippines
           </p>
         </div>

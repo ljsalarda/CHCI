@@ -15,11 +15,11 @@ export function MarvelPage() {
       >
         <div className="absolute inset-0 bg-black/45" />
         <div className="relative z-10 max-w-3xl">
-          <p className="mb-5 text-sm font-semibold uppercase tracking-widest text-white/90">
+          <p className="hero-subtitle mb-5 text-sm font-semibold uppercase text-white/90">
             Mining Beyond Reality
           </p>
-          <h2 className="text-3xl mb-15 font-bold text-white md:text-5xl">
-            MARVEL Technologies 
+          <h2 className="hero-title text-3xl mb-15 font-bold text-white md:text-5xl">
+            MARVEL TECHNOLOGIES 
           </h2>
           
         <a

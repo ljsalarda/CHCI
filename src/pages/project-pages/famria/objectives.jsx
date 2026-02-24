@@ -62,7 +62,7 @@ const objectives = [
 
 export function FamriaObjectives() {
   return (
-    <section className=" mx-auto py-16 md:py-20 max-w-7xl space-y-8">
+    <section className=" mx-auto py-16 md:py-20 max-w-6xl space-y-8">
       {/* Section Header */}
       <div className="text-center space-y-3">
         <p className="text-sm font-semibold uppercase tracking-[0.25em] text-primary">

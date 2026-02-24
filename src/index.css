@@ -6,6 +6,15 @@ body {
   font-family: "Inter", sans-serif;
 }
 
+.hero-title {
+  font-family: "Playfair Display", serif;
+}
+
+.hero-subtitle {
+  font-family: "Montserrat", sans-serif;
+  letter-spacing: 4px;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #000000;
