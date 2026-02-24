@@ -10,7 +10,6 @@ import {
   AlertTriangle,
   CheckCircle2,
 } from "lucide-react";
-import AnimateOnScroll from "@/components/ui/animate-on-scroll";
 
 const memberCategories = [
   {
@@ -18,7 +17,7 @@ const memberCategories = [
     letter: "A",
     title: "Primary Affiliate Members (Core Researchers)",
     requirements: [
-        "Full-time faculty members of the College of Computing and Information Sciences (CCIS) whose primary research interest aligns with one of the 5 Pillars.",
+      "Full-time faculty members of the College of Computing and Information Sciences (CCIS) whose primary research interest aligns with one of the 5 Pillars.",
       "Must have at least one (1) ongoing research project registered under the Center or a published paper in the last academic year related to HCI.",
       "Eligible to be appointed as Unit Heads and vote on internal policy matters.",
     ],
@@ -29,7 +28,7 @@ const memberCategories = [
     letter: "B",
     title: "Secondary Affiliate Members (Collaborators)",
     requirements: [
-        "Faculty members from other colleges (e.g., Engineering, Arts & Sciences) or external industry partners collaborating on specific projects.",
+      "Faculty members from other colleges (e.g., Engineering, Arts & Sciences) or external industry partners collaborating on specific projects.",
       "Invitation by a Unit Head for the duration of a specific project or grant.",
       "Specific access to Center resources relevant to their project; non-voting status.",
     ],
@@ -40,7 +39,7 @@ const memberCategories = [
     letter: "C",
     title: "Student Researchers (Junior Fellows)",
     requirements: [
-        "Undergraduate or Graduate students currently conducting their thesis/capstone projects or any research-related activities for the Center under the supervision of a Primary Member.",
+      "Undergraduate or Graduate students currently conducting their thesis/capstone projects or any research-related activities for the Center under the supervision of a Primary Member.",
       "Acceptance of their research proposal by the Center's Research Committee.",
       "Access to laboratory facilities during designated hours.",
     ],
@@ -60,7 +59,7 @@ const duties = [
   "Produce at least one (1) research output (publication, prototype, copyright or IP application) annually.",
   "Mentor or actively supervise Student Researchers within the Center.",
   "Participate in the activities and Annual Strategic Planning and the HCI Summit.",
-  "Acknowledge the \"Center for Human-Computer Interaction (CHCI)\" as their affiliation in all relevant publications and presentations.",
+  'Acknowledge the "Center for Human-Computer Interaction (CHCI)" as their affiliation in all relevant publications and presentations.',
 ];
 
 const termination = [
@@ -91,7 +90,7 @@ export default function AffiliationSection() {
       </div>
 
       <div className="relative mx-auto max-w-7xl px-4 lg:px-8">
-        <AnimateOnScroll>
+        <div>
           <div className="text-center">
             <span className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-primary">
               <Users className="h-3.5 w-3.5" />
@@ -101,21 +100,25 @@ export default function AffiliationSection() {
               Membership and Participation
             </h2>
             <p className="mx-auto mt-3 max-w-3xl leading-relaxed text-muted-foreground">
-              To maintain a culture of high performance, membership in the Center is privilege-based and output-oriented. It is open to individuals who demonstrate active engagement in the Center's research agenda.
+              To maintain a culture of high performance, membership in the Center is privilege-based
+              and output-oriented. It is open to individuals who demonstrate active engagement in
+              the Center's research agenda.
             </p>
           </div>
-        </AnimateOnScroll>
+        </div>
 
         <div className="mt-3 grid grid-cols-1 gap-6 md:grid-cols-3">
           {memberCategories.map((cat) => (
-            <AnimateOnScroll key={cat.letter} className="h-full">
+            <div key={cat.letter} className="h-full">
               <div className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-sm ring-1 ring-transparent transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:ring-primary/20">
                 <div className={`h-1.5 w-full ${cat.color}`} />
                 <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,hsl(var(--primary)/0.08),transparent_45%)] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
                 <div className="flex flex-1 flex-col p-6">
                   <div className="mb-2 flex items-center gap-4">
-                    <div className={`flex h-14 w-14 items-center justify-center rounded-xl ${cat.color} text-primary-foreground shadow-lg transition-transform group-hover:scale-110`}>
+                    <div
+                      className={`flex h-14 w-14 items-center justify-center rounded-xl ${cat.color} text-primary-foreground shadow-lg transition-transform group-hover:scale-110`}
+                    >
                       <cat.icon className="h-7 w-7" />
                     </div>
                     <div className="flex-1">
@@ -127,9 +130,7 @@ export default function AffiliationSection() {
                       </h3>
                     </div>
                   </div>
-                  <p className="text-sm leading-relaxed text-muted-foreground">
-                    {cat.description}
-                  </p>
+                  <p className="text-sm leading-relaxed text-muted-foreground">{cat.description}</p>
                   <ul className="mt-3 list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
                     {cat.requirements.map((item) => (
                       <li key={item}>{item}</li>
@@ -137,11 +138,11 @@ export default function AffiliationSection() {
                   </ul>
                 </div>
               </div>
-            </AnimateOnScroll>
+            </div>
           ))}
         </div>
 
-        <AnimateOnScroll className="mt-5">
+        <div className="mt-5">
           <div className="overflow-hidden rounded-2xl border border-border bg-card shadow-md">
             <div className="flex border-b border-border bg-muted/50">
               {tabs.map((tab) => (
@@ -181,7 +182,9 @@ export default function AffiliationSection() {
 
                       <div className="flex items-start gap-2">
                         <span className="text-sm font-bold text-foreground">{i + 1}.</span>
-                        <span className="text-sm leading-relaxed text-muted-foreground">{item}</span>
+                        <span className="text-sm leading-relaxed text-muted-foreground">
+                          {item}
+                        </span>
                       </div>
                     </li>
                   );
@@ -189,7 +192,7 @@ export default function AffiliationSection() {
               </ol>
             </div>
           </div>
-        </AnimateOnScroll>
+        </div>
       </div>
     </section>
   );

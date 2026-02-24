@@ -3,47 +3,148 @@
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu, X } from "lucide-react";
+import { ChevronDown, Menu, X } from "lucide-react";
+import { Link as ScrollLink } from "react-scroll";
+
+const projectItems = [
+  { name: "MARVEL", href: "/marvel" },
+  { name: "GEOAGRI", href: "/geoagr" },
+  { name: "SMART", href: "/smart" },
+  { name: "FAMRIA", href: "/famria" },
+];
 
 const navItems = [
-  { name: "Home", href: "#home" },
-  { name: "About Us", href: "#about" },
-  { name: "Research Areas", href: "#research" },
-  { name: "Services", href: "#services" },
-  { name: "Affiliation", href: "#affiliation" },
-  { name: "Projects", href: "#projects" },
+  { name: "Home", sectionId: "home" },
+  { name: "About Us", sectionId: "about" },
+  { name: "Research Areas", sectionId: "research" },
+  { name: "Services", sectionId: "services" },
+  { name: "Affiliation", sectionId: "affiliation" },
+  { name: "Projects", sectionId: "projects", children: projectItems },
   { name: "Publications", href: "" },
-  { name: "Contact Us", href: "#contact" },
+  { name: "Contact Us", sectionId: "contact" },
 ];
+
+const NAVBAR_OFFSET = -64;
+const SCROLL_DURATION_MS = 500;
 
 export function StickyNavbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const pathname = typeof window !== "undefined" ? window.location.pathname : "/";
+  const isHomePage = pathname === "/";
+
+  const getNavHref = (item) => {
+    if (item.sectionId) {
+      return item.sectionId === "home" ? "/" : `/?section=${item.sectionId}`;
+    }
+    return item.href || undefined;
+  };
+
+  const handleCloseMobile = (closeMobile) => {
+    if (!closeMobile) return;
+    setIsOpen(false);
+  };
+
+  const renderNavLink = (
+    item,
+    className,
+    activeClass,
+    closeMobile = false,
+    content = item.name,
+  ) => {
+    if (item.sectionId && isHomePage) {
+      return (
+        <ScrollLink
+          to={item.sectionId}
+          spy
+          smooth
+          duration={SCROLL_DURATION_MS}
+          offset={item.sectionId === "home" ? 0 : NAVBAR_OFFSET}
+          activeClass={activeClass}
+          className={className}
+          onClick={() => handleCloseMobile(closeMobile)}
+        >
+          {content}
+        </ScrollLink>
+      );
+    }
+
+    return (
+      <a
+        href={getNavHref(item)}
+        className={className}
+        onClick={() => handleCloseMobile(closeMobile)}
+      >
+        {content}
+      </a>
+    );
+  };
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60 ">
       <div className="container mx-auto flex h-16 items-center justify-between px-4 sm:px-6 lg:px-10">
         {/* Logos */}
         <div className="flex-1 flex justify-start lg:justify-start lg:ml-19 md:justify-center">
-          <a href="#">
-            <img src="/CSU-LOGO.png" alt="CCIS Logo" className="w-8 mt-1 " />
-          </a>
-          <a href="#">
-            <img src="/CHCI-LOGO.png" alt="CHCI Logo" className="w-19 mt-2" />
-          </a>
+          {isHomePage ? (
+            <ScrollLink to="home" smooth duration={SCROLL_DURATION_MS} className="cursor-pointer">
+              <img src="/CSU-LOGO.png" alt="CCIS Logo" className="w-8 mt-1 " />
+            </ScrollLink>
+          ) : (
+            <a href="/">
+              <img src="/CSU-LOGO.png" alt="CCIS Logo" className="w-8 mt-1 " />
+            </a>
+          )}
+          {isHomePage ? (
+            <ScrollLink to="home" smooth duration={SCROLL_DURATION_MS} className="cursor-pointer">
+              <img src="/CHCI-LOGO.png" alt="CHCI Logo" className="w-19 mt-2" />
+            </ScrollLink>
+          ) : (
+            <a href="/">
+              <img src="/CHCI-LOGO.png" alt="CHCI Logo" className="w-19 mt-2" />
+            </a>
+          )}
         </div>
 
         {/* Desktop Menu */}
         <nav className="hidden items-center gap-1 md:flex lg:gap-4 mr-16">
-          {navItems.map((item) => (
-            <Button
-              key={item.name}
-              variant="ghost"
-              asChild
-              className="text-muted-foreground hover:text-foreground"
-            >
-              <a href={item.href}>{item.name}</a>
-            </Button>
-          ))}
+          {navItems.map((item) => {
+            if (item.children) {
+              return (
+                <div key={item.name} className="group relative">
+                  {renderNavLink(
+                    item,
+                    "inline-flex h-9 items-center px-4 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground hover:underline hover:underline-offset-8 hover:decoration-2 hover:decoration-primary cursor-pointer",
+                    "text-foreground underline underline-offset-8 decoration-2 decoration-primary",
+                    false,
+                    <>
+                      {item.name}
+                      <ChevronDown className="ml-1 h-4 w-4" />
+                    </>,
+                  )}
+                  <div className="invisible absolute right-0 top-full z-50 mt-2 w-44 rounded-xl border border-border bg-white p-2 opacity-0 shadow-lg transition-all duration-200 group-hover:visible group-hover:opacity-100">
+                    {item.children.map((project) => (
+                      <a
+                        key={project.name}
+                        href={project.href}
+                        className="block px-3 py-2 text-sm font-medium text-gray-700 transition-colors hover:text-primary hover:underline hover:underline-offset-4 hover:decoration-2 hover:decoration-primary"
+                      >
+                        {project.name}
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              );
+            }
+
+            return (
+              <React.Fragment key={item.name}>
+                {renderNavLink(
+                  item,
+                  "inline-flex h-9 items-center px-4 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground hover:underline hover:underline-offset-8 hover:decoration-2 hover:decoration-primary cursor-pointer",
+                  "text-foreground underline underline-offset-8 decoration-2 decoration-primary",
+                )}
+              </React.Fragment>
+            );
+          })}
         </nav>
 
         {/* Mobile Menu */}
@@ -56,14 +157,30 @@ export function StickyNavbar() {
           <SheetContent side="right" className="w-70 bg-white p-6">
             <div className="flex flex-col gap-4">
               {navItems.map((item) => (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  onClick={() => setIsOpen(false)}
-                  className="text-lg font-medium text-gray-700 hover:text-blue-600"
-                >
-                  {item.name}
-                </a>
+                <div key={item.name}>
+                  {renderNavLink(
+                    item,
+                    "block text-lg font-medium text-gray-700 hover:text-blue-600 hover:underline hover:underline-offset-4 hover:decoration-2 cursor-pointer",
+                    "text-blue-600 underline underline-offset-4 decoration-2",
+                    true,
+                  )}
+                  {item.children && (
+                    <div className="mt-2 border-l border-border pl-3">
+                      <div className="flex flex-col gap-2">
+                        {item.children.map((project) => (
+                          <a
+                            key={project.name}
+                            href={project.href}
+                            onClick={() => setIsOpen(false)}
+                            className="text-base font-medium text-gray-700 hover:text-blue-600 hover:underline hover:underline-offset-4 hover:decoration-2"
+                          >
+                            {project.name}
+                          </a>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
               ))}
             </div>
           </SheetContent>

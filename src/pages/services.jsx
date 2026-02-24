@@ -9,7 +9,6 @@ import {
   Award,
   Wrench,
 } from "lucide-react";
-import AnimateOnScroll from "@/components/ui/animate-on-scroll";
 
 const trainingRows = [
   {
@@ -47,11 +46,7 @@ const serviceCards = [
     icon: Search,
     title: "Research-as-a-Service (RaaS)",
     accent: "from-secondary to-secondary/80",
-    bullets: [
-      "Custom Solution Development",
-      "User Testing & Analysis",
-      "Impact Assessment",
-    ],
+    bullets: ["Custom Solution Development", "User Testing & Analysis", "Impact Assessment"],
   },
   {
     icon: GraduationCap,
@@ -116,25 +111,24 @@ const flowRows = [
 
 export default function ServicesSection() {
   return (
-    <section id="services" className="relative overflow-hidden py-16 md:py-16 bg-linear-to-b from-white via-blue-50/40 to-white">
+    <section
+      id="services"
+      className="relative overflow-hidden py-16 md:py-16 bg-linear-to-b from-white via-blue-50/40 to-white"
+    >
       {/* 🔵 Background Design Layer */}
-  <div className="absolute inset-0 -z-10 pointer-events-none">
+      <div className="absolute inset-0 -z-10 pointer-events-none">
+        {/* left accent */}
+        <div className="absolute top-20 -left-30 w-75 h-75 bg-[#3A7CC3]/20 rounded-full blur-3xl" />
 
-  
+        {/* right accent */}
+        <div className="absolute bottom-10 -right-30 w-65 h-65 bg-[#0A3D91]/20 rounded-full blur-3xl" />
 
-    {/* left accent */}
-    <div className="absolute top-20 -left-30 w-75 h-75 bg-[#3A7CC3]/20 rounded-full blur-3xl" />
-
-    {/* right accent */}
-    <div className="absolute bottom-10 -right-30 w-65 h-65 bg-[#0A3D91]/20 rounded-full blur-3xl" />
-
-    {/* subtle tech grid overlay */}
-    <div className="absolute inset-0 opacity-[0.15] bg-[linear-gradient(#0A3D91_1px,transparent_1px),linear-gradient(90deg,#0A3D91_1px,transparent_1px)] bg-size-[50px_50px]" />
-
-  </div>
+        {/* subtle tech grid overlay */}
+        <div className="absolute inset-0 opacity-[0.15] bg-[linear-gradient(#0A3D91_1px,transparent_1px),linear-gradient(90deg,#0A3D91_1px,transparent_1px)] bg-size-[50px_50px]" />
+      </div>
       <div className="relative mx-auto max-w-7xl px-4 lg:px-8">
         {/* Section Header */}
-        <AnimateOnScroll>
+        <div>
           <div className="text-center">
             <span className="inline-flex items-center gap-2 rounded-full border border-secondary/30 bg-secondary/10 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-secondary">
               <Briefcase className="h-3.5 w-3.5" />
@@ -144,17 +138,16 @@ export default function ServicesSection() {
               Services and Extensions Portfolio
             </h2>
             <p className="mx-auto mt-2 max-w-3xl leading-relaxed text-muted-foreground">
-              To sustain its operations and fulfill its mandate as a social
-              catalyst, the Center offers a portfolio of specialized services to
-              industry, government, and the academe. These services are designed to
-              translate the Center&apos;s technical expertise into tangible value
-              for stakeholders.
+              To sustain its operations and fulfill its mandate as a social catalyst, the Center
+              offers a portfolio of specialized services to industry, government, and the academe.
+              These services are designed to translate the Center&apos;s technical expertise into
+              tangible value for stakeholders.
             </p>
           </div>
-        </AnimateOnScroll>
+        </div>
 
         {/* Training & Certification */}
-        <AnimateOnScroll className="mt-10">
+        <div className="mt-10">
           <div className="rounded-3xl border border-border/70 bg-card p-6 shadow-lg md:p-8">
             <div className="mb-5 flex items-center gap-3">
               <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary text-primary-foreground shadow-sm">
@@ -185,12 +178,12 @@ export default function ServicesSection() {
               ))}
             </div>
           </div>
-        </AnimateOnScroll>
+        </div>
 
         {/* Service Feature Cards */}
         <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-3">
           {serviceCards.map((card) => (
-            <AnimateOnScroll key={card.title}>
+            <div key={card.title}>
               <div className="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-border/70 bg-card shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
                 {/* Colored top bar */}
                 <div className={`h-1.5 w-full bg-linear-to-r ${card.accent}`} />
@@ -199,9 +192,7 @@ export default function ServicesSection() {
                   <div className="mb-4 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10 transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
                     <card.icon className="h-7 w-7 text-primary group-hover:text-primary-foreground" />
                   </div>
-                  <h4 className="font-heading text-lg font-bold text-foreground">
-                    {card.title}
-                  </h4>
+                  <h4 className="font-heading text-lg font-bold text-foreground">{card.title}</h4>
                   <ul className="mt-4 flex-1 space-y-3">
                     {card.bullets.map((bullet) => (
                       <li
@@ -215,20 +206,20 @@ export default function ServicesSection() {
                   </ul>
                 </div>
               </div>
-            </AnimateOnScroll>
+            </div>
           ))}
         </div>
 
         {/* Process Flow for Availing Services */}
-        <AnimateOnScroll className="mt-20">
+        <div className="mt-20">
           <div className="overflow-hidden rounded-3xl border border-border/70 bg-card shadow-xl">
             <div className="px-6 pt-8 pb-4 md:px-10 md:pt-10">
               <h3 className="mb-2 text-center font-heading text-2xl font-bold text-foreground md:text-3xl">
                 Process Flow for Availing the Services of CHCI
               </h3>
               <p className="mx-auto mb-0 max-w-xl text-center text-sm leading-relaxed text-muted-foreground">
-                Follow this step-by-step process to engage with our center and
-                access the services you need.
+                Follow this step-by-step process to engage with our center and access the services
+                you need.
               </p>
             </div>
 
@@ -352,9 +343,7 @@ export default function ServicesSection() {
 
                         {row.activityType === "single" && (
                           <div className="rounded-xl border-2 border-foreground/70 bg-card px-8 py-3 text-center shadow-sm">
-                            <p className="text-sm font-semibold text-foreground">
-                              {row.activity}
-                            </p>
+                            <p className="text-sm font-semibold text-foreground">{row.activity}</p>
                           </div>
                         )}
 
@@ -433,7 +422,7 @@ export default function ServicesSection() {
               </div>
             </div>
           </div>
-        </AnimateOnScroll>
+        </div>
       </div>
     </section>
   );

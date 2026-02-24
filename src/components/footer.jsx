@@ -1,18 +1,24 @@
+"use client";
+
 import { Facebook, Linkedin, Youtube, Mail, Phone, MapPin } from "lucide-react";
 
 const quickLinks = [
-  { name: "Home", href: "#home" },
-  { name: "About Us", href: "#about" },
-  { name: "Research Areas", href: "#research" },
-  { name: "Services", href: "#services" },
-  { name: "Projects", href: "#projects" },
-  { name: "Affiliation", href: "#affiliation" },
-  { name: "Partners", href: "#partners" },
-  { name: "Contact Us", href: "#contact" },
+  { name: "Home", sectionId: "home" },
+  { name: "About Us", sectionId: "about" },
+  { name: "Research Areas", sectionId: "research" },
+  { name: "Services", sectionId: "services" },
+  { name: "Projects", sectionId: "projects" },
+  { name: "Affiliation", sectionId: "affiliation" },
+  { name: "Partners", sectionId: "partners" },
+  { name: "Contact Us", sectionId: "contact" },
 ];
 
 const socialLinks = [
-  { name: "Facebook", icon: Facebook, href: "https://www.facebook.com/csuchci" },
+  {
+    name: "Facebook",
+    icon: Facebook,
+    href: "https://www.facebook.com/csuchci",
+  },
   {
     name: "LinkedIn",
     icon: Linkedin,
@@ -26,6 +32,36 @@ const socialLinks = [
 ];
 
 export function Footer() {
+  const pathname = typeof window !== "undefined" ? window.location.pathname : "/";
+
+  const scrollToSection = (sectionId) => {
+    const section = document.getElementById(sectionId);
+    if (!section) return;
+
+    const nav = document.querySelector("header");
+    const navOffset = nav ? nav.getBoundingClientRect().height : 0;
+    const top = section.getBoundingClientRect().top + window.scrollY - navOffset;
+    window.scrollTo({ top });
+
+    if (window.location.pathname === "/" && (window.location.search || window.location.hash)) {
+      window.history.replaceState({}, "", "/");
+    }
+  };
+
+  const getSectionHref = (sectionId) => {
+    return sectionId === "home" ? "/" : `/?section=${sectionId}`;
+  };
+
+  const handleSectionClick = (event, sectionId) => {
+    event.preventDefault();
+
+    if (pathname === "/") {
+      scrollToSection(sectionId);
+    } else {
+      window.location.href = `/?section=${sectionId}`;
+    }
+  };
+
   return (
     <footer
       id="contact"
@@ -47,7 +83,10 @@ export function Footer() {
                   className="h-12 w-12 object-contain transition-transform hover:scale-105"
                 />
               </a>
-              <a href="#home">
+              <a
+                href={getSectionHref("home")}
+                onClick={(event) => handleSectionClick(event, "home")}
+              >
                 <img
                   src="/CHCI-LOGO.png"
                   alt="CHCI logo"
@@ -70,7 +109,8 @@ export function Footer() {
                 {quickLinks.slice(0, 4).map((link) => (
                   <li key={link.name}>
                     <a
-                      href={link.href}
+                      href={getSectionHref(link.sectionId)}
+                      onClick={(event) => handleSectionClick(event, link.sectionId)}
                       className="text-sm text-primary-foreground/80 transition-colors hover:text-secondary"
                     >
                       {link.name}
@@ -82,7 +122,8 @@ export function Footer() {
                 {quickLinks.slice(4, 8).map((link) => (
                   <li key={link.name}>
                     <a
-                      href={link.href}
+                      href={getSectionHref(link.sectionId)}
+                      onClick={(event) => handleSectionClick(event, link.sectionId)}
                       className="text-sm text-primary-foreground/80 transition-colors hover:text-secondary"
                     >
                       {link.name}

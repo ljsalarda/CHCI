@@ -32,10 +32,10 @@ export const researchAreas = [
 ];
 
 export const projects = [
-  { name: "MARVEL", img: "/marvel.png" },
-  { name: "GEOAGR", img: "/geoagr.png" },
-  { name: "SMART", img: "/smart.png" },
-  { name: "FAMRIA", img: "/famria.png" },
+  { name: "", img: "/marvel.png", href: "/marvel" },
+  { name: "", img: "/geoagr.png", href: "/geoagr" },
+  { name: "", img: "/smart.png", href: "/smart" },
+  { name: "", img: "/famria.png", href: "/famria" },
 ];
 
 export const partners = [

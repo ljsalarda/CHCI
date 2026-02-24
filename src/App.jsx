@@ -1,7 +1,8 @@
-import '@fontsource/inter/400.css';
-import '@fontsource/inter/500.css';
-import '@fontsource/inter/600.css';
-import '@fontsource/inter/700.css';
+import "@fontsource/inter/400.css";
+import "@fontsource/inter/500.css";
+import "@fontsource/inter/600.css";
+import "@fontsource/inter/700.css";
+import { useEffect } from "react";
 
 import { StickyNavbar } from "./components/navbar";
 import { Home } from "./pages/home";
@@ -13,8 +14,50 @@ import { Footer } from "./components/footer";
 import ServicesSection from "./pages/services";
 import AffiliationSection from "./pages/affiliation";
 import ContactSection from "./pages/contact";
+import FamriaPage from "./pages/project-pages/famria/page";
+import MarvelPage from "./pages/project-pages/marvel/page";
+import GeoagrPage from "./pages/project-pages/geoagr/page";
+import SmartPage from "./pages/project-pages/smart/page";
 
 function App() {
+  const pathname = typeof window !== "undefined" ? window.location.pathname : "/";
+
+  useEffect(() => {
+    if (typeof window === "undefined" || window.location.pathname !== "/") {
+      return;
+    }
+
+    const params = new URLSearchParams(window.location.search);
+    const section = params.get("section");
+    if (!section) return;
+
+    const raf = window.requestAnimationFrame(() => {
+      const target = document.getElementById(section);
+      if (target) {
+        const nav = document.querySelector("header");
+        const navOffset = nav ? nav.getBoundingClientRect().height : 0;
+        const top = target.getBoundingClientRect().top + window.scrollY - navOffset;
+        window.scrollTo({ top });
+      }
+      window.history.replaceState({}, "", "/");
+    });
+
+    return () => window.cancelAnimationFrame(raf);
+  }, [pathname]);
+
+  if (pathname === "/famria") {
+    return <FamriaPage />;
+  }
+  if (pathname === "/marvel") {
+    return <MarvelPage />;
+  }
+  if (pathname === "/geoagr") {
+    return <GeoagrPage />;
+  }
+  if (pathname === "/smart") {
+    return <SmartPage />;
+  }
+
   return (
     <div>
       <main>

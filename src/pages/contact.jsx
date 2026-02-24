@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { Send, Mail, MapPin, Phone, MessageSquare } from "lucide-react";
-import AnimateOnScroll from "@/components/ui/animate-on-scroll";
 
 const contactInfo = [
   {
@@ -57,25 +56,24 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contact" className="relative overflow-hidden py-16 md:py-16 bg-linear-to-b from-white via-blue-50/40 to-white">
+    <section
+      id="contact"
+      className="relative overflow-hidden py-16 md:py-16 bg-linear-to-b from-white via-blue-50/40 to-white"
+    >
       {/* 🔵 Background Design Layer */}
-  <div className="absolute inset-0 -z-10 pointer-events-none">
+      <div className="absolute inset-0 -z-10 pointer-events-none">
+        {/* left accent */}
+        <div className="absolute top-20 -left-30 w-75 h-75 bg-[#3A7CC3]/10 rounded-full blur-3xl" />
 
-  
+        {/* right accent */}
+        <div className="absolute bottom-10 -right-30 w-65 h-65 bg-[#0A3D91]/10 rounded-full blur-3xl" />
 
-    {/* left accent */}
-    <div className="absolute top-20 -left-30 w-75 h-75 bg-[#3A7CC3]/10 rounded-full blur-3xl" />
-
-    {/* right accent */}
-    <div className="absolute bottom-10 -right-30 w-65 h-65 bg-[#0A3D91]/10 rounded-full blur-3xl" />
-
-    {/* subtle tech grid overlay */}
-    <div className="absolute inset-0 opacity-[0.15] bg-[linear-gradient(#0A3D91_1px,transparent_1px),linear-gradient(90deg,#0A3D91_1px,transparent_1px)] bg-size-[50px_50px]" />
-
-  </div>
+        {/* subtle tech grid overlay */}
+        <div className="absolute inset-0 opacity-[0.15] bg-[linear-gradient(#0A3D91_1px,transparent_1px),linear-gradient(90deg,#0A3D91_1px,transparent_1px)] bg-size-[50px_50px]" />
+      </div>
       <div className="relative mx-auto max-w-7xl px-4 lg:px-8">
         {/* Header */}
-        <AnimateOnScroll>
+        <div>
           <div className="text-center">
             <span className="inline-flex items-center gap-2 rounded-full border border-secondary/30 bg-secondary/10 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-secondary">
               <MessageSquare className="h-3.5 w-3.5" />
@@ -85,15 +83,15 @@ export default function ContactSection() {
               Get in Touch
             </h2>
             <p className="mx-auto mt-2 max-w-xl text-muted-foreground leading-relaxed">
-              Have questions about our research, services, or membership?
-              We&apos;d love to hear from you.
+              Have questions about our research, services, or membership? We&apos;d love to hear
+              from you.
             </p>
           </div>
-        </AnimateOnScroll>
+        </div>
 
         <div className="mt-5 grid grid-cols-1 gap-10 lg:grid-cols-5">
           {/* Left: Contact Info */}
-          <AnimateOnScroll className="lg:col-span-2">
+          <div className="lg:col-span-2">
             <div className="flex h-full flex-col gap-6">
               {/* Contact info cards */}
               {contactInfo.map((info) => (
@@ -120,20 +118,17 @@ export default function ContactSection() {
                 <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-primary-foreground/10">
                   <Mail className="h-5 w-5" />
                 </div>
-                <h4 className="font-heading text-lg font-bold">
-                  Let&apos;s Collaborate
-                </h4>
+                <h4 className="font-heading text-lg font-bold">Let&apos;s Collaborate</h4>
                 <p className="mt-2 text-sm leading-relaxed text-primary-foreground/80">
-                  Whether you&apos;re an academic institution, a government
-                  agency, or a private organization, we welcome partnerships
-                  that drive innovation and community impact.
+                  Whether you&apos;re an academic institution, a government agency, or a private
+                  organization, we welcome partnerships that drive innovation and community impact.
                 </p>
               </div>
             </div>
-          </AnimateOnScroll>
+          </div>
 
           {/* Right: Contact Form */}
-          <AnimateOnScroll className="lg:col-span-3">
+          <div className="lg:col-span-3">
             <form
               onSubmit={handleSubmit}
               noValidate
@@ -168,9 +163,7 @@ export default function ContactSection() {
                       placeholder="John Doe"
                     />
                     {errors.fullName && (
-                      <p className="mt-1 text-xs text-destructive">
-                        {errors.fullName}
-                      </p>
+                      <p className="mt-1 text-xs text-destructive">{errors.fullName}</p>
                     )}
                   </div>
 
@@ -196,9 +189,7 @@ export default function ContactSection() {
                       placeholder="john@example.com"
                     />
                     {errors.email && (
-                      <p className="mt-1 text-xs text-destructive">
-                        {errors.email}
-                      </p>
+                      <p className="mt-1 text-xs text-destructive">{errors.email}</p>
                     )}
                   </div>
                 </div>
@@ -225,9 +216,7 @@ export default function ContactSection() {
                     placeholder="Inquiry about services"
                   />
                   {errors.subject && (
-                    <p className="mt-1 text-xs text-destructive">
-                      {errors.subject}
-                    </p>
+                    <p className="mt-1 text-xs text-destructive">{errors.subject}</p>
                   )}
                 </div>
 
@@ -253,9 +242,7 @@ export default function ContactSection() {
                     placeholder="Tell us how we can help..."
                   />
                   {errors.message && (
-                    <p className="mt-1 text-xs text-destructive">
-                      {errors.message}
-                    </p>
+                    <p className="mt-1 text-xs text-destructive">{errors.message}</p>
                   )}
                 </div>
 
@@ -273,7 +260,7 @@ export default function ContactSection() {
                 )}
               </div>
             </form>
-          </AnimateOnScroll>
+          </div>
         </div>
       </div>
     </section>
