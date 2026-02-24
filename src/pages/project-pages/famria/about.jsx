@@ -26,7 +26,7 @@ export function FamriaAbout() {
               productivity, and the overall well-being of local communities.
             </p>
 
-            <div className="mt-6 flex flex-wrap gap-3">
+            <div className="mt-6  flex flex-wrap gap-3">
               <a
                 href="https://www.facebook.com/csuchci/"
                 target="_blank"
