@@ -1,39 +1,61 @@
-import { Globe, Share2, MapPinned, Network, FileBarChart, Layers } from "lucide-react";
+import { useEffect, useState } from "react";
+import { supabase } from "@/lib/supabaseClient";
+import {
+  Globe,
+  Share2,
+  MapPinned,
+  Network,
+  FileBarChart,
+  Layers,
+} from "lucide-react";
 
-const objectives = [
-  {
-    icon: Globe,
-    text: "Provide an online interactive Management Information System (MIS) portal to consolidate, store/manage, process, and analyze GIS-based data of FMR Projects.",
-  },
-  {
-    icon: Share2,
-    text: "Provide an avenue for transparency, inter-agency data sharing, science-based approach planning, and harmonization of FMR implementation.",
-  },
-  {
-    icon: MapPinned,
-    text: "Facilitate the visualization of robust spatial data available online and provide a visual assessment of the road network.",
-  },
-  {
-    icon: Network,
-    text: "Address the issues on FMR location, interconnectivity, elimination of duplication, and build an FMR information system among implementing agencies.",
-  },
-];
-
-const services = [
-  {
-    icon: FileBarChart,
-    title: "Reports Generation",
-    description: "Enhanced reporting capabilities with specific user dashboards.",
-  },
-  {
-    icon: Layers,
-    title: "Interactive Geo-Mapping",
-    description:
-      "Visualization of roads and connectivity with automated FMR prioritization based on set criteria.",
-  },
-];
+const ICONS = {
+  Globe,
+  Share2,
+  MapPinned,
+  Network,
+  FileBarChart,
+  Layers,
+};
 
 export function GeoagriObjectives() {
+  const [section, setSection] = useState(null);
+  const [objectives, setObjectives] = useState([]);
+  const [services, setServices] = useState([]);
+
+  useEffect(() => {
+    const fetchAll = async () => {
+      const sectionRes = await supabase
+        .from("geoagri_objectives_section")
+        .select("*")
+        .limit(1)
+        .single();
+
+      if (!sectionRes.error) setSection(sectionRes.data);
+      else console.error(sectionRes.error);
+
+      const objRes = await supabase
+        .from("geoagri_objectives_items")
+        .select("id, sort_order, icon_name, text")
+        .eq("is_active", true)
+        .order("sort_order", { ascending: true });
+
+      if (!objRes.error) setObjectives(objRes.data || []);
+      else console.error(objRes.error);
+
+      const svcRes = await supabase
+        .from("geoagri_services_items")
+        .select("id, sort_order, icon_name, title, description")
+        .eq("is_active", true)
+        .order("sort_order", { ascending: true });
+
+      if (!svcRes.error) setServices(svcRes.data || []);
+      else console.error(svcRes.error);
+    };
+
+    fetchAll();
+  }, []);
+
   return (
     <section className="relative mx-auto px-4 py-20 sm:px-6 lg:px-8">
       {/* Background accents (subtle, no cards) */}
@@ -47,21 +69,21 @@ export function GeoagriObjectives() {
         {/* Header */}
         <div className="mx-auto max-w-3xl text-center space-y-3">
           <p className="text-sm font-semibold uppercase tracking-[0.25em] text-primary">
-            GEOAGRI Objectives
+            {section?.header_label}
           </p>
-          <h2 className="text-3xl font-bold md:text-4xl">Objectives & Services</h2>
+          <h2 className="text-3xl font-bold md:text-4xl">{section?.header_title}</h2>
           <p className="text-base leading-relaxed text-muted-foreground md:text-lg">
-            A GIS-powered MIS that strengthens transparency, interconnectivity, and data-driven
-            planning for Farm-to-Market Road projects.
+            {section?.header_description}
           </p>
         </div>
 
         {/* Objectives list with connector line */}
         <div className="mx-auto grid max-w-6xl justify-items-center gap-x-14 gap-y-10 md:grid-cols-2">
           {objectives.map((obj) => {
-            const Icon = obj.icon;
+            const Icon = ICONS[obj.icon_name] || Globe;
+
             return (
-              <div key={obj.text} className="group relative flex w-full max-w-xl gap-4">
+              <div key={obj.id} className="group relative flex w-full max-w-xl gap-4">
                 {/* Connector line */}
                 <div className="absolute left-5 top-12 hidden h-[calc(100%-2.25rem)] w-px bg-linear-to-b from-border to-transparent md:block" />
 
@@ -86,19 +108,18 @@ export function GeoagriObjectives() {
         {/* SERVICES */}
         <div className="space-y-5">
           <div className="text-center space-y-2 ">
-            <h3 className="text-2xl font-bold text-foreground">Services</h3>
+            <h3 className="text-2xl font-bold text-foreground">{section?.services_title}</h3>
             <p className="mx-auto mb-10 max-w-4xl text-base leading-relaxed text-muted-foreground">
-              GEOAGRI is an enhanced IROAD that provides additional functionalities including
-              reports generation, specific user dashboards, enhanced GUI for ease-of-use, and API
-              functions for supporting agencies.
+              {section?.services_description}
             </p>
           </div>
 
           <div className="mx-auto grid max-w-6xl justify-items-center gap-x-14 gap-y-10 md:grid-cols-2">
             {services.map((svc) => {
-              const Icon = svc.icon;
+              const Icon = ICONS[svc.icon_name] || Layers;
+
               return (
-                <div key={svc.title} className="group flex w-full max-w-xl items-start gap-4">
+                <div key={svc.id} className="group flex w-full max-w-xl items-start gap-4">
                   <div className="mt-1 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-linear-to-br from-primary/15 to-sky-400/15 ring-1 ring-border/60 transition-all duration-300 group-hover:ring-primary/30">
                     <Icon className="h-5 w-5 text-primary transition-transform duration-300 group-hover:scale-110" />
                   </div>

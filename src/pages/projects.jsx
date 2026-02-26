@@ -28,8 +28,9 @@ export function ProjectsSection() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
-          {projects.map((project) => {
+          {projects.map((project, index) => {
             const link = project.href || project.route;
+            const projectKey = project.name?.trim() || link || project.img || `project-${index}`;
             const cardClass =
               "group relative flex flex-col items-center justify-center p-2 rounded-xl border border-border bg-card shadow-sm hover:shadow-xl hover:border-primary/50 transition-all duration-300 hover:scale-105 overflow-hidden";
 
@@ -58,14 +59,14 @@ export function ProjectsSection() {
 
             if (link) {
               return (
-                <a key={project.name} href={link} className={`${cardClass} cursor-pointer`}>
+                <a key={projectKey} href={link} className={`${cardClass} cursor-pointer`}>
                   {content}
                 </a>
               );
             }
 
             return (
-              <div key={project.name} className={`${cardClass} cursor-default`}>
+              <div key={projectKey} className={`${cardClass} cursor-default`}>
                 {content}
               </div>
             );

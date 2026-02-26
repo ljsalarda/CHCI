@@ -1,47 +1,62 @@
+import { useEffect, useState } from "react";
+import { supabase } from "@/lib/supabaseClient";
 import { Target, ShieldCheck, Cog } from "lucide-react";
 
-const details = [
-  {
-    label: "Title",
-    value:
-      "Industry 4.0 Learning Factory for Mining Engineering and Geology in the Academe and Mining Industry using AR and VR Technologies",
-  },
-  { label: "Alias", value: "MARVEL (Mining AR and Virtual ELearning)" },
-  { label: "Project Leader", value: "Dr. Jaymer M. Jayoma" },
-  { label: "Cost", value: "PHP 10,748,125" },
-  { label: "Start Date", value: "June 1, 2022" },
-  { label: "End Date", value: "December 31, 2024" },
-  { label: "Implementing Agency", value: "CHCI, CSU, Ampayon, Butuan City" },
-];
-
-const specificObjectives = [
-  {
-    icon: Target,
-    title: "AR/VR for Anatomy of a Mine",
-    description: "Develop AR/VR technologies for understanding mine anatomy and structure.",
-  },
-  {
-    icon: ShieldCheck,
-    title: "Mine Safety Training and Drills",
-    description: "Develop AR/VR for mine emergency rescue and evacuation training simulations.",
-  },
-  {
-    icon: Cog,
-    title: "Mining Machine Operations",
-    description:
-      "Develop AR/VR for operating mining equipment like Jack Leg Rock Drilling Machine.",
-  },
-];
+const ICONS = {
+  Target,
+  ShieldCheck,
+  Cog,
+};
 
 export function MarvelProfile() {
+  const [section, setSection] = useState(null);
+  const [details, setDetails] = useState([]);
+  const [specificObjectives, setSpecificObjectives] = useState([]);
+
+  useEffect(() => {
+    const fetchAll = async () => {
+      // 1) section header + general objective
+      const sectionRes = await supabase
+        .from("marvel_profile_section")
+        .select("*")
+        .limit(1)
+        .single();
+
+      if (!sectionRes.error) setSection(sectionRes.data);
+      else console.error(sectionRes.error);
+
+      // 2) details
+      const detailsRes = await supabase
+        .from("marvel_profile_details")
+        .select("id, sort_order, label, value")
+        .eq("is_active", true)
+        .order("sort_order", { ascending: true });
+
+      if (!detailsRes.error) setDetails(detailsRes.data || []);
+      else console.error(detailsRes.error);
+
+      // 3) specific objectives
+      const objRes = await supabase
+        .from("marvel_profile_objectives")
+        .select("id, sort_order, icon_name, title, description")
+        .eq("is_active", true)
+        .order("sort_order", { ascending: true });
+
+      if (!objRes.error) setSpecificObjectives(objRes.data || []);
+      else console.error(objRes.error);
+    };
+
+    fetchAll();
+  }, []);
+
   return (
     <section className="relative mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
       {/* Header */}
       <header className="mx-auto max-w-3xl text-center space-y-3">
         <p className="text-sm font-semibold uppercase tracking-[0.25em] text-primary">
-          Marvel Profile
+          {section?.section_label}
         </p>
-        <h2 className="text-3xl font-bold md:text-4xl">Project Profile</h2>
+        <h2 className="text-3xl font-bold md:text-4xl">{section?.title}</h2>
       </header>
 
       {/* Main container */}
@@ -49,7 +64,7 @@ export function MarvelProfile() {
         {/* Details */}
         <div className="flex items-end justify-between gap-6 flex-wrap">
           <div>
-            <h3 className="text-xl font-semibold">Project Details</h3>
+            <h3 className="text-xl font-semibold">{section?.details_heading}</h3>
           </div>
         </div>
 
@@ -57,7 +72,7 @@ export function MarvelProfile() {
         <div className="mt-6 grid gap-4 md:grid-cols-2">
           {details.map((d) => (
             <div
-              key={d.label}
+              key={d.id}
               className="group rounded-2xl border border-border bg-background/60 p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
             >
               <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
@@ -70,19 +85,18 @@ export function MarvelProfile() {
 
         {/* Objectives */}
         <div className="mt-12">
-          <h3 className="text-xl font-bold">Statement of Objectives</h3>
+          <h3 className="text-xl font-bold">{section?.objectives_heading}</h3>
           <p className="mt-2 max-w-4xl text-base leading-relaxed text-muted-foreground">
-            The general objective is to develop Augmented or Virtual Reality technologies for Mining
-            Processes that can aid in the simulation and training of mining scenarios, including
-            training for high-risk situations.
+            {section?.general_objective}
           </p>
 
           <div className="mt-6 grid gap-5 md:grid-cols-3">
             {specificObjectives.map((obj) => {
-              const Icon = obj.icon;
+              const Icon = ICONS[obj.icon_name] || Target;
+
               return (
                 <div
-                  key={obj.title}
+                  key={obj.id}
                   className="group relative overflow-hidden rounded-2xl border border-border bg-background/60 p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
                 >
                   {/* tiny glow */}
@@ -97,7 +111,9 @@ export function MarvelProfile() {
                     <div className="h-px flex-1 bg-linear-to-r from-border to-transparent" />
                   </div>
 
-                  <h4 className="relative text-base font-semibold text-foreground">{obj.title}</h4>
+                  <h4 className="relative text-base font-semibold text-foreground">
+                    {obj.title}
+                  </h4>
                   <p className="relative mt-2 text-sm leading-relaxed text-muted-foreground">
                     {obj.description}
                   </p>

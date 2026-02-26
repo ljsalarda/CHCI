@@ -1,4 +1,4 @@
-export const researchAreas = [
+﻿export const researchAreas = [
   {
     image: "/MSC.png",
     title: "Multi-sensory Computing",
@@ -46,3 +46,4 @@ export const partners = [
   { name: "APEX", img: "/apex.png", href: "https://www.apexmines.com/" },
   { name: "DSWD", img: "/dswd.png", href: "https://caraga.dswd.gov.ph/" },
 ];
+

@@ -14,14 +14,15 @@ import { Footer } from "./components/footer";
 import ServicesSection from "./pages/services";
 import AffiliationSection from "./pages/affiliation";
 import ContactSection from "./pages/contact";
-import FamriaPage from "./pages/project-pages/famria/page";
-import MarvelPage from "./pages/project-pages/marvel/page";
-import GeoagrPage from "./pages/project-pages/geoagr/page";
-import SmartPage from "./pages/project-pages/smart/page";
+import FamriaPage from "./pages/template-project-pages/famria/page";
+import MarvelPage from "./pages/template-project-pages/marvel/page";
+import GeoagrPage from "./pages/template-project-pages/geoagr/page";
+import SmartPage from "./pages/template-project-pages/smart/page";
 
 function App() {
   const pathname = typeof window !== "undefined" ? window.location.pathname : "/";
   const normalizedPath = pathname !== "/" ? pathname.replace(/\/+$/, "") : pathname;
+  const routePath = normalizedPath.toLowerCase();
 
   useEffect(() => {
     if (typeof window === "undefined" || window.location.pathname !== "/") {
@@ -46,16 +47,16 @@ function App() {
     return () => window.cancelAnimationFrame(raf);
   }, [pathname]);
 
-  if (normalizedPath === "/famria") {
+  if (routePath === "/famriapage" || routePath === "/famria") {
     return <FamriaPage />;
   }
-  if (normalizedPath === "/marvel") {
+  if (routePath === "/marvelpage" || routePath === "/marvel") {
     return <MarvelPage />;
   }
-  if (normalizedPath === "/geoagr") {
+  if (routePath === "/geoagrpage" || routePath === "/geoagr" || routePath === "/geoagri") {
     return <GeoagrPage />;
   }
-  if (normalizedPath === "/smart") {
+  if (routePath === "/smartpage" || routePath === "/smart") {
     return <SmartPage />;
   }
 

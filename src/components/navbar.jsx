@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
@@ -83,7 +83,7 @@ export function StickyNavbar() {
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60 ">
       <div className="container mx-auto flex h-16 items-center justify-between px-4 sm:px-6 lg:px-10">
         {/* Logos */}
-        <div className="flex-1 flex justify-start lg:justify-start lg:ml-19 md:justify-center">
+        <div className="flex flex-1 justify-start">
           {isHomePage ? (
             <ScrollLink to="home" smooth duration={SCROLL_DURATION_MS} className="cursor-pointer">
               <img src="/CSU-LOGO.png" alt="CCIS Logo" className="w-8 mt-1 " />
@@ -189,3 +189,4 @@ export function StickyNavbar() {
     </header>
   );
 }
+
