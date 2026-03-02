@@ -14,10 +14,8 @@ import { Footer } from "./components/footer";
 import ServicesSection from "./pages/services";
 import AffiliationSection from "./pages/affiliation";
 import ContactSection from "./pages/contact";
-import FamriaPage from "./pages/project-pages/famria/page";
-import MarvelPage from "./pages/project-pages/marvel/page";
-import GeoagrPage from "./pages/project-pages/geoagr/page";
-import SmartPage from "./pages/project-pages/smart/page";
+import { projects } from "./data/site-data";
+import ProjectTemplate from "./pages/template";
 
 function App() {
   const pathname = typeof window !== "undefined" ? window.location.pathname : "/";
@@ -46,17 +44,11 @@ function App() {
     return () => window.cancelAnimationFrame(raf);
   }, [pathname]);
 
-  if (normalizedPath === "/famria") {
-    return <FamriaPage />;
-  }
-  if (normalizedPath === "/marvel") {
-    return <MarvelPage />;
-  }
-  if (normalizedPath === "/geoagr") {
-    return <GeoagrPage />;
-  }
-  if (normalizedPath === "/smart") {
-    return <SmartPage />;
+  const routeSlug = normalizedPath.startsWith("/") ? normalizedPath.slice(1) : normalizedPath;
+  const matchedProject = projects.find((project) => project.slug === routeSlug);
+
+  if (matchedProject) {
+    return <ProjectTemplate project={matchedProject} />;
   }
 
   return (

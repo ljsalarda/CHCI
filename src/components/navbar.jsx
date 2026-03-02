@@ -5,13 +5,12 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { ChevronDown, Menu, X } from "lucide-react";
 import { Link as ScrollLink } from "react-scroll";
+import { projects } from "@/data/site-data";
 
-const projectItems = [
-  { name: "MARVEL", href: "/marvel" },
-  { name: "GEOAGRI", href: "/geoagr" },
-  { name: "SMART", href: "/smart" },
-  { name: "FAMRIA", href: "/famria" },
-];
+const projectItems = projects.map((project) => ({
+  name: project.name,
+  href: project.href || `/${project.slug}`,
+}));
 
 const navItems = [
   { name: "Home", sectionId: "home" },
