@@ -97,15 +97,14 @@ export default function AboutSection() {
             <div className="flex flex-1 flex-col gap-6">
               <div className="aspect-video w-full overflow-hidden rounded-lg shadow-lg">
                 <iframe
-                  src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                  src="https://www.youtube.com/embed/OlJuSZeyug8"
                   title="CHCI Introduction Video"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
                   className="h-full w-full"
                 />
               </div>
-
-              {expanded && (
+{expanded && (
                 <div className="animate-in fade-in slide-in-from-top-2 rounded-lg border border-border bg-card p-6">
                   <h3 className="text-2xl font-bold text-center mb-8">
                     Core Values <span className="text-primary">(The HCI Way)</span>
