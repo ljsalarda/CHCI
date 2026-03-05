@@ -69,10 +69,6 @@ export function ProjectsSection() {
                     />
                   </div>
 
-                  <h3 className="text-center font-bold text-foreground text-lg mb-2 group-hover:text-primary transition-colors duration-300">
-                    {project.name}
-                  </h3>
-
                   <div className="h-1 w-12 bg-linear-to-r from-primary to-secondary rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
               </>
