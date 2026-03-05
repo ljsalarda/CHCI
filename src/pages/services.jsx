@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import {
   GraduationCap,
   Search,
@@ -8,6 +9,7 @@ import {
   BookOpen,
   Award,
   Wrench,
+  ChevronDown,
 } from "lucide-react";
 
 const trainingRows = [
@@ -109,7 +111,28 @@ const flowRows = [
   },
 ];
 
+const desktopPreviewSteps = [
+  "Service Inquiry",
+  "Service Type Identification",
+  "Submit Requirements",
+  "Request Evaluation",
+  "Approval & Terms",
+  "Service Implementation",
+  "Completion & Feedback",
+];
+
 export default function ServicesSection() {
+  const [desktopFlowView, setDesktopFlowView] = useState("overview");
+
+  const handleDesktopFlowViewChange = (view) => {
+    const currentY = window.scrollY;
+    setDesktopFlowView(view);
+
+    requestAnimationFrame(() => {
+      window.scrollTo({ top: currentY, left: 0, behavior: "auto" });
+    });
+  };
+
   return (
     <section
       id="services"
@@ -221,10 +244,74 @@ export default function ServicesSection() {
                 Follow this step-by-step process to engage with our center and access the services
                 you need.
               </p>
+              <div className="mt-4 hidden justify-center lg:flex">
+                <div className="inline-flex rounded-full border border-border/70 bg-muted/30 p-1">
+                  <button
+                    type="button"
+                    onClick={() => handleDesktopFlowViewChange("overview")}
+                    aria-pressed={desktopFlowView === "overview"}
+                    className={`rounded-full px-4 py-2 text-sm font-semibold transition-colors ${
+                      desktopFlowView === "overview"
+                        ? "bg-primary text-primary-foreground shadow-sm"
+                        : "text-primary hover:bg-primary/10"
+                    }`}
+                  >
+                    Flow Overview
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => handleDesktopFlowViewChange("original")}
+                    aria-pressed={desktopFlowView === "original"}
+                    className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold transition-colors ${
+                      desktopFlowView === "original"
+                        ? "bg-primary text-primary-foreground shadow-sm"
+                        : "text-primary hover:bg-primary/10"
+                    }`}
+                  >
+                    Original Flowchart
+                    <ChevronDown
+                      className={`h-4 w-4 transition-transform ${desktopFlowView === "original" ? "rotate-180" : ""}`}
+                    />
+                  </button>
+                </div>
+              </div>
             </div>
 
             {/* Responsive flowchart */}
             <div className="mx-4 mb-8 lg:mx-8">
+              {/* Desktop default overview */}
+              {desktopFlowView === "overview" && (
+                <div className="mb-5 hidden rounded-2xl border border-border/70 bg-muted/20 p-5 lg:block">
+                  <div className="mb-4 flex items-center justify-between">
+                    <p className="text-sm font-bold uppercase tracking-wider text-primary">
+                      Process At A Glance
+                    </p>
+                    <span className="rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-xs font-semibold text-primary">
+                      7 Steps
+                    </span>
+                  </div>
+                  <div className="relative">
+                    <div className="absolute top-4 left-8 right-8 h-0.5 bg-primary/25" />
+                    <div className="grid grid-cols-7 gap-2">
+                      {desktopPreviewSteps.map((step, index) => (
+                        <div key={step} className="relative z-10 flex flex-col items-center gap-2">
+                          <div className="flex h-8 w-8 items-center justify-center rounded-full border border-primary/30 bg-card text-xs font-bold text-primary shadow-sm">
+                            {index + 1}
+                          </div>
+                          <p className="text-center text-[11px] leading-snug font-semibold text-foreground">
+                            {step}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="mt-4 rounded-xl border border-secondary/30 bg-secondary/10 px-4 py-2.5 text-center text-xs font-medium text-secondary">
+                    Service Type Identification is the branching point for Internship and Other
+                    Service Requests.
+                  </div>
+                </div>
+              )}
+
               {/* Small + Medium */}
               <div className="space-y-3 lg:hidden">
                 {flowRows.map((row, i) => (
@@ -297,129 +384,131 @@ export default function ServicesSection() {
               </div>
 
               {/* Large screens */}
-              <div className="hidden overflow-x-auto lg:block">
-                <div className="min-w-205">
-                  {/* Table Header */}
-                  <div className="flex rounded-t-xl border-b border-primary/30 bg-linear-to-r from-primary to-primary/85">
-                    <div className="flex w-40 shrink-0 items-center justify-center border-r border-primary-foreground/25 px-3 py-3 md:w-48">
-                      <p className="text-center text-xs font-bold uppercase tracking-wider text-primary-foreground">
-                        Responsible Person
-                      </p>
-                    </div>
-                    <div className="flex flex-1 items-center justify-center px-3 py-3">
-                      <p className="text-center text-xs font-bold uppercase tracking-wider text-primary-foreground">
-                        Activities
-                      </p>
-                    </div>
-                    <div className="flex w-32 shrink-0 items-center justify-center border-l border-primary-foreground/25 px-3 py-3 md:w-40">
-                      <p className="text-center text-xs font-bold uppercase tracking-wider text-primary-foreground">
-                        Interface
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Rows */}
-                  {flowRows.map((row, i) => (
-                    <div
-                      key={`${row.responsible}-${i}`}
-                      className={`flex transition-colors ${i % 2 === 0 ? "bg-card" : "bg-muted/20"} hover:bg-muted/40`}
-                    >
-                      {/* Responsible Person */}
-                      <div className="flex w-40 shrink-0 items-center justify-center border-r border-border/70 px-3 py-5 md:w-48">
-                        <p className="text-center text-xs font-semibold text-primary md:text-sm">
-                          {row.responsible || "\u00A0"}
+              {desktopFlowView === "original" && (
+                <div className="hidden overflow-x-auto lg:block">
+                  <div className="min-w-205">
+                    {/* Table Header */}
+                    <div className="flex rounded-t-xl border-b border-primary/30 bg-linear-to-r from-primary to-primary/85">
+                      <div className="flex w-40 shrink-0 items-center justify-center border-r border-primary-foreground/25 px-3 py-3 md:w-48">
+                        <p className="text-center text-xs font-bold uppercase tracking-wider text-primary-foreground">
+                          Responsible Person
                         </p>
                       </div>
+                      <div className="flex flex-1 items-center justify-center px-3 py-3">
+                        <p className="text-center text-xs font-bold uppercase tracking-wider text-primary-foreground">
+                          Activities
+                        </p>
+                      </div>
+                      <div className="flex w-32 shrink-0 items-center justify-center border-l border-primary-foreground/25 px-3 py-3 md:w-40">
+                        <p className="text-center text-xs font-bold uppercase tracking-wider text-primary-foreground">
+                          Interface
+                        </p>
+                      </div>
+                    </div>
 
-                      {/* Activity (center) */}
-                      <div className="flex flex-1 flex-col items-center justify-center border-b border-border/70 px-4 py-5">
-                        {/* Arrow from previous row */}
-                        {i > 0 && row.activityType !== "dual" && (
-                          <div className="mb-3 flex flex-col items-center">
-                            <div className="h-4 w-0.5 bg-primary" />
-                            <div className="h-0 w-0 border-x-[5px] border-t-[7px] border-x-transparent border-t-primary" />
-                          </div>
-                        )}
+                    {/* Rows */}
+                    {flowRows.map((row, i) => (
+                      <div
+                        key={`${row.responsible}-${i}`}
+                        className={`flex transition-colors ${i % 2 === 0 ? "bg-card" : "bg-muted/20"} hover:bg-muted/40`}
+                      >
+                        {/* Responsible Person */}
+                        <div className="flex w-40 shrink-0 items-center justify-center border-r border-border/70 px-3 py-5 md:w-48">
+                          <p className="text-center text-xs font-semibold text-primary md:text-sm">
+                            {row.responsible || "\u00A0"}
+                          </p>
+                        </div>
 
-                        {row.activityType === "single" && (
-                          <div className="rounded-xl border-2 border-foreground/70 bg-card px-8 py-3 text-center shadow-sm">
-                            <p className="text-sm font-semibold text-foreground">{row.activity}</p>
-                          </div>
-                        )}
-
-                        {row.activityType === "branches" && (
-                          <div className="flex w-full flex-col items-center gap-3">
-                            {/* Horizontal connector line */}
-                            <div className="relative flex w-full items-center justify-center">
-                              <div className="absolute top-1/2 left-[12%] right-[12%] h-0.5 bg-primary/50" />
+                        {/* Activity (center) */}
+                        <div className="flex flex-1 flex-col items-center justify-center border-b border-border/70 px-4 py-5">
+                          {/* Arrow from previous row */}
+                          {i > 0 && row.activityType !== "dual" && (
+                            <div className="mb-3 flex flex-col items-center">
+                              <div className="h-4 w-0.5 bg-primary" />
+                              <div className="h-0 w-0 border-x-[5px] border-t-[7px] border-x-transparent border-t-primary" />
                             </div>
-                            <div className="grid w-full grid-cols-2 gap-2 md:grid-cols-4">
-                              {row.branches?.map((b, branchIndex) => (
-                                <div
-                                  key={b}
-                                  className="relative rounded-xl border-2 border-foreground/55 bg-card px-3 py-2.5 text-center shadow-sm transition-colors hover:border-primary/50"
-                                >
-                                  <p className="text-xs font-medium text-foreground leading-tight">
-                                    {b}
-                                  </p>
-                                  {branchIndex === 0 && (
-                                    <div className="mt-2 flex justify-center md:hidden">
-                                      <div className="flex flex-col items-center">
-                                        <div className="h-4 w-0.5 bg-primary" />
-                                        <div className="h-0 w-0 border-x-4 border-t-[6px] border-x-transparent border-t-primary" />
+                          )}
+
+                          {row.activityType === "single" && (
+                            <div className="rounded-xl border-2 border-foreground/70 bg-card px-8 py-3 text-center shadow-sm">
+                              <p className="text-sm font-semibold text-foreground">{row.activity}</p>
+                            </div>
+                          )}
+
+                          {row.activityType === "branches" && (
+                            <div className="flex w-full flex-col items-center gap-3">
+                              {/* Horizontal connector line */}
+                              <div className="relative flex w-full items-center justify-center">
+                                <div className="absolute top-1/2 left-[12%] right-[12%] h-0.5 bg-primary/50" />
+                              </div>
+                              <div className="grid w-full grid-cols-2 gap-2 md:grid-cols-4">
+                                {row.branches?.map((b, branchIndex) => (
+                                  <div
+                                    key={b}
+                                    className="relative rounded-xl border-2 border-foreground/55 bg-card px-3 py-2.5 text-center shadow-sm transition-colors hover:border-primary/50"
+                                  >
+                                    <p className="text-xs font-medium text-foreground leading-tight">
+                                      {b}
+                                    </p>
+                                    {branchIndex === 0 && (
+                                      <div className="mt-2 flex justify-center md:hidden">
+                                        <div className="flex flex-col items-center">
+                                          <div className="h-4 w-0.5 bg-primary" />
+                                          <div className="h-0 w-0 border-x-4 border-t-[6px] border-x-transparent border-t-primary" />
+                                        </div>
                                       </div>
-                                    </div>
-                                  )}
+                                    )}
+                                  </div>
+                                ))}
+                              </div>
+                              {/* Desktop connectors: left path + right grouped path aligned side-by-side */}
+                              <div className="hidden w-full items-start md:grid md:grid-cols-4">
+                                <div className="flex justify-center">
+                                  <div className="flex flex-col items-center">
+                                    <div className="h-4 w-0.5 bg-primary" />
+                                    <div className="h-0 w-0 border-x-4 border-t-[6px] border-x-transparent border-t-primary" />
+                                  </div>
                                 </div>
-                              ))}
-                            </div>
-                            {/* Desktop connectors: left path + right grouped path aligned side-by-side */}
-                            <div className="hidden w-full items-start md:grid md:grid-cols-4">
-                              <div className="flex justify-center">
-                                <div className="flex flex-col items-center">
-                                  <div className="h-4 w-0.5 bg-primary" />
-                                  <div className="h-0 w-0 border-x-4 border-t-[6px] border-x-transparent border-t-primary" />
+                                <div className="col-span-3 flex flex-col items-center">
+                                  <div className="relative h-1 w-full">
+                                    <div className="absolute top-0 left-10 right-10 h-0.5 bg-primary/50" />
+                                  </div>
+                                  <div className="flex flex-col items-center">
+                                    <div className="h-4 w-0.5 bg-primary" />
+                                    <div className="h-0 w-0 border-x-4 border-t-[6px] border-x-transparent border-t-primary" />
+                                  </div>
                                 </div>
                               </div>
-                              <div className="col-span-3 flex flex-col items-center">
-                                <div className="relative h-1 w-full">
-                                  <div className="absolute top-0 left-10 right-10 h-0.5 bg-primary/50" />
-                                </div>
-                                <div className="flex flex-col items-center">
-                                  <div className="h-4 w-0.5 bg-primary" />
-                                  <div className="h-0 w-0 border-x-4 border-t-[6px] border-x-transparent border-t-primary" />
-                                </div>
+                            </div>
+                          )}
+
+                          {row.activityType === "dual" && (
+                            <div className="flex w-full items-center justify-center gap-10 md:gap-20">
+                              <div className="rounded-xl border-2 border-foreground/60 bg-card px-5 py-2.5 text-center shadow-sm">
+                                <p className="text-xs font-semibold text-foreground md:text-sm">
+                                  {row.left}
+                                </p>
+                              </div>
+                              <div className="rounded-xl border-2 border-foreground/80 bg-card px-5 py-2.5 text-center shadow-sm">
+                                <p className="text-xs font-semibold text-foreground md:text-sm">
+                                  {row.right}
+                                </p>
                               </div>
                             </div>
-                          </div>
-                        )}
+                          )}
+                        </div>
 
-                        {row.activityType === "dual" && (
-                          <div className="flex w-full items-center justify-center gap-10 md:gap-20">
-                            <div className="rounded-xl border-2 border-foreground/60 bg-card px-5 py-2.5 text-center shadow-sm">
-                              <p className="text-xs font-semibold text-foreground md:text-sm">
-                                {row.left}
-                              </p>
-                            </div>
-                            <div className="rounded-xl border-2 border-foreground/80 bg-card px-5 py-2.5 text-center shadow-sm">
-                              <p className="text-xs font-semibold text-foreground md:text-sm">
-                                {row.right}
-                              </p>
-                            </div>
-                          </div>
-                        )}
+                        {/* Interface */}
+                        <div className="flex w-32 shrink-0 items-center justify-center border-l border-border/70 px-3 py-5 md:w-40">
+                          <p className="text-center text-xs font-medium text-muted-foreground md:text-sm">
+                            {row.iface || "\u00A0"}
+                          </p>
+                        </div>
                       </div>
-
-                      {/* Interface */}
-                      <div className="flex w-32 shrink-0 items-center justify-center border-l border-border/70 px-3 py-5 md:w-40">
-                        <p className="text-center text-xs font-medium text-muted-foreground md:text-sm">
-                          {row.iface || "\u00A0"}
-                        </p>
-                      </div>
-                    </div>
-                  ))}
+                    ))}
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
           </div>
         </div>
