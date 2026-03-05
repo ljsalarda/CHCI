@@ -1,6 +1,25 @@
+import { useRef } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { projects } from "../data/site-data";
 
 export function ProjectsSection() {
+  const listRef = useRef(null);
+
+  const handleScrollProjects = (direction) => {
+    const list = listRef.current;
+    if (!list) return;
+
+    const card = list.querySelector("[data-project-card]");
+    const cardWidth = card ? card.getBoundingClientRect().width : 280;
+    const gap = 24;
+    const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
+    const isTablet = window.matchMedia("(min-width: 768px)").matches;
+    const cardsPerStep = isDesktop ? 4 : isTablet ? 2 : 1;
+    const amount = (cardWidth + gap) * cardsPerStep * direction;
+
+    list.scrollBy({ left: amount, behavior: "smooth" });
+  };
+
   return (
     <section
       id="projects"
@@ -27,11 +46,14 @@ export function ProjectsSection() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+        <div
+          ref={listRef}
+          className="mx-auto flex max-w-6xl snap-x snap-mandatory gap-6 overflow-x-auto px-1 pb-4 scroll-smooth [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        >
           {projects.map((project) => {
             const link = project.href || project.route;
             const cardClass =
-              "group relative flex flex-col items-center justify-center p-2 rounded-xl border border-border bg-card shadow-sm hover:shadow-xl hover:border-primary/50 transition-all duration-300 hover:scale-105 overflow-hidden";
+              "group relative flex w-full shrink-0 snap-start flex-col items-center justify-center overflow-hidden rounded-xl border border-border bg-card p-2 shadow-sm transition-all duration-300 hover:scale-105 hover:border-primary/50 hover:shadow-xl md:w-[calc(50%-0.75rem)] lg:w-[calc(25%-1.125rem)]";
 
             const content = (
               <>
@@ -58,19 +80,45 @@ export function ProjectsSection() {
 
             if (link) {
               return (
-                <a key={project.name} href={link} className={`${cardClass} cursor-pointer`}>
+                <a
+                  key={project.name}
+                  href={link}
+                  data-project-card
+                  className={`${cardClass} cursor-pointer`}
+                >
                   {content}
                 </a>
               );
             }
 
             return (
-              <div key={project.name} className={`${cardClass} cursor-default`}>
+              <div key={project.name} data-project-card className={`${cardClass} cursor-default`}>
                 {content}
               </div>
             );
           })}
         </div>
+
+        {projects.length > 4 ? (
+          <div className="mt-10 flex items-center justify-center gap-3">
+            <button
+              type="button"
+              onClick={() => handleScrollProjects(-1)}
+              aria-label="Previous projects"
+              className="rounded-full border border-border bg-card p-2 text-foreground transition-colors hover:bg-secondary"
+            >
+              <ChevronLeft className="h-5 w-5" />
+            </button>
+            <button
+              type="button"
+              onClick={() => handleScrollProjects(1)}
+              aria-label="Next projects"
+              className="rounded-full border border-border bg-card p-2 text-foreground transition-colors hover:bg-secondary"
+            >
+              <ChevronRight className="h-5 w-5" />
+            </button>
+          </div>
+        ) : null}
       </div>
     </section>
   );
