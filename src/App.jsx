@@ -16,6 +16,7 @@ import AffiliationSection from "./pages/affiliation";
 import ContactSection from "./pages/contact";
 import { projects } from "./data/site-data";
 import ProjectTemplate from "./pages/template";
+import PublicationOutputsPage from "./pages/publication/publication";
 
 function App() {
   const pathname = typeof window !== "undefined" ? window.location.pathname : "/";
@@ -46,6 +47,10 @@ function App() {
 
   const routeSlug = normalizedPath.startsWith("/") ? normalizedPath.slice(1) : normalizedPath;
   const matchedProject = projects.find((project) => project.slug === routeSlug);
+
+  if (normalizedPath === "/publication") {
+    return <PublicationOutputsPage />;
+  }
 
   if (matchedProject) {
     return <ProjectTemplate project={matchedProject} />;

@@ -189,56 +189,56 @@ export const projects = [
       },
     ],
   },
-  {
-    slug: "atlas",
-    name: "ATLAS",
-    img: "/CHCI-LOGO.png",
-    href: "/atlas",
-    hero: {
-      backgroundImage: "/CCIS.jpg",
-      subtitle: "DATA-DRIVEN COMMUNITY PLANNING",
-      title: "ATLAS - Analytics and Tracking for Local Area Services",
-      location: "Caraga State University, Ampayon, Butuan City, Philippines",
-      cta: {
-        label: "View Project Brief",
-        href: "https://www.facebook.com/csuchci/",
-      },
-    },
-    sections: [
-      {
-        type: "about_video",
-        eyebrow: "ATLAS Overview",
-        title: "About",
-        heading: "Project Overview",
-        text: "ATLAS is a digital platform for tracking local service delivery data and generating insights for faster planning, transparent reporting, and evidence-based decisions.",
-        videoUrl: "https://www.youtube.com/embed/OlJuSZeyug8",
-        videoTitle: "ATLAS Introduction Video",
-        image: "/CHCI-LOGO.png",
-      },
-      {
-        type: "feature_grid",
-        eyebrow: "ATLAS Modules",
-        title: "Core Features",
-        items: [
-          {
-            title: "Service Mapping",
-            description: "Visualizes service coverage by area to identify gaps and priorities.",
-            image: "/CHCI-LOGO.png",
-          },
-          {
-            title: "Case Monitoring",
-            description: "Tracks status updates across workflows with clear accountability.",
-            image: "/CHCI-LOGO.png",
-          },
-          {
-            title: "Analytics Dashboard",
-            description: "Summarizes key indicators for planning and management decisions.",
-            image: "/CHCI-LOGO.png",
-          },
-        ],
-      },
-    ],
-  },
+  // {
+  //   slug: "atlas",
+  //   name: "ATLAS",
+  //   img: "/CHCI-LOGO.png",
+  //   href: "/atlas",
+  //   hero: {
+  //     backgroundImage: "/CCIS.jpg",
+  //     subtitle: "DATA-DRIVEN COMMUNITY PLANNING",
+  //     title: "ATLAS - Analytics and Tracking for Local Area Services",
+  //     location: "Caraga State University, Ampayon, Butuan City, Philippines",
+  //     cta: {
+  //       label: "View Project Brief",
+  //       href: "https://www.facebook.com/csuchci/",
+  //     },
+  //   },
+  //   sections: [
+  //     {
+  //       type: "about_video",
+  //       eyebrow: "ATLAS Overview",
+  //       title: "About",
+  //       heading: "Project Overview",
+  //       text: "ATLAS is a digital platform for tracking local service delivery data and generating insights for faster planning, transparent reporting, and evidence-based decisions.",
+  //       videoUrl: "https://www.youtube.com/embed/OlJuSZeyug8",
+  //       videoTitle: "ATLAS Introduction Video",
+  //       image: "/CHCI-LOGO.png",
+  //     },
+  //     {
+  //       type: "feature_grid",
+  //       eyebrow: "ATLAS Modules",
+  //       title: "Core Features",
+  //       items: [
+  //         {
+  //           title: "Service Mapping",
+  //           description: "Visualizes service coverage by area to identify gaps and priorities.",
+  //           image: "/CHCI-LOGO.png",
+  //         },
+  //         {
+  //           title: "Case Monitoring",
+  //           description: "Tracks status updates across workflows with clear accountability.",
+  //           image: "/CHCI-LOGO.png",
+  //         },
+  //         {
+  //           title: "Analytics Dashboard",
+  //           description: "Summarizes key indicators for planning and management decisions.",
+  //           image: "/CHCI-LOGO.png",
+  //         },
+  //       ],
+  //     },
+  //   ],
+  // },
 ];
 
 export const partners = [

@@ -19,7 +19,7 @@ const navItems = [
   { name: "Services", sectionId: "services" },
   { name: "Affiliation", sectionId: "affiliation" },
   { name: "Projects", sectionId: "projects", children: projectItems },
-  { name: "Publications", href: "" },
+  { name: "Publications", href: "/publication" },
   { name: "Contact Us", sectionId: "contact" },
 ];
 
