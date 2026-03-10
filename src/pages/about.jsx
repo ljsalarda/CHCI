@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
 import { Eye, Target, HeartHandshake, Layers, Users, ChevronDown, ChevronUp } from "lucide-react";
@@ -15,24 +15,24 @@ export default function AboutSection() {
   const [expanded, setExpanded] = useState(false);
 
   return (
-    <section id="about" className="bg-background py-20 lg:py-28">
-      <div className="mx-auto max-w-7xl px-4 lg:px-8">
+    <section id="about" className="bg-background py-28 lg:py-32">
+      <div className="mx-auto max-w-400 px-4 lg:px-12 ">
         <div>
-          <div className="flex flex-col gap-12 lg:flex-row lg:gap-16">
+          <div className="flex flex-col gap-12 lg:flex-row lg:items-start lg:gap-20">
             {/* Left text */}
-            <div className="flex-1">
+            <div className="flex-1 lg:w-1/2">
               <p className="mb-2 text-sm font-semibold uppercase tracking-widest text-secondary">
                 About Us
               </p>
-              <h2 className="font-heading text-3xl font-bold text-foreground text-balance md:text-4xl">
+              <h2 className="font-heading text-4xl font-bold text-foreground text-balance md:text-5xl">
                 Know More about CHCI
               </h2>
-              <p className="mt-6 leading-relaxed text-muted-foreground">
+              <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
                 The Center for Human-Computer Interaction (CHCI) at Caraga State University is a
                 pioneering research center dedicated to advancing the frontiers of computing through
                 human-centric design and innovation.
               </p>
-              <p className="mt-4 leading-relaxed text-muted-foreground">
+              <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
                 Our interdisciplinary team of researchers, designers, and engineers work
                 collaboratively to create technologies that bridge intelligent systems and human
                 needs, fostering inclusive development and empowering communities across the Caraga
@@ -94,7 +94,7 @@ export default function AboutSection() {
             </div>
 
             {/* Right column: YouTube + Core Values (when expanded) */}
-            <div className="flex flex-1 flex-col gap-6">
+            <div className="flex flex-1 flex-col gap-6 lg:w-1/2">
               <div className="aspect-video w-full overflow-hidden rounded-lg shadow-lg">
                 <iframe
                   src="https://www.youtube.com/embed/OlJuSZeyug8"
@@ -115,7 +115,7 @@ export default function AboutSection() {
                         <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary text-white">
                           <HeartHandshake className="h-6 w-6" />
                         </div>
-                        <h4 className="text-lg font-bold text-primary">H — Human-Centricity</h4>
+                        <h4 className="text-lg font-bold text-primary">H - Human-Centricity</h4>
                       </div>
                       <p className="text-muted-foreground">
                         <span className="font-semibold">We Design for People First.</span>
@@ -129,7 +129,7 @@ export default function AboutSection() {
                         <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary text-white">
                           <Layers className="h-6 w-6" />
                         </div>
-                        <h4 className="text-lg font-bold text-primary">C — Convergence</h4>
+                        <h4 className="text-lg font-bold text-primary">C - Convergence</h4>
                       </div>
                       <p className="text-muted-foreground">
                         <span className="font-semibold">We Bridge Disciplines.</span>
@@ -145,7 +145,7 @@ export default function AboutSection() {
                         <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary text-white">
                           <Users className="h-6 w-6" />
                         </div>
-                        <h4 className="text-lg font-bold text-primary">I — Inclusive Impact</h4>
+                        <h4 className="text-lg font-bold text-primary">I - Inclusive Impact</h4>
                       </div>
                       <p className="text-muted-foreground">
                         <span className="font-semibold">We Leave No One Behind.</span>
@@ -161,7 +161,7 @@ export default function AboutSection() {
           </div>
         </div>
 
-        {/* Organization Structure — inside expanded Know More */}
+        {/* Organization Structure - inside expanded Know More */}
         {expanded && (
           <div className="mt-12">
             <div className="animate-in fade-in slide-in-from-top-2 rounded-lg border border-border bg-card p-6 lg:p-8">
@@ -209,7 +209,7 @@ export default function AboutSection() {
                 {/* CHCI Center Chief */}
                 <div className="relative group mb-6">
                   <div className="absolute -inset-1 bg-linear-to-r from-[#0A3D91] to-[#3A7CC3] rounded-xl blur-xl opacity-60 group-hover:opacity-100 transition duration-300" />
-                  <div className="relative w-41 py-4 px-8 border border-[#0A3D91] rounded-xl bg-linear-to-br from-[#0A3D91] to-[#3A7CC3] text-center font-bold text-white shadow-xl hover:shadow-2xl transition-shadow">
+                  <div className="relative w-44 py-4 px-8 border border-[#0A3D91] rounded-xl bg-linear-to-br from-[#0A3D91] to-[#3A7CC3] text-center font-bold text-white shadow-xl hover:shadow-2xl transition-shadow">
                     CHCI Center
                     <br />
                     Chief
@@ -217,7 +217,7 @@ export default function AboutSection() {
                 </div>
 
                 {/* Units Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-5 gap-6 w-full max-w-6xl">
+                <div className="grid w-full max-w-6xl grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
                   {units.map((unit, idx) => (
                     <div key={idx} className="group relative">
                       <div className="absolute -inset-1 bg-linear-to-r from-[#0A3D91] to-[#3A7CC3] rounded-xl blur opacity-30 group-hover:opacity-100 transition duration-300" />
@@ -225,7 +225,7 @@ export default function AboutSection() {
                         <img
                           src={unit.image}
                           alt={unit.name}
-                          className="w-18 h-10 object-contain"
+                          className="h-12 w-20 object-contain"
                         />
                         <span className="font-bold text-sm text-[#0A3D91] leading-tight">
                           {unit.name}
@@ -242,3 +242,4 @@ export default function AboutSection() {
     </section>
   );
 }
+

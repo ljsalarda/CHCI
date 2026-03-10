@@ -17,7 +17,7 @@ export function Home() {
   return (
     <section
       id="home"
-      className="relative flex items-center justify-center overflow-hidden py-32 bg-linear-to-b from-white via-blue-50/40 to-white"
+      className="relative flex min-h-dvh w-full items-center justify-center overflow-hidden bg-linear-to-b from-white via-blue-50/40 to-white"
     >
       {/* 🔵 Background Design Layer */}
       <div className="absolute inset-0 -z-10 pointer-events-none">
@@ -31,11 +31,11 @@ export function Home() {
         <div className="absolute inset-0 opacity-[0.15] bg-[linear-gradient(#0A3D91_1px,transparent_1px),linear-gradient(90deg,#0A3D91_1px,transparent_1px)] bg-size-[50px_50px]" />
       </div>
 
-      <div className="container relative mx-auto px-4 py-auto text-center z-10">
-        <div className="mx-auto max-w-5xl space-y-8">
+      <div className="container relative z-9 mx-auto px-5 sm:px-6 py-auto text-center">
+        <div className="mx-auto max-w-8xl space-y-7">
           {/* Main heading */}
-          <div className="space-y-4">
-            <h1 className="text-5xl sm:text-6xl md:text-7xl font-black tracking-tight text-balance leading-tight">
+          <div className="space-y-6">
+            <h1 className="text-5xl sm:text-8xl md:text-8xl font-black tracking-tight text-balance leading-tight">
               Center for{" "}
               <span className="bg-linear-to-r from-primary to-primary/70 bg-clip-text text-transparent">
                 Human-Computer
@@ -46,23 +46,23 @@ export function Home() {
           </div>
 
           {/* Tagline */}
-          <p className="text-2xl md:text-3xl font-light text-muted-foreground italic">
+          <p className="text-3xl md:text-4xl font-light text-muted-foreground italic">
             &ldquo;Humanizing Technology&rdquo;
           </p>
 
           {/* Stats section */}
-          <div className="pt-12 grid grid-cols-4 md:grid-cols-4 gap-6 max-w-2xl mx-auto">
+          <div className="pt-14 grid grid-cols-4 md:grid-cols-4 gap-8 max-w-3xl mx-auto">
             {stats.map((stat) => (
               <a
                 key={stat.label}
                 href={stat.link || "#"}
                 onClick={(e) => !stat.link && e.preventDefault()}
-                className={`space-y-1 p-3 rounded-lg transition-colors ${
+                className={`space-y-1 p-4 rounded-lg transition-colors ${
                   stat.link ? "cursor-pointer hover:bg-primary/10" : "hover:bg-primary/5"
                 }`}
               >
-                <div className="text-3xl md:text-4xl font-bold text-primary">{stat.number}</div>
-                <div className="text-xs md:text-sm text-muted-foreground font-medium">
+                <div className="text-4xl md:text-5xl font-bold text-primary">{stat.number}</div>
+                <div className="text-sm md:text-base text-muted-foreground font-medium">
                   {stat.label}
                 </div>
               </a>
@@ -72,7 +72,7 @@ export function Home() {
       </div>
 
       {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+      <div className="absolute bottom-20 left-1/2 -translate-x-1/2 animate-bounce">
         <div className="flex flex-col items-center gap-2 md:hidden">
           <span className="text-xs text-muted-foreground uppercase tracking-widest">Swipe</span>
           <svg
