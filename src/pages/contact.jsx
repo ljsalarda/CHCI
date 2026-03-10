@@ -71,7 +71,7 @@ export default function ContactSection() {
         {/* subtle tech grid overlay */}
         <div className="absolute inset-0 opacity-[0.15] bg-[linear-gradient(#0A3D91_1px,transparent_1px),linear-gradient(90deg,#0A3D91_1px,transparent_1px)] bg-size-[50px_50px]" />
       </div>
-      <div className="relative mx-auto max-w-7xl px-4 lg:px-8">
+      <div className="relative mx-auto max-w-8xl px-4 lg:px-8">
         {/* Header */}
         <div>
           <div className="text-center">

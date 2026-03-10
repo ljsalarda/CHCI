@@ -89,7 +89,7 @@ export default function AffiliationSection() {
         <div className="absolute bottom-0 right-0 h-full w-full bg-[radial-gradient(ellipse_at_bottom_left,hsl(var(--secondary)/0.04),transparent_50%)]" />
       </div>
 
-      <div className="relative mx-auto max-w-7xl px-4 lg:px-8">
+      <div className="relative mx-auto max-w-8xl px-4 lg:px-8">
         <div>
           <div className="text-center">
             <span className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-primary">
@@ -131,7 +131,7 @@ export default function AffiliationSection() {
                     </div>
                   </div>
                   <p className="text-sm leading-relaxed text-muted-foreground">{cat.description}</p>
-                  <ul className="mt-3 list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                  <ul className="mt-3 list-disc space-y-1 pl-5 text-base leading-relaxed text-muted-foreground">
                     {cat.requirements.map((item) => (
                       <li key={item}>{item}</li>
                     ))}
@@ -150,7 +150,7 @@ export default function AffiliationSection() {
                   key={tab.key}
                   type="button"
                   onClick={() => setActiveTab(tab.key)}
-                  className={`flex flex-1 items-center justify-center gap-2 px-4 py-4 text-sm font-semibold transition-all ${
+                  className={`flex flex-1 items-center justify-center gap-2 px-4 py-4 text-base  font-semibold transition-all ${
                     activeTab === tab.key
                       ? "border-b-2 border-primary bg-card text-primary"
                       : "text-muted-foreground hover:bg-card/50 hover:text-foreground"
@@ -181,8 +181,8 @@ export default function AffiliationSection() {
                       </span>
 
                       <div className="flex items-start gap-2">
-                        <span className="text-sm font-bold text-foreground">{i + 1}.</span>
-                        <span className="text-sm leading-relaxed text-muted-foreground">
+                        <span className="text-base font-bold text-foreground">{i + 1}.</span>
+                        <span className="text-base leading-relaxed text-muted-foreground">
                           {item}
                         </span>
                       </div>
