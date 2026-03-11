@@ -103,10 +103,10 @@ export default function ContactSection() {
                     <info.icon className="h-5 w-5" />
                   </div>
                   <div>
-                    <p className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
+                    <p className="text-base font-bold uppercase tracking-wider text-muted-foreground">
                       {info.label}
                     </p>
-                    <p className="mt-1 text-sm font-medium text-foreground leading-relaxed">
+                    <p className="mt-1 text-base font-medium text-foreground leading-relaxed">
                       {info.value}
                     </p>
                   </div>
@@ -119,7 +119,7 @@ export default function ContactSection() {
                   <Mail className="h-5 w-5" />
                 </div>
                 <h4 className="font-heading text-lg font-bold">Let&apos;s Collaborate</h4>
-                <p className="mt-2 text-sm leading-relaxed text-primary-foreground/80">
+                <p className="mt-2 text-base leading-relaxed text-primary-foreground/80">
                   Whether you&apos;re an academic institution, a government agency, or a private
                   organization, we welcome partnerships that drive innovation and community impact.
                 </p>
@@ -132,7 +132,7 @@ export default function ContactSection() {
             <form
               onSubmit={handleSubmit}
               noValidate
-              className="rounded-2xl border border-border bg-card p-6 shadow-lg md:p-8"
+              className="rounded-3xl border border-border bg-card p-6 shadow-lg md:p-8"
             >
               <h3 className="mb-6 font-heading text-xl font-bold text-foreground">
                 Send Us a Message
@@ -145,7 +145,7 @@ export default function ContactSection() {
                   <div>
                     <label
                       htmlFor="fullName"
-                      className="mb-1.5 block text-sm font-medium text-foreground"
+                      className="mb-1.5 block text-base font-medium text-foreground"
                     >
                       Full Name
                     </label>
@@ -171,7 +171,7 @@ export default function ContactSection() {
                   <div>
                     <label
                       htmlFor="email"
-                      className="mb-1.5 block text-sm font-medium text-foreground"
+                      className="mb-1.5 block text-base font-medium text-foreground"
                     >
                       Email
                     </label>
@@ -198,7 +198,7 @@ export default function ContactSection() {
                 <div>
                   <label
                     htmlFor="subject"
-                    className="mb-1.5 block text-sm font-medium text-foreground"
+                    className="mb-1.5 block text-base font-medium text-foreground"
                   >
                     Subject
                   </label>
@@ -224,7 +224,7 @@ export default function ContactSection() {
                 <div>
                   <label
                     htmlFor="message"
-                    className="mb-1.5 block text-sm font-medium text-foreground"
+                    className="mb-1.5 block text-base font-medium text-foreground"
                   >
                     Message
                   </label>
@@ -248,13 +248,13 @@ export default function ContactSection() {
 
                 <button
                   type="submit"
-                  className="group inline-flex w-full items-center justify-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-bold text-primary-foreground shadow-lg shadow-primary/20 transition-all hover:bg-primary/90 hover:shadow-xl hover:shadow-primary/30 sm:w-auto"
+                  className="group inline-flex w-full items-center justify-center gap-2 rounded-lg bg-primary px-6 py-3 text-base font-bold text-primary-foreground shadow-lg shadow-primary/20 transition-all hover:bg-primary/90 hover:shadow-xl hover:shadow-primary/30 sm:w-auto"
                 >
                   <Send className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
                   Send Message
                 </button>
                 {isSubmitted && (
-                  <p className="text-sm text-green-600">
+                  <p className="text-base text-green-600">
                     Message sent successfully. We will get back to you as soon as possible.
                   </p>
                 )}

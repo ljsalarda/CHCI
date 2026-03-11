@@ -99,7 +99,7 @@ export default function AffiliationSection() {
             <h2 className="mt-4 font-heading text-3xl font-bold text-foreground text-balance md:text-4xl lg:text-5xl">
               Membership and Participation
             </h2>
-            <p className="mx-auto mt-3 max-w-3xl leading-relaxed text-muted-foreground">
+            <p className="mx-auto mt-3 text-lg max-w-3xl leading-relaxed text-muted-foreground">
               To maintain a culture of high performance, membership in the Center is privilege-based
               and output-oriented. It is open to individuals who demonstrate active engagement in
               the Center's research agenda.

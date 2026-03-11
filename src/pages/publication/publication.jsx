@@ -1,46 +1,16 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { StickyNavbar } from "@/components/navbar";
 import { PageHeader } from "./page-header";
 import { TableToolbar } from "./table-toolbar";
 import { PublicationsTable } from "./publication-table";
-import { fetchPublicationsFromCKAN } from "@/lib/ckan";
 
 export default function PublicationOutputsPage() {
-  const [publications, setPublications] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [publications] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [statusFilter, setStatusFilter] = useState("all");
   const [yearFilter, setYearFilter] = useState("all");
-
-  useEffect(() => {
-    let active = true;
-
-    const loadPublications = async () => {
-      try {
-        const ckanPublications = await fetchPublicationsFromCKAN();
-        if (active) {
-          setPublications(ckanPublications || []);
-        }
-      } catch (error) {
-        console.error("CKAN publication fetch failed.", error);
-        if (active) {
-          setPublications([]);
-        }
-      } finally {
-        if (active) {
-          setLoading(false);
-        }
-      }
-    };
-
-    loadPublications();
-
-    return () => {
-      active = false;
-    };
-  }, []);
 
   const availableYears = useMemo(() => {
     const years = [...new Set(publications.map((p) => p.year))];
@@ -93,14 +63,8 @@ export default function PublicationOutputsPage() {
 
               <div className="flex items-center justify-between text-xs text-muted-foreground">
                 <p>
-                  {loading ? (
-                    <>Loading publications from CKAN...</>
-                  ) : (
-                    <>
-                      Showing <span className="font-medium text-foreground">{filteredPublications.length}</span> of{" "}
-                      <span className="font-medium text-foreground">{publications.length}</span> publication outputs
-                    </>
-                  )}
+                  Showing <span className="font-medium text-foreground">{filteredPublications.length}</span> of{" "}
+                  <span className="font-medium text-foreground">{publications.length}</span> publication outputs
                 </p>
                 <p className="text-[#3A7CC3]">Research Output Management System</p>
               </div>
