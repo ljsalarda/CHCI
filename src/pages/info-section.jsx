@@ -102,7 +102,7 @@ export function InfoSection() {
         <h2 className="mb-4 text-center text-3xl font-bold text-foreground md:text-4xl">
           <span className="text-primary">Information</span> Center
         </h2>
-        <p className="mx-auto mb-12 max-w-2xl text-center text-lg text-muted-foreground">
+        <p className="mx-auto mb-12 max-w-2xl text-center text-base text-muted-foreground">
           Quick access to important university resources and information.
         </p>
         <div className="mx-auto max-w-3xl">

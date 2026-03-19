@@ -193,7 +193,7 @@ export default function ServicesSection() {
                       <row.icon className="h-5 w-5" />
                     </div>
                     <p className="text-2xl font-bold text-foreground">{row.type}</p>
-                    <p className="mt-2 text-lg leading-relaxed text-muted-foreground">
+                    <p className="mt-2 text-base leading-relaxed text-muted-foreground">
                       {row.items}
                     </p>
                   </div>
@@ -220,7 +220,7 @@ export default function ServicesSection() {
                     {card.bullets.map((bullet) => (
                       <li
                         key={bullet}
-                        className="flex text-lg items-start gap-2.5  leading-relaxed text-muted-foreground"
+                        className="flex text-base items-start gap-2.5  leading-relaxed text-muted-foreground"
                       >
                         <ArrowRight className="mt-0.5 h-4 w-4 shrink-0 text-secondary " />
                         {bullet}

@@ -33,51 +33,7 @@ export const researchAreas = [
 
 export const projects = [
   {
-    slug: "marvel",
     name: "MARVEL",
-    img: "/marvel.png",
-    href: "/marvel",
-    hero: {
-      backgroundImage: "/marvelbg.jpg",
-      subtitle: "Mining Beyond Reality",
-      title: "MARVEL TECHNOLOGIES",
-      location: "",
-      cta: {
-        label: "Download Application",
-        href: "https://drive.google.com/drive/folders/1jp9FA4NitzAyFPpBm_VgIm_tw_FAdedq",
-      },
-    },
-    sections: [
-      {
-        type: "about_video",
-        eyebrow: "MARVEL About",
-        title: "About",
-        heading: "Project Overview",
-        text: "Industry 4.0 combines cyber-physical systems, IoT, and smart automation. MARVEL bridges mining education with immersive digital training through VR and AR to extend learning beyond traditional delivery.",
-        videoUrl: "https://www.youtube.com/embed/0XlkjM-Bwu8",
-        videoTitle: "MARVEL Technologies Introduction Video",
-        actions: [{ label: "Visit our Facebook Page", href: "https://www.facebook.com/csuchci/" }],
-      },
-      {
-        type: "feature_grid",
-        eyebrow: "MARVEL Focus",
-        title: "Core Components",
-        items: [
-          {
-            title: "Immersive Learning",
-            description: "Uses virtual environments to deliver realistic mining training scenarios.",
-          },
-          {
-            title: "AR-Assisted Instruction",
-            description: "Provides contextual overlays to guide users in technical procedures.",
-          },
-          {
-            title: "Digital Training Center",
-            description: "Centralizes course assets, simulations, and evaluation workflows.",
-          },
-        ],
-      },
-    ],
   },
 
 ];

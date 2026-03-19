@@ -83,11 +83,7 @@ export default function AffiliationSection() {
   };
 
   return (
-    <section id="affiliation" className="relative overflow-hidden bg-muted py-15 lg:py-15">
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute top-0 left-0 h-full w-full bg-[radial-gradient(ellipse_at_top_right,hsl(var(--primary)/0.04),transparent_50%)]" />
-        <div className="absolute bottom-0 right-0 h-full w-full bg-[radial-gradient(ellipse_at_bottom_left,hsl(var(--secondary)/0.04),transparent_50%)]" />
-      </div>
+    <section id="affiliation" className="relative overflow-hidden py-15 lg:py-15">
 
       <div className="relative mx-auto max-w-8xl px-4 lg:px-8">
         <div>
@@ -99,7 +95,7 @@ export default function AffiliationSection() {
             <h2 className="mt-4 font-heading text-3xl font-bold text-foreground text-balance md:text-4xl lg:text-5xl">
               Membership and Participation
             </h2>
-            <p className="mx-auto mt-3 text-lg max-w-3xl leading-relaxed text-muted-foreground">
+            <p className="mx-auto mt-3 text-base max-w-3xl leading-relaxed text-muted-foreground">
               To maintain a culture of high performance, membership in the Center is privilege-based
               and output-oriented. It is open to individuals who demonstrate active engagement in
               the Center's research agenda.

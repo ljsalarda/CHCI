@@ -17,7 +17,7 @@ export function Home() {
   return (
     <section
       id="home"
-      className="relative flex min-h-dvh w-full items-center justify-center overflow-hidden bg-linear-to-b from-white via-blue-50/40 to-white"
+      className="relative flex min-h-screen w-full items-center justify-center overflow-hidden bg-linear-to-b from-white via-blue-50/40 to-white"
     >
       {/* 🔵 Background Design Layer */}
       <div className="absolute inset-0 -z-10 pointer-events-none">
@@ -34,7 +34,7 @@ export function Home() {
       <div className="container relative z-9 mx-auto px-5 sm:px-6 py-auto text-center">
         <div className="mx-auto max-w-8xl space-y-7">
           {/* Main heading */}
-          <div className="space-y-6">
+          <div className="space-y-6 -mt-35">
             <h1 className="text-5xl sm:text-8xl md:text-8xl font-black tracking-tight text-balance leading-tight">
               Center for{" "}
               <span className="bg-linear-to-r from-primary to-primary/70 bg-clip-text text-transparent">
@@ -49,25 +49,6 @@ export function Home() {
           <p className="text-3xl md:text-4xl font-light text-muted-foreground italic">
             &ldquo;Humanizing Technology&rdquo;
           </p>
-
-          {/* Stats section */}
-          <div className="pt-14 grid grid-cols-4 md:grid-cols-4 gap-8 max-w-3xl mx-auto">
-            {stats.map((stat) => (
-              <a
-                key={stat.label}
-                href={stat.link || "#"}
-                onClick={(e) => !stat.link && e.preventDefault()}
-                className={`space-y-1 p-4 rounded-lg transition-colors ${
-                  stat.link ? "cursor-pointer hover:bg-primary/10" : "hover:bg-primary/5"
-                }`}
-              >
-                <div className="text-4xl md:text-5xl font-bold text-primary">{stat.number}</div>
-                <div className="text-sm md:text-base text-muted-foreground font-medium">
-                  {stat.label}
-                </div>
-              </a>
-            ))}
-          </div>
         </div>
       </div>
 

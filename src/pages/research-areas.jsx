@@ -48,7 +48,7 @@ export function ResearchAreasSection() {
                 <h3 className="text-lg font-semibold text-foreground mb-3 group-hover:text-[#0A3D91] transition-colors">
                   {area.title}
                 </h3>
-                <p className="text-xl text-muted-foreground leading-relaxed">{area.description}</p>
+                <p className="text-base text-muted-foreground leading-relaxed">{area.description}</p>
               </div>
             ))}
           </div>
@@ -69,7 +69,7 @@ export function ResearchAreasSection() {
                 <h3 className="text-lg font-semibold text-foreground mb-3 group-hover:text-[#0A3D91] transition-colors">
                   {area.title}
                 </h3>
-                <p className="text-xl text-muted-foreground leading-relaxed">{area.description}</p>
+                <p className="text-base text-muted-foreground leading-relaxed">{area.description}</p>
               </div>
             ))}
           </div>
