@@ -26,6 +26,12 @@ const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID || "";
 const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || "";
 const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || "";
 
+const missingEmailJsConfig = [
+  !EMAILJS_SERVICE_ID && "VITE_EMAILJS_SERVICE_ID",
+  !EMAILJS_TEMPLATE_ID && "VITE_EMAILJS_TEMPLATE_ID",
+  !EMAILJS_PUBLIC_KEY && "VITE_EMAILJS_PUBLIC_KEY",
+].filter(Boolean);
+
 export default function ContactSection() {
   const [formData, setFormData] = useState({
     fullName: "",
@@ -37,8 +43,7 @@ export default function ContactSection() {
   const [submitStatus, setSubmitStatus] = useState("idle");
   const [submitMessage, setSubmitMessage] = useState("");
 
-  const isEmailJsConfigured =
-    EMAILJS_SERVICE_ID && EMAILJS_TEMPLATE_ID && EMAILJS_PUBLIC_KEY;
+  const isEmailJsConfigured = missingEmailJsConfig.length === 0;
 
   const validate = () => {
     const newErrors = {};
@@ -67,7 +72,7 @@ export default function ContactSection() {
     if (!isEmailJsConfigured) {
       setSubmitStatus("error");
       setSubmitMessage(
-        "Email service is not configured yet. Add your EmailJS Vite variables to enable this form."
+        `Email service is not configured yet. Missing: ${missingEmailJsConfig.join(", ")}.`
       );
       return;
     }
@@ -101,7 +106,11 @@ export default function ContactSection() {
     } catch (error) {
       console.error("EmailJS send failed:", error);
       setSubmitStatus("error");
-      setSubmitMessage("Message failed to send. Please try again in a moment.");
+      const errorMessage =
+        (error && typeof error === "object" && ("text" in error || "message" in error)
+          ? error.text || error.message
+          : "") || "Message failed to send. Please try again in a moment.";
+      setSubmitMessage(errorMessage);
     }
   };
 
