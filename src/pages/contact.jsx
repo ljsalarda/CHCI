@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import emailjs from "@emailjs/browser";
 import { Send, Mail, MapPin, Phone, MessageSquare } from "lucide-react";
 
 const contactInfo = [
@@ -12,7 +13,7 @@ const contactInfo = [
   {
     icon: Mail,
     label: "Email",
-    value: "chci@carsu.edu.ph",
+    value: "leovinjozhsalarda@gmail.com",
   },
   {
     icon: Phone,
@@ -20,6 +21,10 @@ const contactInfo = [
     value: "+63 (085) 341-2246",
   },
 ];
+
+const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID || "";
+const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || "";
+const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || "";
 
 export default function ContactSection() {
   const [formData, setFormData] = useState({
@@ -29,7 +34,11 @@ export default function ContactSection() {
     message: "",
   });
   const [errors, setErrors] = useState({});
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState("idle");
+  const [submitMessage, setSubmitMessage] = useState("");
+
+  const isEmailJsConfigured =
+    EMAILJS_SERVICE_ID && EMAILJS_TEMPLATE_ID && EMAILJS_PUBLIC_KEY;
 
   const validate = () => {
     const newErrors = {};
@@ -44,14 +53,55 @@ export default function ContactSection() {
     return newErrors;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const newErrors = validate();
     setErrors(newErrors);
-    setIsSubmitted(false);
-    if (Object.keys(newErrors).length === 0) {
-      setIsSubmitted(true);
+    setSubmitStatus("idle");
+    setSubmitMessage("");
+
+    if (Object.keys(newErrors).length > 0) {
+      return;
+    }
+
+    if (!isEmailJsConfigured) {
+      setSubmitStatus("error");
+      setSubmitMessage(
+        "Email service is not configured yet. Add your EmailJS Vite variables to enable this form."
+      );
+      return;
+    }
+
+    setSubmitStatus("sending");
+
+    try {
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        {
+          name: formData.fullName,
+          full_name: formData.fullName,
+          from_name: formData.fullName,
+          email: formData.email,
+          from_email: formData.email,
+          reply_to: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+          to_email: "leovinjozhsalarda@gmail.com",
+        },
+        {
+          publicKey: EMAILJS_PUBLIC_KEY,
+        }
+      );
+
+      setSubmitStatus("success");
+      setSubmitMessage("Message sent successfully. We will get back to you as soon as possible.");
+      setErrors({});
       setFormData({ fullName: "", email: "", subject: "", message: "" });
+    } catch (error) {
+      console.error("EmailJS send failed:", error);
+      setSubmitStatus("error");
+      setSubmitMessage("Message failed to send. Please try again in a moment.");
     }
   };
 
@@ -151,6 +201,7 @@ export default function ContactSection() {
                     </label>
                     <input
                       id="fullName"
+                      name="fullName"
                       type="text"
                       value={formData.fullName}
                       onChange={(e) =>
@@ -177,6 +228,7 @@ export default function ContactSection() {
                     </label>
                     <input
                       id="email"
+                      name="email"
                       type="email"
                       value={formData.email}
                       onChange={(e) =>
@@ -204,6 +256,7 @@ export default function ContactSection() {
                   </label>
                   <input
                     id="subject"
+                    name="subject"
                     type="text"
                     value={formData.subject}
                     onChange={(e) =>
@@ -230,6 +283,7 @@ export default function ContactSection() {
                   </label>
                   <textarea
                     id="message"
+                    name="message"
                     rows={5}
                     value={formData.message}
                     onChange={(e) =>
@@ -248,14 +302,20 @@ export default function ContactSection() {
 
                 <button
                   type="submit"
+                  disabled={submitStatus === "sending"}
                   className="group inline-flex w-full items-center justify-center gap-2 rounded-lg bg-primary px-6 py-3 text-base font-bold text-primary-foreground shadow-lg shadow-primary/20 transition-all hover:bg-primary/90 hover:shadow-xl hover:shadow-primary/30 sm:w-auto"
                 >
                   <Send className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-                  Send Message
+                  {submitStatus === "sending" ? "Sending..." : "Send Message"}
                 </button>
-                {isSubmitted && (
-                  <p className="text-base text-green-600">
-                    Message sent successfully. We will get back to you as soon as possible.
+                {submitMessage && (
+                  <p
+                    aria-live="polite"
+                    className={`text-base ${
+                      submitStatus === "success" ? "text-green-600" : "text-destructive"
+                    }`}
+                  >
+                    {submitMessage}
                   </p>
                 )}
               </div>
