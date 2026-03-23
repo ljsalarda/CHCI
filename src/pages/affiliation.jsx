@@ -83,13 +83,9 @@ export default function AffiliationSection() {
   };
 
   return (
-    <section id="affiliation" className="relative overflow-hidden bg-muted py-15 lg:py-15">
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute top-0 left-0 h-full w-full bg-[radial-gradient(ellipse_at_top_right,hsl(var(--primary)/0.04),transparent_50%)]" />
-        <div className="absolute bottom-0 right-0 h-full w-full bg-[radial-gradient(ellipse_at_bottom_left,hsl(var(--secondary)/0.04),transparent_50%)]" />
-      </div>
+    <section id="affiliation" className="relative overflow-hidden py-15 lg:py-15">
 
-      <div className="relative mx-auto max-w-7xl px-4 lg:px-8">
+      <div className="relative mx-auto max-w-8xl px-4 lg:px-8">
         <div>
           <div className="text-center">
             <span className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-primary">
@@ -99,7 +95,7 @@ export default function AffiliationSection() {
             <h2 className="mt-4 font-heading text-3xl font-bold text-foreground text-balance md:text-4xl lg:text-5xl">
               Membership and Participation
             </h2>
-            <p className="mx-auto mt-3 max-w-3xl leading-relaxed text-muted-foreground">
+            <p className="mx-auto mt-3 text-base max-w-3xl leading-relaxed text-muted-foreground">
               To maintain a culture of high performance, membership in the Center is privilege-based
               and output-oriented. It is open to individuals who demonstrate active engagement in
               the Center's research agenda.
@@ -131,7 +127,7 @@ export default function AffiliationSection() {
                     </div>
                   </div>
                   <p className="text-sm leading-relaxed text-muted-foreground">{cat.description}</p>
-                  <ul className="mt-3 list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                  <ul className="mt-3 list-disc space-y-1 pl-5 text-base leading-relaxed text-muted-foreground">
                     {cat.requirements.map((item) => (
                       <li key={item}>{item}</li>
                     ))}
@@ -150,7 +146,7 @@ export default function AffiliationSection() {
                   key={tab.key}
                   type="button"
                   onClick={() => setActiveTab(tab.key)}
-                  className={`flex flex-1 items-center justify-center gap-2 px-4 py-4 text-sm font-semibold transition-all ${
+                  className={`flex flex-1 items-center justify-center gap-2 px-4 py-4 text-base  font-semibold transition-all ${
                     activeTab === tab.key
                       ? "border-b-2 border-primary bg-card text-primary"
                       : "text-muted-foreground hover:bg-card/50 hover:text-foreground"
@@ -181,8 +177,8 @@ export default function AffiliationSection() {
                       </span>
 
                       <div className="flex items-start gap-2">
-                        <span className="text-sm font-bold text-foreground">{i + 1}.</span>
-                        <span className="text-sm leading-relaxed text-muted-foreground">
+                        <span className="text-base font-bold text-foreground">{i + 1}.</span>
+                        <span className="text-base leading-relaxed text-muted-foreground">
                           {item}
                         </span>
                       </div>

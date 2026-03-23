@@ -14,13 +14,30 @@ import { Footer } from "./components/footer";
 import ServicesSection from "./pages/services";
 import AffiliationSection from "./pages/affiliation";
 import ContactSection from "./pages/contact";
-import { projects } from "./data/site-data";
-import ProjectTemplate from "./pages/template";
-import PublicationOutputsPage from "./pages/publication/publication";
+
+const PROJECTS_SECTION_ID = "projects";
+
+const getSectionScrollTop = (sectionId) => {
+  const target = document.getElementById(sectionId);
+  if (!target) return null;
+
+  const nav = document.querySelector("header");
+  const navOffset = nav ? nav.getBoundingClientRect().height : 0;
+  const targetTop = target.getBoundingClientRect().top + window.scrollY - navOffset;
+
+  if (sectionId !== PROJECTS_SECTION_ID) {
+    return targetTop;
+  }
+
+  const availableHeight = window.innerHeight - navOffset;
+  const sectionHeight = target.getBoundingClientRect().height;
+  const overflow = Math.max(sectionHeight - availableHeight, 0);
+
+  return targetTop + overflow;
+};
 
 function App() {
   const pathname = typeof window !== "undefined" ? window.location.pathname : "/";
-  const normalizedPath = pathname !== "/" ? pathname.replace(/\/+$/, "") : pathname;
 
   useEffect(() => {
     if (typeof window === "undefined" || window.location.pathname !== "/") {
@@ -32,11 +49,8 @@ function App() {
     if (!section) return;
 
     const raf = window.requestAnimationFrame(() => {
-      const target = document.getElementById(section);
-      if (target) {
-        const nav = document.querySelector("header");
-        const navOffset = nav ? nav.getBoundingClientRect().height : 0;
-        const top = target.getBoundingClientRect().top + window.scrollY - navOffset;
+      const top = getSectionScrollTop(section);
+      if (top !== null) {
         window.scrollTo({ top });
       }
       window.history.replaceState({}, "", "/");
@@ -44,17 +58,6 @@ function App() {
 
     return () => window.cancelAnimationFrame(raf);
   }, [pathname]);
-
-  const routeSlug = normalizedPath.startsWith("/") ? normalizedPath.slice(1) : normalizedPath;
-  const matchedProject = projects.find((project) => project.slug === routeSlug);
-
-  if (normalizedPath === "/publication") {
-    return <PublicationOutputsPage />;
-  }
-
-  if (matchedProject) {
-    return <ProjectTemplate project={matchedProject} />;
-  }
 
   return (
     <div>

@@ -30,11 +30,11 @@ export function ResearchAreasSection() {
         </div>
 
         <div className="flex flex-col items-center">
-          <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
+          <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3 max-w-8xl mx-auto">
             {researchAreas.slice(0, 3).map((area) => (
               <div key={area.title} className="group text-center p-6">
                 {/* Image with border animation */}
-                <div className="relative mx-auto w-28 h-28 mb-6">
+                <div className="relative mx-auto w-30 h-30 mb-6">
                   <div className="absolute inset-0 rounded-full border-2 border-[#0A3D91]/20 group-hover:border-[#0A3D91] transition-colors duration-300" />
                   <div className="absolute inset-2 rounded-full border border-[#3A7CC3]/30 group-hover:border-[#3A7CC3] transition-colors duration-300" />
                   <div className="absolute inset-0 flex items-center justify-center">
@@ -48,14 +48,14 @@ export function ResearchAreasSection() {
                 <h3 className="text-lg font-semibold text-foreground mb-3 group-hover:text-[#0A3D91] transition-colors">
                   {area.title}
                 </h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">{area.description}</p>
+                <p className="text-base text-muted-foreground leading-relaxed">{area.description}</p>
               </div>
             ))}
           </div>
           <div className="grid gap-10 sm:grid-cols-2 mt-0 lg:w-2/3">
             {researchAreas.slice(3).map((area) => (
               <div key={area.title} className="group text-center p-6">
-                <div className="relative mx-auto w-28 h-28 mb-6">
+                <div className="relative mx-auto w-30 h-30 mb-6">
                   <div className="absolute inset-0 rounded-full border-2 border-[#0A3D91]/20 group-hover:border-[#0A3D91] transition-colors duration-300" />
                   <div className="absolute inset-2 rounded-full border border-[#3A7CC3]/30 group-hover:border-[#3A7CC3] transition-colors duration-300" />
                   <div className="absolute inset-0 flex items-center justify-center">
@@ -69,7 +69,7 @@ export function ResearchAreasSection() {
                 <h3 className="text-lg font-semibold text-foreground mb-3 group-hover:text-[#0A3D91] transition-colors">
                   {area.title}
                 </h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">{area.description}</p>
+                <p className="text-base text-muted-foreground leading-relaxed">{area.description}</p>
               </div>
             ))}
           </div>

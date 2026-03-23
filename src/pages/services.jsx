@@ -149,7 +149,7 @@ export default function ServicesSection() {
         {/* subtle tech grid overlay */}
         <div className="absolute inset-0 opacity-[0.15] bg-[linear-gradient(#0A3D91_1px,transparent_1px),linear-gradient(90deg,#0A3D91_1px,transparent_1px)] bg-size-[50px_50px]" />
       </div>
-      <div className="relative mx-auto max-w-7xl px-4 lg:px-8">
+      <div className="relative mx-auto max-w-7xl px-4 lg:px-1">
         {/* Section Header */}
         <div>
           <div className="text-center">
@@ -157,7 +157,7 @@ export default function ServicesSection() {
               <Briefcase className="h-3.5 w-3.5" />
               What We Offer
             </span>
-            <h2 className="mt-4 font-heading text-3xl font-bold text-foreground text-balance md:text-4xl lg:text-5xl">
+            <h2 className="mt-4 font-heading text-4xl font-bold text-foreground text-balance md:text-4xl lg:text-5xl">
               Services and Extensions Portfolio
             </h2>
             <p className="mx-auto mt-2 max-w-3xl leading-relaxed text-muted-foreground">
@@ -170,13 +170,13 @@ export default function ServicesSection() {
         </div>
 
         {/* Training & Certification */}
-        <div className="mt-10">
+        <div className="mt-10 ">
           <div className="rounded-3xl border border-border/70 bg-card p-6 shadow-lg md:p-8">
             <div className="mb-5 flex items-center gap-3">
               <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary text-primary-foreground shadow-sm">
                 <GraduationCap className="h-5 w-5" />
               </div>
-              <h3 className="font-heading text-xl font-bold text-foreground">
+              <h3 className="font-heading text-3xl font-bold text-foreground">
                 Specialized Training & Certification
               </h3>
             </div>
@@ -192,8 +192,8 @@ export default function ServicesSection() {
                     <div className="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-secondary/10 text-secondary transition-colors group-hover:bg-secondary group-hover:text-secondary-foreground">
                       <row.icon className="h-5 w-5" />
                     </div>
-                    <p className="text-sm font-bold text-foreground">{row.type}</p>
-                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                    <p className="text-2xl font-bold text-foreground">{row.type}</p>
+                    <p className="mt-2 text-base leading-relaxed text-muted-foreground">
                       {row.items}
                     </p>
                   </div>
@@ -215,14 +215,14 @@ export default function ServicesSection() {
                   <div className="mb-4 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10 transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
                     <card.icon className="h-7 w-7 text-primary group-hover:text-primary-foreground" />
                   </div>
-                  <h4 className="font-heading text-lg font-bold text-foreground">{card.title}</h4>
-                  <ul className="mt-4 flex-1 space-y-3">
+                  <h4 className="font-heading text-2xl font-bold text-foreground">{card.title}</h4>
+                  <ul className="mt-4 flex-1  space-y-3">
                     {card.bullets.map((bullet) => (
                       <li
                         key={bullet}
-                        className="flex items-start gap-2.5 text-sm leading-relaxed text-muted-foreground"
+                        className="flex text-base items-start gap-2.5  leading-relaxed text-muted-foreground"
                       >
-                        <ArrowRight className="mt-0.5 h-4 w-4 shrink-0 text-secondary" />
+                        <ArrowRight className="mt-0.5 h-4 w-4 shrink-0 text-secondary " />
                         {bullet}
                       </li>
                     ))}
@@ -240,7 +240,7 @@ export default function ServicesSection() {
               <h3 className="mb-2 text-center font-heading text-2xl font-bold text-foreground md:text-3xl">
                 Process Flow for Availing the Services of CHCI
               </h3>
-              <p className="mx-auto mb-0 max-w-xl text-center text-sm leading-relaxed text-muted-foreground">
+              <p className="mx-auto mb-0 max-w-xl text-center text-base leading-relaxed text-muted-foreground">
                 Follow this step-by-step process to engage with our center and access the services
                 you need.
               </p>
@@ -250,7 +250,7 @@ export default function ServicesSection() {
                     type="button"
                     onClick={() => handleDesktopFlowViewChange("overview")}
                     aria-pressed={desktopFlowView === "overview"}
-                    className={`rounded-full px-4 py-2 text-sm font-semibold transition-colors ${
+                    className={`rounded-full px-4 py-2 text-base font-semibold transition-colors ${
                       desktopFlowView === "overview"
                         ? "bg-primary text-primary-foreground shadow-sm"
                         : "text-primary hover:bg-primary/10"
@@ -262,7 +262,7 @@ export default function ServicesSection() {
                     type="button"
                     onClick={() => handleDesktopFlowViewChange("original")}
                     aria-pressed={desktopFlowView === "original"}
-                    className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold transition-colors ${
+                    className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-base font-semibold transition-colors ${
                       desktopFlowView === "original"
                         ? "bg-primary text-primary-foreground shadow-sm"
                         : "text-primary hover:bg-primary/10"
@@ -283,7 +283,7 @@ export default function ServicesSection() {
               {desktopFlowView === "overview" && (
                 <div className="mb-5 hidden rounded-2xl border border-border/70 bg-muted/20 p-5 lg:block">
                   <div className="mb-4 flex items-center justify-between">
-                    <p className="text-sm font-bold uppercase tracking-wider text-primary">
+                    <p className="text-base font-bold uppercase tracking-wider text-primary">
                       Process At A Glance
                     </p>
                     <span className="rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-xs font-semibold text-primary">
@@ -295,17 +295,17 @@ export default function ServicesSection() {
                     <div className="grid grid-cols-7 gap-2">
                       {desktopPreviewSteps.map((step, index) => (
                         <div key={step} className="relative z-10 flex flex-col items-center gap-2">
-                          <div className="flex h-8 w-8 items-center justify-center rounded-full border border-primary/30 bg-card text-xs font-bold text-primary shadow-sm">
+                          <div className="flex h-8 w-8 items-center justify-center rounded-full border border-primary/30 bg-card text-base font-bold text-primary shadow-sm">
                             {index + 1}
                           </div>
-                          <p className="text-center text-[11px] leading-snug font-semibold text-foreground">
+                          <p className="text-center text-sm leading-snug font-semibold text-foreground">
                             {step}
                           </p>
                         </div>
                       ))}
                     </div>
                   </div>
-                  <div className="mt-4 rounded-xl border border-secondary/30 bg-secondary/10 px-4 py-2.5 text-center text-xs font-medium text-secondary">
+                  <div className="mt-4 rounded-xl border border-secondary/30 bg-secondary/10 px-4 py-2.5 text-center text-sm font-medium text-secondary">
                     Service Type Identification is the branching point for Internship and Other
                     Service Requests.
                   </div>
@@ -319,12 +319,12 @@ export default function ServicesSection() {
                     <div className="rounded-2xl border border-border/70 bg-card p-4 shadow-sm">
                       <div className="mb-3 flex flex-wrap gap-2">
                         {row.responsible && (
-                          <span className="rounded-full bg-primary/10 px-3 py-1 text-[11px] font-semibold text-primary">
+                          <span className="rounded-full bg-primary/10 px-3 py-1 text-sm font-semibold text-primary">
                             {row.responsible}
                           </span>
                         )}
                         {row.iface && (
-                          <span className="rounded-full bg-secondary/10 px-3 py-1 text-[11px] font-semibold text-secondary">
+                          <span className="rounded-full bg-secondary/10 px-3 py-1 text-sm font-semibold text-secondary">
                             {row.iface}
                           </span>
                         )}

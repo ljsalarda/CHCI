@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import emailjs from "@emailjs/browser";
 import { Send, Mail, MapPin, Phone, MessageSquare } from "lucide-react";
 
 const contactInfo = [
@@ -12,7 +13,7 @@ const contactInfo = [
   {
     icon: Mail,
     label: "Email",
-    value: "chci@carsu.edu.ph",
+    value: "leovinjozhsalarda@gmail.com",
   },
   {
     icon: Phone,
@@ -20,6 +21,10 @@ const contactInfo = [
     value: "+63 (085) 341-2246",
   },
 ];
+
+const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID || "";
+const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || "";
+const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || "";
 
 export default function ContactSection() {
   const [formData, setFormData] = useState({
@@ -29,7 +34,11 @@ export default function ContactSection() {
     message: "",
   });
   const [errors, setErrors] = useState({});
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState("idle");
+  const [submitMessage, setSubmitMessage] = useState("");
+
+  const isEmailJsConfigured =
+    EMAILJS_SERVICE_ID && EMAILJS_TEMPLATE_ID && EMAILJS_PUBLIC_KEY;
 
   const validate = () => {
     const newErrors = {};
@@ -44,14 +53,55 @@ export default function ContactSection() {
     return newErrors;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const newErrors = validate();
     setErrors(newErrors);
-    setIsSubmitted(false);
-    if (Object.keys(newErrors).length === 0) {
-      setIsSubmitted(true);
+    setSubmitStatus("idle");
+    setSubmitMessage("");
+
+    if (Object.keys(newErrors).length > 0) {
+      return;
+    }
+
+    if (!isEmailJsConfigured) {
+      setSubmitStatus("error");
+      setSubmitMessage(
+        "Email service is not configured yet. Add your EmailJS Vite variables to enable this form."
+      );
+      return;
+    }
+
+    setSubmitStatus("sending");
+
+    try {
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        {
+          name: formData.fullName,
+          full_name: formData.fullName,
+          from_name: formData.fullName,
+          email: formData.email,
+          from_email: formData.email,
+          reply_to: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+          to_email: "leovinjozhsalarda@gmail.com",
+        },
+        {
+          publicKey: EMAILJS_PUBLIC_KEY,
+        }
+      );
+
+      setSubmitStatus("success");
+      setSubmitMessage("Message sent successfully. We will get back to you as soon as possible.");
+      setErrors({});
       setFormData({ fullName: "", email: "", subject: "", message: "" });
+    } catch (error) {
+      console.error("EmailJS send failed:", error);
+      setSubmitStatus("error");
+      setSubmitMessage("Message failed to send. Please try again in a moment.");
     }
   };
 
@@ -71,7 +121,7 @@ export default function ContactSection() {
         {/* subtle tech grid overlay */}
         <div className="absolute inset-0 opacity-[0.15] bg-[linear-gradient(#0A3D91_1px,transparent_1px),linear-gradient(90deg,#0A3D91_1px,transparent_1px)] bg-size-[50px_50px]" />
       </div>
-      <div className="relative mx-auto max-w-7xl px-4 lg:px-8">
+      <div className="relative mx-auto max-w-8xl px-4 lg:px-8">
         {/* Header */}
         <div>
           <div className="text-center">
@@ -103,10 +153,10 @@ export default function ContactSection() {
                     <info.icon className="h-5 w-5" />
                   </div>
                   <div>
-                    <p className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
+                    <p className="text-base font-bold uppercase tracking-wider text-muted-foreground">
                       {info.label}
                     </p>
-                    <p className="mt-1 text-sm font-medium text-foreground leading-relaxed">
+                    <p className="mt-1 text-base font-medium text-foreground leading-relaxed">
                       {info.value}
                     </p>
                   </div>
@@ -119,7 +169,7 @@ export default function ContactSection() {
                   <Mail className="h-5 w-5" />
                 </div>
                 <h4 className="font-heading text-lg font-bold">Let&apos;s Collaborate</h4>
-                <p className="mt-2 text-sm leading-relaxed text-primary-foreground/80">
+                <p className="mt-2 text-base leading-relaxed text-primary-foreground/80">
                   Whether you&apos;re an academic institution, a government agency, or a private
                   organization, we welcome partnerships that drive innovation and community impact.
                 </p>
@@ -132,7 +182,7 @@ export default function ContactSection() {
             <form
               onSubmit={handleSubmit}
               noValidate
-              className="rounded-2xl border border-border bg-card p-6 shadow-lg md:p-8"
+              className="rounded-3xl border h-full border-border bg-card p-6 shadow-lg md:p-8"
             >
               <h3 className="mb-6 font-heading text-xl font-bold text-foreground">
                 Send Us a Message
@@ -145,12 +195,13 @@ export default function ContactSection() {
                   <div>
                     <label
                       htmlFor="fullName"
-                      className="mb-1.5 block text-sm font-medium text-foreground"
+                      className="mb-4 block text-base font-medium text-foreground"
                     >
                       Full Name
                     </label>
                     <input
                       id="fullName"
+                      name="fullName"
                       type="text"
                       value={formData.fullName}
                       onChange={(e) =>
@@ -171,12 +222,13 @@ export default function ContactSection() {
                   <div>
                     <label
                       htmlFor="email"
-                      className="mb-1.5 block text-sm font-medium text-foreground"
+                      className="mb-4 block text-base font-medium text-foreground"
                     >
                       Email
                     </label>
                     <input
                       id="email"
+                      name="email"
                       type="email"
                       value={formData.email}
                       onChange={(e) =>
@@ -198,12 +250,13 @@ export default function ContactSection() {
                 <div>
                   <label
                     htmlFor="subject"
-                    className="mb-1.5 block text-sm font-medium text-foreground"
+                    className="mb-4 block text-base font-medium text-foreground"
                   >
                     Subject
                   </label>
                   <input
                     id="subject"
+                    name="subject"
                     type="text"
                     value={formData.subject}
                     onChange={(e) =>
@@ -224,12 +277,13 @@ export default function ContactSection() {
                 <div>
                   <label
                     htmlFor="message"
-                    className="mb-1.5 block text-sm font-medium text-foreground"
+                    className="mb-4 block text-base font-medium text-foreground"
                   >
                     Message
                   </label>
                   <textarea
                     id="message"
+                    name="message"
                     rows={5}
                     value={formData.message}
                     onChange={(e) =>
@@ -248,14 +302,20 @@ export default function ContactSection() {
 
                 <button
                   type="submit"
-                  className="group inline-flex w-full items-center justify-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-bold text-primary-foreground shadow-lg shadow-primary/20 transition-all hover:bg-primary/90 hover:shadow-xl hover:shadow-primary/30 sm:w-auto"
+                  disabled={submitStatus === "sending"}
+                  className="group inline-flex w-full items-center justify-center gap-2 rounded-lg bg-primary px-6 py-3 text-base font-bold text-primary-foreground shadow-lg shadow-primary/20 transition-all hover:bg-primary/90 hover:shadow-xl hover:shadow-primary/30 sm:w-auto"
                 >
                   <Send className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-                  Send Message
+                  {submitStatus === "sending" ? "Sending..." : "Send Message"}
                 </button>
-                {isSubmitted && (
-                  <p className="text-sm text-green-600">
-                    Message sent successfully. We will get back to you as soon as possible.
+                {submitMessage && (
+                  <p
+                    aria-live="polite"
+                    className={`text-base ${
+                      submitStatus === "success" ? "text-green-600" : "text-destructive"
+                    }`}
+                  >
+                    {submitMessage}
                   </p>
                 )}
               </div>

@@ -5,12 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { ChevronDown, Menu, X } from "lucide-react";
 import { Link as ScrollLink } from "react-scroll";
-import { projects } from "@/data/site-data";
 
-const projectItems = projects.map((project) => ({
-  name: project.name,
-  href: project.href || `/${project.slug}`,
-}));
 
 const navItems = [
   { name: "Home", sectionId: "home" },
@@ -18,13 +13,33 @@ const navItems = [
   { name: "Research Areas", sectionId: "research" },
   { name: "Services", sectionId: "services" },
   { name: "Affiliation", sectionId: "affiliation" },
-  { name: "Projects", sectionId: "projects", children: projectItems },
-  { name: "Publications", href: "/publication" },
+  { name: "Projects", sectionId: "projects"},
+  { name: "Partners", sectionId: "partners" },
   { name: "Contact Us", sectionId: "contact" },
 ];
 
 const NAVBAR_OFFSET = -64;
 const SCROLL_DURATION_MS = 500;
+const PROJECTS_SECTION_ID = "projects";
+
+const getSectionScrollTop = (sectionId) => {
+  const target = document.getElementById(sectionId);
+  if (!target) return null;
+
+  const nav = document.querySelector("header");
+  const navOffset = nav ? nav.getBoundingClientRect().height : 0;
+  const targetTop = target.getBoundingClientRect().top + window.scrollY - navOffset;
+
+  if (sectionId !== PROJECTS_SECTION_ID) {
+    return targetTop;
+  }
+
+  const availableHeight = window.innerHeight - navOffset;
+  const sectionHeight = target.getBoundingClientRect().height;
+  const overflow = Math.max(sectionHeight - availableHeight, 0);
+
+  return targetTop + overflow;
+};
 
 export function StickyNavbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -43,6 +58,14 @@ export function StickyNavbar() {
     setIsOpen(false);
   };
 
+  const handleSectionScroll = (sectionId, closeMobile = false) => {
+    const top = getSectionScrollTop(sectionId);
+    if (top === null) return;
+
+    window.scrollTo({ top, behavior: "smooth" });
+    handleCloseMobile(closeMobile);
+  };
+
   const renderNavLink = (
     item,
     className,
@@ -51,6 +74,18 @@ export function StickyNavbar() {
     content = item.name,
   ) => {
     if (item.sectionId && isHomePage) {
+      if (item.sectionId === PROJECTS_SECTION_ID) {
+        return (
+          <button
+            type="button"
+            className={className}
+            onClick={() => handleSectionScroll(item.sectionId, closeMobile)}
+          >
+            {content}
+          </button>
+        );
+      }
+
       return (
         <ScrollLink
           to={item.sectionId}
@@ -80,9 +115,9 @@ export function StickyNavbar() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60 ">
-      <div className="container mx-auto flex h-16 items-center justify-between px-4 sm:px-6 lg:px-10">
+      <div className="container mx-auto flex h-16 justify-between px-4 sm:px-6 lg:px-0">
         {/* Logos */}
-        <div className="flex-1 flex justify-start lg:justify-start lg:ml-19 md:justify-center">
+        <div className="flex items-center justify-start">
           {isHomePage ? (
             <ScrollLink to="home" smooth duration={SCROLL_DURATION_MS} className="cursor-pointer">
               <img src="/CSU-LOGO.png" alt="CCIS Logo" className="w-8 mt-1 " />
@@ -104,7 +139,7 @@ export function StickyNavbar() {
         </div>
 
         {/* Desktop Menu */}
-        <nav className="hidden items-center gap-1 md:flex lg:gap-4 mr-16">
+        <nav className="hidden items-center gap-1 md:flex lg:gap-4">
           {navItems.map((item) => {
             if (item.children) {
               return (
