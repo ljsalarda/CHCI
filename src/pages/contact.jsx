@@ -22,15 +22,9 @@ const contactInfo = [
   },
 ];
 
-const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID || "";
-const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || "";
-const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || "";
-
-const missingEmailJsConfig = [
-  !EMAILJS_SERVICE_ID && "VITE_EMAILJS_SERVICE_ID",
-  !EMAILJS_TEMPLATE_ID && "VITE_EMAILJS_TEMPLATE_ID",
-  !EMAILJS_PUBLIC_KEY && "VITE_EMAILJS_PUBLIC_KEY",
-].filter(Boolean);
+const EMAILJS_SERVICE_ID = "service_3skdlmz";
+const EMAILJS_TEMPLATE_ID = "template_4d5k7yi";
+const EMAILJS_PUBLIC_KEY = "kIzaIOgnsbx1KzzaW";
 
 export default function ContactSection() {
   const [formData, setFormData] = useState({
@@ -42,8 +36,6 @@ export default function ContactSection() {
   const [errors, setErrors] = useState({});
   const [submitStatus, setSubmitStatus] = useState("idle");
   const [submitMessage, setSubmitMessage] = useState("");
-
-  const isEmailJsConfigured = missingEmailJsConfig.length === 0;
 
   const validate = () => {
     const newErrors = {};
@@ -66,14 +58,6 @@ export default function ContactSection() {
     setSubmitMessage("");
 
     if (Object.keys(newErrors).length > 0) {
-      return;
-    }
-
-    if (!isEmailJsConfigured) {
-      setSubmitStatus("error");
-      setSubmitMessage(
-        `Email service is not configured yet. Missing: ${missingEmailJsConfig.join(", ")}.`
-      );
       return;
     }
 
