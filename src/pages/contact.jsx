@@ -1,8 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import emailjs from "@emailjs/browser";
 import { Send, Mail, MapPin, Phone, MessageSquare } from "lucide-react";
+
+const CONTACT_API_URL = import.meta.env.VITE_CONTACT_API_URL || "/api/contact";
 
 const contactInfo = [
   {
@@ -22,10 +23,6 @@ const contactInfo = [
   },
 ];
 
-const EMAILJS_SERVICE_ID = "service_3skdlmz";
-const EMAILJS_TEMPLATE_ID = "template_4d5k7yi";
-const EMAILJS_PUBLIC_KEY = "kIzaIOgnsbx1KzzaW";
-
 export default function ContactSection() {
   const [formData, setFormData] = useState({
     fullName: "",
@@ -36,6 +33,37 @@ export default function ContactSection() {
   const [errors, setErrors] = useState({});
   const [submitStatus, setSubmitStatus] = useState("idle");
   const [submitMessage, setSubmitMessage] = useState("");
+
+  const updateField = (fieldName, value) => {
+    setFormData((prev) => ({
+      ...prev,
+      [fieldName]: value,
+    }));
+
+    setErrors((prev) => {
+      if (!prev[fieldName]) {
+        return prev;
+      }
+
+      const nextErrors = { ...prev };
+      delete nextErrors[fieldName];
+      return nextErrors;
+    });
+
+    if (submitStatus !== "idle") {
+      setSubmitStatus("idle");
+      setSubmitMessage("");
+    }
+  };
+
+  const getFieldClassName = (fieldName, isTextArea = false) =>
+    [
+      "w-full rounded-lg border bg-background px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground transition-shadow focus:border-ring focus:outline-none focus:ring-2 focus:ring-ring/20",
+      isTextArea ? "resize-none" : "",
+      errors[fieldName] ? "border-destructive" : "border-input",
+    ]
+      .filter(Boolean)
+      .join(" ");
 
   const validate = () => {
     const newErrors = {};
@@ -62,39 +90,41 @@ export default function ContactSection() {
     }
 
     setSubmitStatus("sending");
+    setSubmitMessage("");
 
     try {
-      await emailjs.send(
-        EMAILJS_SERVICE_ID,
-        EMAILJS_TEMPLATE_ID,
-        {
-          name: formData.fullName,
-          full_name: formData.fullName,
-          from_name: formData.fullName,
-          email: formData.email,
-          from_email: formData.email,
-          reply_to: formData.email,
-          subject: formData.subject,
-          message: formData.message,
-          to_email: "leovinjozhsalarda@gmail.com",
+      const response = await fetch(CONTACT_API_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
         },
-        {
-          publicKey: EMAILJS_PUBLIC_KEY,
+        body: JSON.stringify(formData),
+      });
+
+      const responseData = await response.json().catch(() => ({}));
+
+      if (!response.ok) {
+        if (responseData.errors) {
+          setErrors(responseData.errors);
         }
-      );
+
+        setSubmitStatus("error");
+        setSubmitMessage(
+          responseData.message || "We could not send your message right now. Please try again later.",
+        );
+        return;
+      }
 
       setSubmitStatus("success");
-      setSubmitMessage("Message sent successfully. We will get back to you as soon as possible.");
+      setSubmitMessage(
+        responseData.message ||
+          "Message sent successfully. We will get back to you as soon as possible.",
+      );
       setErrors({});
       setFormData({ fullName: "", email: "", subject: "", message: "" });
     } catch (error) {
-      console.error("EmailJS send failed:", error);
       setSubmitStatus("error");
-      const errorMessage =
-        (error && typeof error === "object" && ("text" in error || "message" in error)
-          ? error.text || error.message
-          : "") || "Message failed to send. Please try again in a moment.";
-      setSubmitMessage(errorMessage);
+      setSubmitMessage("We could not send your message right now. Please try again later.");
     }
   };
 
@@ -197,17 +227,18 @@ export default function ContactSection() {
                       name="fullName"
                       type="text"
                       value={formData.fullName}
-                      onChange={(e) =>
-                        setFormData((prev) => ({
-                          ...prev,
-                          fullName: e.target.value,
-                        }))
-                      }
-                      className="w-full rounded-lg border border-input bg-background px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground transition-shadow focus:border-ring focus:outline-none focus:ring-2 focus:ring-ring/20"
+                      onChange={(e) => updateField("fullName", e.target.value)}
+                      aria-invalid={Boolean(errors.fullName)}
+                      aria-describedby={errors.fullName ? "fullName-error" : undefined}
+                      className={getFieldClassName("fullName")}
                       placeholder="John Doe"
+                      autoComplete="name"
+                      required
                     />
                     {errors.fullName && (
-                      <p className="mt-1 text-xs text-destructive">{errors.fullName}</p>
+                      <p id="fullName-error" className="mt-1 text-xs text-destructive">
+                        {errors.fullName}
+                      </p>
                     )}
                   </div>
 
@@ -224,17 +255,18 @@ export default function ContactSection() {
                       name="email"
                       type="email"
                       value={formData.email}
-                      onChange={(e) =>
-                        setFormData((prev) => ({
-                          ...prev,
-                          email: e.target.value,
-                        }))
-                      }
-                      className="w-full rounded-lg border border-input bg-background px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground transition-shadow focus:border-ring focus:outline-none focus:ring-2 focus:ring-ring/20"
+                      onChange={(e) => updateField("email", e.target.value)}
+                      aria-invalid={Boolean(errors.email)}
+                      aria-describedby={errors.email ? "email-error" : undefined}
+                      className={getFieldClassName("email")}
                       placeholder="john@example.com"
+                      autoComplete="email"
+                      required
                     />
                     {errors.email && (
-                      <p className="mt-1 text-xs text-destructive">{errors.email}</p>
+                      <p id="email-error" className="mt-1 text-xs text-destructive">
+                        {errors.email}
+                      </p>
                     )}
                   </div>
                 </div>
@@ -252,17 +284,18 @@ export default function ContactSection() {
                     name="subject"
                     type="text"
                     value={formData.subject}
-                    onChange={(e) =>
-                      setFormData((prev) => ({
-                        ...prev,
-                        subject: e.target.value,
-                      }))
-                    }
-                    className="w-full rounded-lg border border-input bg-background px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground transition-shadow focus:border-ring focus:outline-none focus:ring-2 focus:ring-ring/20"
+                    onChange={(e) => updateField("subject", e.target.value)}
+                    aria-invalid={Boolean(errors.subject)}
+                    aria-describedby={errors.subject ? "subject-error" : undefined}
+                    className={getFieldClassName("subject")}
                     placeholder="Inquiry about services"
+                    autoComplete="off"
+                    required
                   />
                   {errors.subject && (
-                    <p className="mt-1 text-xs text-destructive">{errors.subject}</p>
+                    <p id="subject-error" className="mt-1 text-xs text-destructive">
+                      {errors.subject}
+                    </p>
                   )}
                 </div>
 
@@ -279,23 +312,24 @@ export default function ContactSection() {
                     name="message"
                     rows={5}
                     value={formData.message}
-                    onChange={(e) =>
-                      setFormData((prev) => ({
-                        ...prev,
-                        message: e.target.value,
-                      }))
-                    }
-                    className="w-full resize-none rounded-lg border border-input bg-background px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground transition-shadow focus:border-ring focus:outline-none focus:ring-2 focus:ring-ring/20"
+                    onChange={(e) => updateField("message", e.target.value)}
+                    aria-invalid={Boolean(errors.message)}
+                    aria-describedby={errors.message ? "message-error" : undefined}
+                    className={getFieldClassName("message", true)}
                     placeholder="Tell us how we can help..."
+                    required
                   />
                   {errors.message && (
-                    <p className="mt-1 text-xs text-destructive">{errors.message}</p>
+                    <p id="message-error" className="mt-1 text-xs text-destructive">
+                      {errors.message}
+                    </p>
                   )}
                 </div>
 
                 <button
                   type="submit"
                   disabled={submitStatus === "sending"}
+                  aria-busy={submitStatus === "sending"}
                   className="group inline-flex w-full items-center justify-center gap-2 rounded-lg bg-primary px-6 py-3 text-base font-bold text-primary-foreground shadow-lg shadow-primary/20 transition-all hover:bg-primary/90 hover:shadow-xl hover:shadow-primary/30 sm:w-auto"
                 >
                   <Send className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
