@@ -16,55 +16,78 @@ export default function AboutSection() {
 
   return (
     <section
-     
-      className="relative overflow-hidden py-16 md:py-16 bg-linear-to-b from-white via-blue-50/40 to-white"
+      id="about"
+      className="relative overflow-hidden bg-linear-to-b from-white via-blue-50/40 to-white"
     >
-      <div  id="about" className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div>
-          <div className="text-center mb-5">
-          <span className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-primary">
-             About CHCI
-          </span>
-          <h2 className="text-3xl font-bold text-foreground md:text-4xl mb-3 mt-2">
-            Know  More <span className="text-primary">About Us</span>
-          </h2>
-          <div className="w-16 h-1 bg-[#0A3D91] mx-auto" />
-        </div>
-          <div className="flex lg:mt-20 flex-col gap-12 lg:flex-row lg:items-center lg:gap-10">
+      <div className="absolute inset-0 -z-10 pointer-events-none">
+        <div className="absolute top-20 -left-30 h-75 w-75 rounded-full bg-[#3A7CC3]/10 blur-3xl" />
+        <div className="absolute bottom-10 -right-30 h-65 w-65 rounded-full bg-[#0A3D91]/10 blur-3xl" />
+        <div className="absolute inset-0 opacity-[0.15] bg-[linear-gradient(#0A3D91_1px,transparent_1px),linear-gradient(90deg,#0A3D91_1px,transparent_1px)] bg-size-[50px_50px]" />
+      </div>
+
+      <div
+        className={`container mx-auto flex min-h-[90vh] flex-col px-4 py-16 sm:px-6 md:py-20 lg:px-8 ${
+          expanded ? "justify-start" : "justify-center"
+        }`}
+      >
+        <div className="w-full">
+          <div className="mb-8 text-center md:mb-10">
+            <span className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-primary">
+              About CHCI
+            </span>
+            <h2 className="mt-2 mb-3 text-3xl font-bold text-foreground md:text-4xl">
+              Know More <span className="text-primary">About Us</span>
+            </h2>
+            <div className="mx-auto h-1 w-16 bg-[#0A3D91]" />
+          </div>
+
+          <div className="grid gap-8 lg:mt-12 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:items-center xl:gap-14">
             {/* Left text */}
-            <div className="flex-1 lg:w-1/2">
-              
-              <p className="mt-6 text-base leading-relaxed text-muted-foreground">
-                The College of Computing and Information Sciences was established in the year 2018 with three undergraduate four-year programs. Considering its humble beginnings, CCIS was designated as the Regional Nodal Center for Information Technology by the Commission on Higher Education in the same year, also recognized as the region's leading Information Technology Institution by the National Computer Center. With the college's outstanding success, several research centers have been established to support the university's research, innovation, and extension programs one of which is the Center for Human Computer Interaction (CHCI). The Center for Human Computer Interaction (CHCI) at Caraga State University is a university-wide research center that addresses the foundation of human-computer interaction technology applied to learning environments, social and rural contexts. It is a multidisciplinary endeavor from human sciences, computational, engineering and information technologies. It fosters research and development in the area of artificial intelligence, augmented reality and other HCIs-related fields of specialization.
+            <div className="flex flex-1 flex-col">
+              <p className="mt-2 max-w-3xl text-sm leading-7 text-muted-foreground sm:text-base sm:leading-8 lg:mt-0 lg:max-w-none">
+                The College of Computing and Information Sciences was established in the year 2018
+                with three undergraduate four-year programs. Considering its humble beginnings, CCIS
+                was designated as the Regional Nodal Center for Information Technology by the
+                Commission on Higher Education in the same year, also recognized as the region's
+                leading Information Technology Institution by the National Computer Center. With the
+                college's outstanding success, several research centers have been established to
+                support the university's research, innovation, and extension programs one of which
+                is the Center for Human Computer Interaction (CHCI). The Center for Human Computer
+                Interaction (CHCI) at Caraga State University is a university-wide research center
+                that addresses the foundation of human-computer interaction technology applied to
+                learning environments, social and rural contexts. It is a multidisciplinary endeavor
+                from human sciences, computational, engineering and information technologies. It
+                fosters research and development in the area of artificial intelligence, augmented
+                reality and other HCIs-related fields of specialization.
               </p>
 
               <button
                 onClick={() => setExpanded(!expanded)}
-                className="mt-6 inline-flex items-center gap-2 rounded-md bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/90"
+                className="mt-6 inline-flex w-fit items-center gap-2 rounded-md bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/90"
               >
                 Know More
                 {expanded ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
               </button>
 
               {expanded && (
-                <div className="mt-6 animate-in fade-in slide-in-from-top-2 rounded-lg border border-border bg-card p-6">
-                  <div className="text-center mb-6">
-                    <p className="text-sm uppercase tracking-widest text-primary mb-2 font-medium">
+                <div className="mt-6 animate-in fade-in slide-in-from-top-2 rounded-2xl border border-border bg-card p-5 sm:p-6">
+                  <div className="mb-6 text-center">
+                    <p className="mb-2 text-sm font-medium uppercase tracking-widest text-primary">
                       What Drives Us
                     </p>
-                    <h2 className="text-3xl font-bold text-foreground md:text-4xl">
+                    <h2 className="text-2xl font-bold text-foreground sm:text-3xl md:text-4xl">
                       Vision & Mission
                     </h2>
                   </div>
                   <div className="mt-6">
-                    <div className="bg-card rounded-xl p-8 shadow-sm h-full flex flex-col relative overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
-                      <div className="flex items-center gap-4 mb-4">
+                    <div className="relative flex h-full flex-col overflow-hidden rounded-xl bg-card p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg sm:p-8">
+                      <div className="mb-4 flex items-center gap-4">
                         <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary text-white">
                           <Eye className="h-6 w-6" />
                         </div>
-                        <h3 className="text-2xl font-bold text-foreground">Vision</h3>
+                        <h3 className="text-xl font-bold text-foreground sm:text-2xl">Vision</h3>
                       </div>
-                      <p className="leading-relaxed text-muted-foreground flex-1">
+                      <p className="flex-1 leading-relaxed text-muted-foreground">
                         To be the premier driver of human-centric computing innovation in Caraga,
                         elevating CSU as a global leader at the convergence of science, technology,
                         and the arts.
@@ -73,14 +96,14 @@ export default function AboutSection() {
                   </div>
 
                   <div className="mt-6">
-                    <div className="bg-card rounded-xl p-8 shadow-sm h-full flex flex-col relative overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
-                      <div className="flex items-center gap-4 mb-4">
+                    <div className="relative flex h-full flex-col overflow-hidden rounded-xl bg-card p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg sm:p-8">
+                      <div className="mb-4 flex items-center gap-4">
                         <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary text-white">
                           <Target className="h-6 w-6" />
                         </div>
-                        <h3 className="text-2xl font-bold text-foreground">Mission</h3>
+                        <h3 className="text-xl font-bold text-foreground sm:text-2xl">Mission</h3>
                       </div>
-                      <p className="leading-relaxed text-muted-foreground flex-1">
+                      <p className="flex-1 leading-relaxed text-muted-foreground">
                         To advance the frontiers of computing by engineering human-centric
                         technologies that bridge intelligent systems and human needs; fostering
                         interdisciplinary research that transforms lives, empowers communities, and
@@ -93,19 +116,19 @@ export default function AboutSection() {
             </div>
 
             {/* Right column: YouTube + Core Values (when expanded) */}
-            <div className="flex flex-1 flex-col gap-6 lg:w-1/2">
-              <div className="aspect-video w-full overflow-hidden rounded-lg shadow-lg">
+            <div className="flex flex-1 flex-col gap-6">
+              <div className="aspect-video w-full overflow-hidden rounded-2xl border border-border/60 bg-card shadow-xl">
                 <iframe
-                  src="https://www.youtube.com/embed/OlJuSZeyug8"
+                  src="https://www.youtube.com/embed/41V8IHq_oDw?si=xlh1KkfnIP1x02no"
                   title="CHCI Introduction Video"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
                   className="h-full w-full"
                 />
               </div>
-{expanded && (
-                <div className="animate-in fade-in slide-in-from-top-2 rounded-lg border border-border bg-card p-6">
-                  <h3 className="text-2xl font-bold text-center mb-8">
+              {expanded && (
+                <div className="animate-in fade-in slide-in-from-top-2 rounded-2xl border border-border bg-card p-5 sm:p-6">
+                  <h3 className="mb-8 text-center text-2xl font-bold">
                     Core Values <span className="text-primary">(The HCI Way)</span>
                   </h3>
                   <div className="mt-4 space-y-4">
@@ -162,8 +185,8 @@ export default function AboutSection() {
 
         {/* Organization Structure - inside expanded Know More */}
         {expanded && (
-          <div className="mt-12">
-            <div className="animate-in fade-in slide-in-from-top-2 rounded-lg border border-border bg-card p-6 lg:p-8">
+          <div className="mt-10 md:mt-12">
+            <div className="animate-in fade-in slide-in-from-top-2 rounded-2xl border border-border bg-card p-5 sm:p-6 lg:p-8">
               <p className="mb-2 text-center text-sm font-semibold uppercase tracking-widest text-secondary">
                 Organization
               </p>
@@ -172,11 +195,11 @@ export default function AboutSection() {
               </h3>
 
               {/* Vertical org chart */}
-              <div className="flex flex-col items-center">
+              <div className="mt-6 flex flex-col items-center">
                 {/* University President */}
                 <div className="relative group mb-2">
                   <div className="absolute -inset-1 bg-linear-to-r from-[#0A3D91] to-[#3A7CC3] rounded-xl blur opacity-40 group-hover:opacity-100 transition duration-300" />
-                  <div className="relative w-40 py-4 px-8 border border-[#0A3D91] rounded-xl bg-white text-center font-bold text-[#0A3D91] shadow-lg hover:shadow-xl transition-shadow">
+                  <div className="relative w-full max-w-44 rounded-xl border border-[#0A3D91] bg-white px-6 py-4 text-center font-bold text-[#0A3D91] shadow-lg transition-shadow hover:shadow-xl">
                     University
                     <br />
                     President
@@ -188,7 +211,7 @@ export default function AboutSection() {
                 {/* VP for RIE */}
                 <div className="relative group mb-2">
                   <div className="absolute -inset-1 bg-linear-to-r from-[#0A3D91] to-[#3A7CC3] rounded-xl blur opacity-40 group-hover:opacity-100 transition duration-300" />
-                  <div className="relative w-40 py-4 px-8 border border-[#3A7CC3] rounded-xl bg-white text-center font-bold text-[#0A3D91] shadow-lg hover:shadow-xl transition-shadow">
+                  <div className="relative w-full max-w-44 rounded-xl border border-[#3A7CC3] bg-white px-6 py-4 text-center font-bold text-[#0A3D91] shadow-lg transition-shadow hover:shadow-xl">
                     VP for RIE
                   </div>
                 </div>
@@ -198,7 +221,7 @@ export default function AboutSection() {
                 {/* RDISO */}
                 <div className="relative group mb-2">
                   <div className="absolute -inset-1 bg-linear-to-r from-[#0A3D91] to-[#3A7CC3] rounded-xl blur opacity-40 group-hover:opacity-100 transition duration-300" />
-                  <div className="relative w-40 py-4 px-8 border border-[#0A3D91] rounded-xl bg-white text-center font-bold text-[#0A3D91] shadow-lg hover:shadow-xl transition-shadow">
+                  <div className="relative w-full max-w-44 rounded-xl border border-[#0A3D91] bg-white px-6 py-4 text-center font-bold text-[#0A3D91] shadow-lg transition-shadow hover:shadow-xl">
                     RDISO
                   </div>
                 </div>
@@ -208,7 +231,7 @@ export default function AboutSection() {
                 {/* CHCI Center Chief */}
                 <div className="relative group mb-6">
                   <div className="absolute -inset-1 bg-linear-to-r from-[#0A3D91] to-[#3A7CC3] rounded-xl blur-xl opacity-60 group-hover:opacity-100 transition duration-300" />
-                  <div className="relative w-44 py-4 px-8 border border-[#0A3D91] rounded-xl bg-linear-to-br from-[#0A3D91] to-[#3A7CC3] text-center font-bold text-white shadow-xl hover:shadow-2xl transition-shadow">
+                  <div className="relative w-full max-w-48 rounded-xl border border-[#0A3D91] bg-linear-to-br from-[#0A3D91] to-[#3A7CC3] px-6 py-4 text-center font-bold text-white shadow-xl transition-shadow hover:shadow-2xl">
                     CHCI Center
                     <br />
                     Chief
@@ -241,4 +264,3 @@ export default function AboutSection() {
     </section>
   );
 }
-
