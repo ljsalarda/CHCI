@@ -41,17 +41,17 @@ export default function AboutSection() {
             <div className="mx-auto h-1 w-16 bg-[#0A3D91]" />
           </div>
 
-          <div className="grid gap-8 lg:mt-12 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:items-center xl:gap-14">
+          <div className="grid gap-8 lg:mt-12 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:items-center xl:gap-14 max-w-8xl mx-auto">
             {/* Left text */}
             <div className="flex flex-1 flex-col">
-               <p className="mb-4 text-base leading-relaxed text-muted-foreground md:text-lg">
+               <p className="mb-4 text-xl leading-relaxed text-muted-foreground md:text-xl">
               The Center for Human-Computer Interaction (CHCI) at Caraga State
               University is a pioneering research center dedicated to advancing
               the frontiers of computing through human-centric design and
               innovation.
             </p>
             
-            <p className="text-base leading-relaxed text-muted-foreground md:text-lg">
+            <p className="text-xl leading-relaxed text-muted-foreground md:text-xl">
               Our interdisciplinary team of researchers, designers, and
               engineers work collaboratively to create technologies that bridge
               intelligent systems and human needs, fostering inclusive
