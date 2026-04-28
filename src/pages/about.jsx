@@ -44,22 +44,20 @@ export default function AboutSection() {
           <div className="grid gap-8 lg:mt-12 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:items-center xl:gap-14">
             {/* Left text */}
             <div className="flex flex-1 flex-col">
-              <p className="mt-2 max-w-3xl text-sm leading-7 text-muted-foreground sm:text-base sm:leading-8 lg:mt-0 lg:max-w-none">
-                The College of Computing and Information Sciences was established in the year 2018
-                with three undergraduate four-year programs. Considering its humble beginnings, CCIS
-                was designated as the Regional Nodal Center for Information Technology by the
-                Commission on Higher Education in the same year, also recognized as the region's
-                leading Information Technology Institution by the National Computer Center. With the
-                college's outstanding success, several research centers have been established to
-                support the university's research, innovation, and extension programs one of which
-                is the Center for Human Computer Interaction (CHCI). The Center for Human Computer
-                Interaction (CHCI) at Caraga State University is a university-wide research center
-                that addresses the foundation of human-computer interaction technology applied to
-                learning environments, social and rural contexts. It is a multidisciplinary endeavor
-                from human sciences, computational, engineering and information technologies. It
-                fosters research and development in the area of artificial intelligence, augmented
-                reality and other HCIs-related fields of specialization.
-              </p>
+               <p className="mb-4 text-base leading-relaxed text-muted-foreground md:text-lg">
+              The Center for Human-Computer Interaction (CHCI) at Caraga State
+              University is a pioneering research center dedicated to advancing
+              the frontiers of computing through human-centric design and
+              innovation.
+            </p>
+            
+            <p className="text-base leading-relaxed text-muted-foreground md:text-lg">
+              Our interdisciplinary team of researchers, designers, and
+              engineers work collaboratively to create technologies that bridge
+              intelligent systems and human needs, fostering inclusive
+              development and empowering communities across the Caraga region
+              and beyond.
+            </p>
 
               <button
                 onClick={() => setExpanded(!expanded)}
