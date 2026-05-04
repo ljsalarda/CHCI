@@ -14,12 +14,12 @@ const contactInfo = [
   {
     icon: Mail,
     label: "Email",
-    value: "leovinjozhsalarda@gmail.com",
+    value: "chci@carsu.edu.ph",
   },
   {
     icon: Phone,
     label: "Phone",
-    value: "+63 (085) 341-2246",
+    value: "+63 ",
   },
 ];
 
