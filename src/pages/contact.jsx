@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Send, Mail, MapPin, Phone, MessageSquare } from "lucide-react";
+import { Send, Mail, MapPin, Facebook, MessageSquare } from "lucide-react";
 
 const CONTACT_API_URL = import.meta.env.VITE_CONTACT_API_URL || "/api/contact";
 
@@ -17,9 +17,10 @@ const contactInfo = [
     value: "chci@carsu.edu.ph",
   },
   {
-    icon: Phone,
-    label: "Phone",
-    value: "+63 ",
+    icon: Facebook,
+    label: "Facebook",
+    value: "facebook.com/csuchci",
+    href: "https://www.facebook.com/csuchci",
   },
 ];
 
@@ -180,7 +181,18 @@ export default function ContactSection() {
                       {info.label}
                     </p>
                     <p className="mt-1 text-base font-medium text-foreground leading-relaxed">
-                      {info.value}
+                      {info.href ? (
+                        <a
+                          href={info.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="break-words text-primary underline-offset-4 hover:underline"
+                        >
+                          {info.value}
+                        </a>
+                      ) : (
+                        info.value
+                      )}
                     </p>
                   </div>
                 </div>
