@@ -1,6 +1,6 @@
 "use client";
 
-import { Facebook, Linkedin, Youtube, Mail, Phone, MapPin } from "lucide-react";
+import { Facebook, Linkedin, Youtube, Mail, MapPin } from "lucide-react";
 
 const quickLinks = [
   { name: "Home", sectionId: "home" },
@@ -140,19 +140,26 @@ export function Footer() {
             </h3>
             <ul className="space-y-3">
               <li className="flex items-start gap-2 text-sm text-primary-foreground/80">
-                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-secondary" />
+                <MapPin className="mt-0.5 h-6 w-6 shrink-0 text-secondary" />
                 <span>
                   2nd Flr. Mechatronics Building, Caraga State University, Ampayon, Butuan City,
                   Philippines, 8600
                 </span>
               </li>
               <li className="flex items-center gap-2 text-sm text-primary-foreground/80">
-                <Mail className="h-4 w-4 text-secondary" />
+                <Mail className="h-6 w-6 text-secondary" />
                 <span>chci@carsu.edu.ph</span>
               </li>
               <li className="flex items-center gap-2 text-sm text-primary-foreground/80">
-                <Phone className="h-4 w-4 text-secondary" />
-                <span>+63 981 518 9143</span>
+                <Facebook className="h-6 w-6 text-secondary" />
+                <a
+                  href="https://www.facebook.com/csuchci"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="break-words underline-offset-4 hover:underline"
+                >
+                  facebook.com/csuchci
+                </a>
               </li>
             </ul>
           </div>
