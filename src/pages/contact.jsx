@@ -186,7 +186,7 @@ export default function ContactSection() {
                           href={info.href}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="break-words text-primary underline-offset-4 hover:underline"
+                          className="wrap-break-word text-primary underline-offset-4 hover:underline"
                         >
                           {info.value}
                         </a>
